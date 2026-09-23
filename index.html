@@ -177,7 +177,14 @@ table.tab-inst{min-width:1060px;width:100%;border-collapse:collapse}
 .filtros-completos{display:grid;grid-template-columns:minmax(330px,1fr) 210px 180px 230px;gap:10px}.top-scroll{overflow-x:auto;height:19px;border:1px solid var(--line);border-bottom:0;border-radius:12px 12px 0 0;background:#eef2f3}.top-scroll>div{height:1px}.tabela-completa{overflow:auto;max-height:76vh}.tabela-dados{min-width:4100px!important}.tabela-dados td{max-width:none!important;white-space:normal!important;line-height:1.5;padding:12px 13px!important}.col-objeto{min-width:520px;max-width:680px!important}.col-obs{min-width:380px;max-width:540px!important}.num-dias{font-weight:800;text-align:center}.txt-vencido{color:var(--venc)}.linha-vencido td:first-child{box-shadow:inset 5px 0 var(--venc)}.linha-d30 td:first-child{box-shadow:inset 5px 0 var(--f30)}.linha-d60 td:first-child{box-shadow:inset 5px 0 var(--f60)}.linha-d90 td:first-child{box-shadow:inset 5px 0 var(--f90)}.linha-vencido td{background:#fff8f8!important}.linha-d30 td{background:#fffaf5!important}.aviso-vencimentos{margin-bottom:12px;border:1px solid #e7c8a6;border-left:5px solid var(--f30);border-radius:12px;background:#fff}.aviso-cab{display:flex;justify-content:space-between;gap:12px;padding:13px 15px;border-bottom:1px solid #f0dfcb}.aviso-cab div{display:flex;flex-direction:column}.aviso-cab span{font-size:12px;color:var(--muted)}.aviso-cab button{width:auto;margin:0}.aviso-itens{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line)}.aviso-itens button{margin:0;border:0;border-radius:0;background:#fff;color:var(--ink);text-align:left;padding:11px 14px}.aviso-itens span{display:block;font-size:12px;color:var(--muted)}.aviso-ok{padding:14px;color:var(--vig);font-weight:650}.prazo-legenda{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:12px}.prazo-legenda span{background:#fff;border:1px solid var(--line);border-radius:999px;padding:4px 9px;font-size:11px;font-weight:700}.lg-v{color:var(--venc)}.lg-30{color:var(--f30)}.lg-60{color:var(--f60)}.lg-90{color:var(--f90)}.lg-ok{color:var(--vig)}@media(max-width:1000px){.filtros-completos{grid-template-columns:1fr 1fr}.aviso-itens{grid-template-columns:1fr 1fr}}@media(max-width:760px){.filtros-completos{grid-template-columns:1fr}.aviso-itens{grid-template-columns:1fr}.tabela-dados{min-width:4100px!important}.tabela-completa{max-height:72vh}.tabela-completa thead{display:table-header-group!important}.tabela-completa tbody{display:table-row-group!important}.tabela-completa tr{display:table-row!important}.tabela-completa td{display:table-cell!important}.tabela-completa td::before{display:none!important}}
 
 .campo-ajuda{display:block;margin-top:5px;color:var(--muted);font-size:11px}.link-processo{display:inline-flex;margin-top:5px;color:var(--acc);font-weight:700;text-decoration:none;border-bottom:1px solid #9fb9c3}.link-processo:hover{color:var(--acc-2);border-bottom-color:var(--acc-2)}.aviso-itens .aviso-hoje{box-shadow:inset 5px 0 0 #8f1f29;background:#fff5f5}.aviso-itens .aviso-ate7{box-shadow:inset 5px 0 0 #b4570f;background:#fff9f3}.aviso-itens .aviso-ate15{box-shadow:inset 5px 0 0 #c78619;background:#fffbf1}.aviso-itens .aviso-ate30{box-shadow:inset 5px 0 0 #a8951a}.aviso-itens .aviso-ate60{box-shadow:inset 5px 0 0 #3f6878}.aviso-itens .aviso-ate90{box-shadow:inset 5px 0 0 #5c7c88}.aviso-cab b{font-size:16px;color:var(--acc-2)}
-</style></head><body><header class="topo"><div class="topo-in"><div class="marca"><span class="marca-nome">Controle de Compras</span><span class="marca-sub">Contratos, convênios e termos de cooperação</span></div><div class="acoes-topo"><button id="importar" class="sec">Consolidar Excel</button><button id="novo">Novo<span class="so-desk"> instrumento</span></button><div class="menu-wrap"><button id="btnMais" class="sec" aria-haspopup="true" aria-expanded="false" aria-controls="menuMais" aria-label="Mais opções" title="Mais opções">⋯</button><div id="menuMais" class="menu" role="menu"><button id="importarMenu" class="so-mobile" role="menuitem">Consolidar Excel</button><button id="btnCalendario" role="menuitem">Calendário de prazos</button><button id="btnHistoricoConsolidacoes" role="menuitem">Histórico de consolidações</button><button id="modelo" role="menuitem">Baixar modelo da planilha</button><button id="exportar" role="menuitem">Exportar para Excel</button><hr><div id="usuario" class="menu-user"></div><button id="sair" class="sair" role="menuitem">Sair</button></div></div></div></div></header>
+
+/* ===== Seleção segura de processos para exclusão ===== */
+#painelExclusaoProcessos code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}
+#painelExclusaoProcessos input[type="checkbox"]{width:20px;height:20px;margin:0;accent-color:var(--venc)}
+#painelExclusaoProcessos tr.selecionado td{background:#fff1f1!important}
+#painelExclusaoProcessos .danger:disabled{opacity:.45;cursor:not-allowed}
+@media(max-width:760px){#painelExclusaoProcessos .toolbar button{width:auto}#painelExclusaoProcessos .filtros{grid-template-columns:1fr}}
+</style></head><body><header class="topo"><div class="topo-in"><div class="marca"><span class="marca-nome">Controle de Compras</span><span class="marca-sub">Contratos, convênios e termos de cooperação</span></div><div class="acoes-topo"><button id="importar" class="sec">Consolidar Excel</button><button id="novo">Novo<span class="so-desk"> instrumento</span></button><div class="menu-wrap"><button id="btnMais" class="sec" aria-haspopup="true" aria-expanded="false" aria-controls="menuMais" aria-label="Mais opções" title="Mais opções">⋯</button><div id="menuMais" class="menu" role="menu"><button id="importarMenu" class="so-mobile" role="menuitem">Consolidar Excel</button><button id="btnCalendario" role="menuitem">Calendário de prazos</button><button id="btnHistoricoConsolidacoes" role="menuitem">Histórico de consolidações</button><button id="btnExclusaoProcessos" role="menuitem">Selecionar processos para excluir</button><button id="modelo" role="menuitem">Baixar modelo da planilha</button><button id="exportar" role="menuitem">Exportar para Excel</button><hr><div id="usuario" class="menu-user"></div><button id="sair" class="sair" role="menuitem">Sair</button></div></div></div></div></header>
 <div class="wrap" id="login"><div class="card"><h2>Acesso</h2><div class="grid2"><div><label for="email">E-mail</label><input id="email" type="email"></div><div><label for="senha">Senha</label><input id="senha" type="password"></div></div><div class="toolbar"><button id="entrar">Entrar</button><button id="cadastrar" class="ok">Cadastrar usuário</button><button id="resetar" class="outline">Recuperar senha</button></div><div id="msgLogin" class="feedback hidden"></div></div></div>
 <main class="wrap hidden" id="app"><input id="arquivo" type="file" accept=".xlsx,.xls,.csv" class="hidden"><nav class="abas" id="abasTipo"></nav><section class="faixas" id="faixas"></section><section id="avisoVencimentos" class="aviso-vencimentos"></section><div class="prazo-legenda"><span class="lg-v">● Vencido até 30 dias</span><span class="lg-30">● Até 30 dias</span><span class="lg-60">● 31 a 60 dias</span><span class="lg-90">● 61 a 90 dias</span><span class="lg-ok">● Mais de 90 dias</span></div><div class="filtros filtros-completos"><input id="busca" type="search" placeholder="Buscar instrumento, processo, contratado, objeto, gestor ou SISLOG"><select id="fTipo"><option value="">Todos os tipos</option><option>Contrato</option><option>Convênio</option><option>Termo de Cooperação</option><option>Termo de Colaboração</option><option>Termo de Fomento</option><option>Ata de Registro de Preços</option><option>Acordo</option><option>Outro</option></select><input id="fClass" placeholder="Classificação"><select id="ordenacao"><option value="vencimento">Ordem de vencimento</option><option value="recentes">Mais recentes primeiro</option><option value="antigos">Mais antigos primeiro</option><option value="instrumento">Número do instrumento</option><option value="contratado">Contratado / partícipe</option><option value="valor">Maior valor global</option><option value="gestor">Gestor / responsável</option></select></div><div class="lista-cab" id="resumo">Carregando instrumentos...</div><div class="top-scroll" id="topScroll"><div></div></div><div class="lista tabela-completa" id="mainTableWrap"><table class="tab-inst tabela-dados"><thead><tr><th>Número</th><th>Instrumento</th><th>Ano</th><th>Tipo</th><th>Classificação</th><th>Processo</th><th>Contratado/Partícipe</th><th>CPF/CNPJ</th><th>Objeto</th><th>Data inicial</th><th>Data final original</th><th>Fim da vigência</th><th>Dias</th><th>Situação</th><th>Status administrativo</th><th>Gestor/Responsável</th><th>Unidade responsável</th><th>Valor mensal</th><th>Valor total</th><th>Valor global</th><th>Aditivos</th><th>Apostilamentos</th><th>SISLOG</th><th>Observação</th><th>Ações</th></tr></thead><tbody id="tbody"></tbody></table></div></main>
 <div id="modalbg" class="modalbg hidden"><div class="modal"><div class="toolbar"><h2 id="tituloModal" style="flex:1">Novo instrumento</h2><button id="excluirInstr" class="outline btn-excluir hidden">Excluir</button><button id="fechar" class="outline">Fechar</button></div><input id="id" type="hidden"><div class="grid">
@@ -190,6 +197,7 @@ table.tab-inst{min-width:1060px;width:100%;border-collapse:collapse}
 <div class="table prazo-table cards-mobile"><table style="min-width:1350px"><thead><tr><th>Tipo</th><th>Descrição</th><th>Data limite</th><th>Dias</th><th>Responsável</th><th>Unidade</th><th>Prioridade</th><th>Status</th><th>Observação</th><th>Ações</th></tr></thead><tbody id="tbodyPrazos"></tbody></table></div></div><div id="registroBox" class="hidden"><hr><h3>Outras informações da planilha</h3><div class="muted">Colunas da planilha sem campo próprio no sistema e textos que não puderam ser lidos como data ou valor.</div><div id="extrasLista"></div><hr><h3>Histórico do registro</h3><div id="historicoLista"></div></div></div></div>
 <div id="painelCalendario" class="wrap hidden modulo-painel"><div class="card"><div class="toolbar"><h2 style="flex:1">CALENDÁRIO DE PRAZOS</h2><div class="calendar-toolbar-view"><button id="calLista" class="outline">Lista</button><button id="calGrade" class="outline view-toggle-active">Calendário</button></div><button id="calAnterior" class="outline">Anterior</button><b id="calTitulo"></b><button id="calProximo" class="outline">Próximo</button><button class="outline fecharPainel">Fechar</button></div><div id="calendarioConteudo" class="calendario"></div><div id="calendarioLista" class="hidden"></div></div></div>
 <div id="painelHistoricoConsolidacoes" class="wrap hidden modulo-painel"><div class="card"><div class="toolbar"><h2 style="flex:1">HISTÓRICO DE CONSOLIDAÇÕES</h2><button class="outline fecharPainel">Fechar</button></div><div id="historicoConsolidacoesConteudo"></div></div></div>
+<div id="painelExclusaoProcessos" class="wrap hidden modulo-painel"><div class="card"><div class="toolbar"><h2 style="flex:1">SELECIONAR PROCESSOS PARA EXCLUIR</h2><button id="fecharExclusaoProcessos" class="outline">Fechar</button></div><div class="feedback alerta-alts"><b>Atenção:</b> os instrumentos selecionados serão removidos da tela principal. Uma cópia completa será guardada em <code>instrumentos_excluidos</code> para eventual recuperação.</div><div class="filtros" style="margin-top:14px"><input id="buscaExclusao" type="search" placeholder="Buscar processo, instrumento, contratado, CNPJ ou objeto"><select id="filtroExclusao"><option value="todos">Todos os registros</option><option value="selecionados">Somente selecionados</option><option value="semProcesso">Sem número de processo</option></select></div><div class="toolbar" style="margin-bottom:12px"><button id="selecionarVisiveis" class="outline">Selecionar visíveis</button><button id="limparSelecaoExclusao" class="outline">Limpar seleção</button><b id="resumoExclusao" class="muted" style="margin-right:auto"></b><button id="excluirSelecionados" class="danger">Excluir selecionados</button></div><div class="lista tabela-completa"><table class="tab-inst" style="min-width:1200px"><thead><tr><th style="width:55px">Selecionar</th><th>Processo</th><th>Instrumento</th><th>Ano</th><th>Contratado / Partícipe</th><th>CNPJ</th><th>Objeto</th><th>Situação</th></tr></thead><tbody id="tbodyExclusao"></tbody></table></div></div></div>
 <div id="importReviewBg" class="modalbg hidden"><div class="modal import-modal"><div class="toolbar"><h2 style="flex:1">ANÁLISE DA IMPORTAÇÃO</h2><button id="fecharImportReview" class="outline">Fechar</button></div><div id="importStatus" class="feedback">Analisando planilha...</div><div id="importResumo" class="import-kpis"></div><div id="importAlts" class="feedback hidden"></div><div id="importTabs" class="import-tabs hidden"><button data-import-tab="novos">Novos</button><button data-import-tab="duplicados">Duplicados</button><button data-import-tab="atualizacoes">Atualizações</button><button data-import-tab="conflitos">Conflitos</button></div><div id="importLista"></div><div class="toolbar"><button id="confirmarImportacao" class="ok hidden">CONFIRMAR CONSOLIDAÇÃO</button></div></div></div>
 <div id="prorrogarPrazoBg" class="modalbg hidden"><div class="modal" style="max-width:700px"><h2>Prorrogar prazo</h2><input id="prorrogarPrazoId" type="hidden"><label for="prorrogarNovaData">Nova data</label><input id="prorrogarNovaData" type="date"><label for="prorrogarMotivo">Motivo da prorrogação</label><input id="prorrogarMotivo"><label for="prorrogarObservacao">Observação</label><textarea id="prorrogarObservacao"></textarea><label for="prorrogarResponsavel">Usuário responsável</label><input id="prorrogarResponsavel"><div class="toolbar"><button id="confirmarProrrogacao" class="ok">Confirmar prorrogação</button><button id="cancelarProrrogacao" class="outline">Cancelar</button></div></div></div>
 <script>const firebaseConfig = {
@@ -590,5 +598,85 @@ async function confirmarImport(){if(!analiseAtual)return;let t=todosImport(),pen
 async function renderHistoricoImport(){let [a,b]=await Promise.all([db.collection(IMPORTS_COL).orderBy('data','desc').limit(100).get(),db.collection(REL_COL).orderBy('data','desc').limit(100).get()]);$('historicoConsolidacoesConteudo').innerHTML='<h3>Importações</h3>'+a.docs.map(d=>{let x=d.data();return`<div class="alteracao"><b>${esc(x.arquivo)}</b> • ${x.data?.toDate?.().toLocaleString('pt-BR')||''}<br>${esc(x.usuario)} • Linhas ${x.linhasLidas} • Novos ${x.novos} • Duplicados ${x.duplicados} • Atualizações ${x.atualizacoes} • Conflitos ${x.conflitos} • Ignorados ${x.ignorados}</div>`}).join('')+'<h3>Decisões aprendidas</h3>'+b.docs.map(d=>{let x=d.data();return`<div class="alteracao"><b>${esc(x.decisao)}</b> • ${esc(x.registroA)} × ${esc(x.registroB)}<br>${esc(x.usuario)} • ${esc(x.motivo)} <button class="outline" style="width:auto" onclick="revisarRel('${d.id}')">Revisar</button></div>`}).join('')}window.revisarRel=async id=>{let decisao=prompt('Nova decisão: mesmo instrumento ou diferentes?');if(!decisao)return;await db.collection(REL_COL).doc(id).update({decisao:decisao.toLowerCase().includes('difer')?'diferentes':'mesmo instrumento',revisadoEm:firebase.firestore.FieldValue.serverTimestamp(),revisadoPor:auth.currentUser?.email||''});renderHistoricoImport()};
 $('prazoTipo').onchange=()=>$('prazoOutroBox').classList.toggle('hidden',$('prazoTipo').value!=='Outro');$('btnSalvarPrazo').onclick=salvarPrazo;$('btnLimparPrazo').onclick=limparPrazo;$('confirmarProrrogacao').onclick=prorrogar;$('cancelarProrrogacao').onclick=()=>$('prorrogarPrazoBg').classList.add('hidden');$('btnCalendario').onclick=()=>{renderCalendario();abrirPainel('painelCalendario');if(window.innerWidth<600&&$('calendarioLista').classList.contains('hidden'))$('calLista').click()};$('btnHistoricoConsolidacoes').onclick=()=>{renderHistoricoImport();abrirPainel('painelHistoricoConsolidacoes')};document.querySelectorAll('.fecharPainel').forEach(x=>x.onclick=fecharPaineis);$('calLista').onclick=()=>{$('calendarioConteudo').classList.add('hidden');$('calendarioLista').classList.remove('hidden');$('calLista').classList.add('view-toggle-active');$('calGrade').classList.remove('view-toggle-active');renderCalendarioLista()};$('calGrade').onclick=()=>{$('calendarioLista').classList.add('hidden');$('calendarioConteudo').classList.remove('hidden');$('calGrade').classList.add('view-toggle-active');$('calLista').classList.remove('view-toggle-active');renderCalendario()};$('calAnterior').onclick=()=>{mesCalendario.setMonth(mesCalendario.getMonth()-1);renderCalendario()};$('calProximo').onclick=()=>{mesCalendario.setMonth(mesCalendario.getMonth()+1);renderCalendario()};$('fecharImportReview').onclick=()=>$('importReviewBg').classList.add('hidden');document.querySelectorAll('[data-import-tab]').forEach(b=>b.onclick=()=>{importTab=b.dataset.importTab;renderImportLista()});$('confirmarImportacao').onclick=confirmarImport;$('arquivo').onchange=()=>{let f=$('arquivo').files[0];if(f)iniciarImportacao(f);$('arquivo').value=''};
 
+})();
+</script><script>
+(function(){
+  const selecionadosExclusao = new Set();
+  const painel = $('painelExclusaoProcessos');
+  const tbody = $('tbodyExclusao');
+
+  function textoBusca(i){
+    return norm([i.processo,i.contrato,i.numero,i.contratado,i.cnpj,i.objeto,i.ano].join(' '));
+  }
+  function listaExclusao(){
+    const q=norm($('buscaExclusao').value), filtro=$('filtroExclusao').value;
+    return [...itens].filter(i=>{
+      if(q&&!textoBusca(i).includes(q))return false;
+      if(filtro==='selecionados'&&!selecionadosExclusao.has(i.id))return false;
+      if(filtro==='semProcesso'&&String(i.processo||'').trim())return false;
+      return true;
+    }).sort((a,b)=>(a.processo||'').localeCompare(b.processo||'','pt-BR',{numeric:true})||(a.contrato||a.numero||'').localeCompare(b.contrato||b.numero||'','pt-BR',{numeric:true}));
+  }
+  function renderExclusao(){
+    const lista=listaExclusao();
+    tbody.innerHTML=lista.length?lista.map(i=>{
+      const marcado=selecionadosExclusao.has(i.id), sit=situacaoPelasDatas(i).nome;
+      return `<tr class="${marcado?'selecionado':''}"><td><input type="checkbox" data-excluir-id="${esc(i.id)}" ${marcado?'checked':''} aria-label="Selecionar ${esc(i.processo||i.contrato||i.numero||'registro')}"></td><td><b>${esc(i.processo||'Sem processo')}</b></td><td>${esc(i.contrato||i.numero||'Sem número')}</td><td>${esc(i.ano||'')}</td><td>${esc(i.contratado||'')}</td><td>${esc(i.cnpj||'')}</td><td>${esc(i.objeto||'')}</td><td>${esc(sit)}</td></tr>`;
+    }).join(''):'<tr><td colspan="8"><div class="empty-state">Nenhum registro encontrado.</div></td></tr>';
+    $('resumoExclusao').textContent=`${selecionadosExclusao.size} selecionado(s) • ${lista.length} visível(is) • ${itens.length} no sistema`;
+    $('excluirSelecionados').disabled=!selecionadosExclusao.size;
+  }
+  function abrirExclusao(){
+    document.querySelectorAll('.modulo-painel').forEach(x=>x.classList.add('hidden'));
+    painel.classList.remove('hidden');
+    renderExclusao();
+  }
+  function fecharExclusao(){painel.classList.add('hidden')}
+
+  tbody.addEventListener('change',e=>{
+    const c=e.target.closest('[data-excluir-id]'); if(!c)return;
+    c.checked?selecionadosExclusao.add(c.dataset.excluirId):selecionadosExclusao.delete(c.dataset.excluirId);
+    renderExclusao();
+  });
+  $('buscaExclusao').addEventListener('input',renderExclusao);
+  $('filtroExclusao').addEventListener('change',renderExclusao);
+  $('selecionarVisiveis').onclick=()=>{listaExclusao().forEach(i=>selecionadosExclusao.add(i.id));renderExclusao()};
+  $('limparSelecaoExclusao').onclick=()=>{selecionadosExclusao.clear();renderExclusao()};
+  $('btnExclusaoProcessos').onclick=abrirExclusao;
+  $('fecharExclusaoProcessos').onclick=fecharExclusao;
+
+  $('excluirSelecionados').onclick=async()=>{
+    const regs=itens.filter(i=>selecionadosExclusao.has(i.id));
+    if(!regs.length)return;
+    const processos=[...new Set(regs.map(i=>i.processo||'(sem processo)'))];
+    const resumo=processos.slice(0,12).join('\n')+(processos.length>12?`\n... e mais ${processos.length-12}`:'');
+    if(!confirm(`Você selecionou ${regs.length} instrumento(s), em ${processos.length} processo(s):\n\n${resumo}\n\nUma cópia será guardada em instrumentos_excluidos. Deseja continuar?`))return;
+    const frase=prompt('Para confirmar a exclusão, digite exatamente: EXCLUIR');
+    if(frase!=='EXCLUIR')return alert('Exclusão cancelada. A confirmação não corresponde.');
+    const btn=$('excluirSelecionados'); btn.disabled=true; btn.textContent='Excluindo...';
+    try{
+      let total=0;
+      for(let pos=0;pos<regs.length;pos+=200){
+        const lote=regs.slice(pos,pos+200), batch=db.batch();
+        lote.forEach(i=>{
+          const {id,...dados}=i;
+          batch.set(db.collection('instrumentos_excluidos').doc(id),{...dados,idOriginal:id,excluidoEm:firebase.firestore.FieldValue.serverTimestamp(),excluidoPor:quem(),exclusaoEmLote:true});
+          batch.delete(db.collection(COL).doc(id));
+        });
+        await batch.commit(); total+=lote.length;
+      }
+      selecionadosExclusao.clear();
+      alert(`${total} instrumento(s) excluído(s). As cópias foram guardadas em instrumentos_excluidos.`);
+      renderExclusao();
+    }catch(e){
+      console.error(e);
+      alert('A exclusão foi interrompida: '+e.message+'\nOs lotes concluídos antes do erro permanecem excluídos e com cópia de segurança.');
+      renderExclusao();
+    }finally{btn.disabled=!selecionadosExclusao.size;btn.textContent='Excluir selecionados'}
+  };
+
+  // Atualiza a aba quando o snapshot principal mudar.
+  const renderAnterior=window.render;
+  window.render=function(){renderAnterior();if(!painel.classList.contains('hidden'))renderExclusao()};
 })();
 </script></body></html>
