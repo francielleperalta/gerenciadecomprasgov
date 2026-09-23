@@ -177,29 +177,235 @@ table.tab-inst{min-width:1060px;width:100%;border-collapse:collapse}
 .filtros-completos{display:grid;grid-template-columns:minmax(330px,1fr) 210px 180px 230px;gap:10px}.top-scroll{overflow-x:auto;height:19px;border:1px solid var(--line);border-bottom:0;border-radius:12px 12px 0 0;background:#eef2f3}.top-scroll>div{height:1px}.tabela-completa{overflow:auto;max-height:76vh}.tabela-dados{min-width:4100px!important}.tabela-dados td{max-width:none!important;white-space:normal!important;line-height:1.5;padding:12px 13px!important}.col-objeto{min-width:520px;max-width:680px!important}.col-obs{min-width:380px;max-width:540px!important}.num-dias{font-weight:800;text-align:center}.txt-vencido{color:var(--venc)}.linha-vencido td:first-child{box-shadow:inset 5px 0 var(--venc)}.linha-d30 td:first-child{box-shadow:inset 5px 0 var(--f30)}.linha-d60 td:first-child{box-shadow:inset 5px 0 var(--f60)}.linha-d90 td:first-child{box-shadow:inset 5px 0 var(--f90)}.linha-vencido td{background:#fff8f8!important}.linha-d30 td{background:#fffaf5!important}.aviso-vencimentos{margin-bottom:12px;border:1px solid #e7c8a6;border-left:5px solid var(--f30);border-radius:12px;background:#fff}.aviso-cab{display:flex;justify-content:space-between;gap:12px;padding:13px 15px;border-bottom:1px solid #f0dfcb}.aviso-cab div{display:flex;flex-direction:column}.aviso-cab span{font-size:12px;color:var(--muted)}.aviso-cab button{width:auto;margin:0}.aviso-itens{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line)}.aviso-itens button{margin:0;border:0;border-radius:0;background:#fff;color:var(--ink);text-align:left;padding:11px 14px}.aviso-itens span{display:block;font-size:12px;color:var(--muted)}.aviso-ok{padding:14px;color:var(--vig);font-weight:650}.prazo-legenda{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:12px}.prazo-legenda span{background:#fff;border:1px solid var(--line);border-radius:999px;padding:4px 9px;font-size:11px;font-weight:700}.lg-v{color:var(--venc)}.lg-30{color:var(--f30)}.lg-60{color:var(--f60)}.lg-90{color:var(--f90)}.lg-ok{color:var(--vig)}@media(max-width:1000px){.filtros-completos{grid-template-columns:1fr 1fr}.aviso-itens{grid-template-columns:1fr 1fr}}@media(max-width:760px){.filtros-completos{grid-template-columns:1fr}.aviso-itens{grid-template-columns:1fr}.tabela-dados{min-width:4100px!important}.tabela-completa{max-height:72vh}.tabela-completa thead{display:table-header-group!important}.tabela-completa tbody{display:table-row-group!important}.tabela-completa tr{display:table-row!important}.tabela-completa td{display:table-cell!important}.tabela-completa td::before{display:none!important}}
 
 .campo-ajuda{display:block;margin-top:5px;color:var(--muted);font-size:11px}.link-processo{display:inline-flex;margin-top:5px;color:var(--acc);font-weight:700;text-decoration:none;border-bottom:1px solid #9fb9c3}.link-processo:hover{color:var(--acc-2);border-bottom-color:var(--acc-2)}.aviso-itens .aviso-hoje{box-shadow:inset 5px 0 0 #8f1f29;background:#fff5f5}.aviso-itens .aviso-ate7{box-shadow:inset 5px 0 0 #b4570f;background:#fff9f3}.aviso-itens .aviso-ate15{box-shadow:inset 5px 0 0 #c78619;background:#fffbf1}.aviso-itens .aviso-ate30{box-shadow:inset 5px 0 0 #a8951a}.aviso-itens .aviso-ate60{box-shadow:inset 5px 0 0 #3f6878}.aviso-itens .aviso-ate90{box-shadow:inset 5px 0 0 #5c7c88}.aviso-cab b{font-size:16px;color:var(--acc-2)}
+</style></head><body><style>
+/* ===== Renovações, pendências e formulário (camada nova) ===== */
+.linkbtn{all:unset;cursor:pointer;color:var(--acc);font-weight:600;text-decoration:underline;text-underline-offset:2px;font-size:inherit}
+.linkbtn:focus-visible{outline:2px solid var(--acc);outline-offset:2px;border-radius:3px}
+button.mini{width:auto;margin:0;min-height:30px;padding:4px 10px;font-size:12.5px;font-weight:600;border-radius:8px;box-shadow:none}
+.falta{color:var(--venc);font-weight:600}
+.chip{display:inline-block;margin-top:6px;padding:2px 8px;border-radius:6px;background:var(--acc-soft);color:var(--acc);font-size:12px;font-weight:600}
+.nivel{display:inline-flex;align-items:center;gap:6px;padding:3px 9px 3px 8px;border-radius:999px;background:var(--cor-bg);color:var(--cor);font-size:12px;font-weight:700;white-space:nowrap}
+.nivel::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
 
-/* ===== Seleção segura de processos para exclusão ===== */
-#painelExclusaoProcessos code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}
-#painelExclusaoProcessos input[type="checkbox"]{width:20px;height:20px;margin:0;accent-color:var(--venc)}
-#painelExclusaoProcessos tr.selecionado td{background:#fff1f1!important}
-#painelExclusaoProcessos .danger:disabled{opacity:.45;cursor:not-allowed}
-@media(max-width:760px){#painelExclusaoProcessos .toolbar button{width:auto}#painelExclusaoProcessos .filtros{grid-template-columns:1fr}}
-</style></head><body><header class="topo"><div class="topo-in"><div class="marca"><span class="marca-nome">Controle de Compras</span><span class="marca-sub">Contratos, convênios e termos de cooperação</span></div><div class="acoes-topo"><button id="importar" class="sec">Consolidar Excel</button><button id="novo">Novo<span class="so-desk"> instrumento</span></button><div class="menu-wrap"><button id="btnMais" class="sec" aria-haspopup="true" aria-expanded="false" aria-controls="menuMais" aria-label="Mais opções" title="Mais opções">⋯</button><div id="menuMais" class="menu" role="menu"><button id="importarMenu" class="so-mobile" role="menuitem">Consolidar Excel</button><button id="btnCalendario" role="menuitem">Calendário de prazos</button><button id="btnHistoricoConsolidacoes" role="menuitem">Histórico de consolidações</button><button id="btnExclusaoProcessos" role="menuitem">Selecionar processos para excluir</button><button id="modelo" role="menuitem">Baixar modelo da planilha</button><button id="exportar" role="menuitem">Exportar para Excel</button><hr><div id="usuario" class="menu-user"></div><button id="sair" class="sair" role="menuitem">Sair</button></div></div></div></div></header>
+/* Central de ação */
+.central{margin:0 0 18px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 18px 16px}
+.central.recolhida .ct-lanes,.central.recolhida .ct-pend,.central.recolhida .ct-cab p{display:none}
+.central.recolhida .ct-cab{margin:0}
+.ct-cab{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:14px}
+.ct-cab h2{margin:0;font-size:20px;letter-spacing:-.01em;color:var(--ink)}
+.ct-cab p{margin:4px 0 0;color:var(--muted);font-size:13.5px;max-width:78ch;line-height:1.5}
+.ct-botoes{display:flex;gap:8px;flex-wrap:wrap}
+.ct-botoes button{width:auto;margin:0;min-height:38px;padding:8px 13px;font-size:13px}
+.ct-lanes{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.ct-lane{border:1px solid var(--line);border-top:4px solid var(--cor);border-radius:10px;background:#FBFCFC;display:flex;flex-direction:column;min-width:0}
+.ct-lane>.ln-cab{display:flex;gap:11px;align-items:flex-start;padding:12px 13px 10px;border-bottom:1px solid var(--line);background:#fff;border-radius:6px 6px 0 0}
+.ct-lane>.ln-cab b{font-size:30px;line-height:1;font-weight:750;color:var(--cor);font-variant-numeric:tabular-nums;min-width:26px}
+.ct-lane.vazia>header b{color:#AEB9BE}
+.ct-lane h3{margin:0;font-size:14.5px;color:var(--ink)}
+.ct-lane .ln-cab p{margin:2px 0 0;font-size:12px;color:var(--muted);line-height:1.35}
+.ct-lane ul{list-style:none;margin:0;padding:8px;display:flex;flex-direction:column;gap:7px}
+.ct-item{background:#fff;border:1px solid var(--line);border-left:4px solid var(--cor);border-radius:8px;padding:9px 10px;cursor:pointer;font-size:13px;line-height:1.4}
+@media(hover:hover){.ct-item:hover{border-color:var(--cor)}}
+.ct-l1{display:flex;align-items:baseline;gap:7px;flex-wrap:wrap}
+.ct-l1 b{font-size:14px;font-variant-numeric:tabular-nums}
+.ct-l1 span{color:var(--muted);font-size:12px}
+.ct-l1 em{margin-left:auto;font-style:normal;font-weight:700;color:var(--cor);font-variant-numeric:tabular-nums;font-size:12.5px}
+.ct-contr{color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ct-msg{color:var(--muted);margin-top:3px}
+.ct-msg b{color:var(--ink);font-weight:650}
+.ct-l4{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px;font-size:12px;color:var(--muted)}
+.ct-l4 span+span::before{content:"/";margin-right:8px;color:#C3CDD1}
+.ct-acoes{display:flex;gap:6px;margin-top:8px}
+.ct-acoes select{margin:0;min-height:32px;padding:4px 8px;font-size:12.5px;flex:1;min-width:0;border-radius:8px}
+.ct-mais{margin:2px 12px 12px;font-size:13px}
+.ct-vazio{margin:0;padding:16px 13px;color:var(--muted);font-size:13px}
+.ct-pend{all:unset;display:block;cursor:pointer;margin-top:12px;padding:11px 14px;border-radius:10px;background:var(--venc-bg);color:#7D2A31;font-size:13.5px;font-weight:600;line-height:1.45}
+.ct-pend u{margin-left:4px}
+.ct-pend:focus-visible{outline:2px solid var(--venc);outline-offset:2px}
+
+/* Régua: tempo da janela x andamento da renovação */
+.regua{display:grid;gap:3px;margin-top:7px;min-width:150px}
+.rg-lin{display:block;height:6px;border-radius:3px;background:#E6ECEE;overflow:hidden}
+.rg-lin i{display:block;height:100%;background:var(--cor);border-radius:3px}
+.rg-etapa i{background:var(--acc)}
+.regua small{font-size:11.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+.regua.atras small{color:var(--venc);font-weight:600}
+
+/* Tabela de acompanhamento */
+.tabela-dados.tab-compacta{min-width:1240px!important}
+.tabela-dados.tab-compacta td{padding:12px 12px!important}
+.tab-compacta th:nth-child(1),.tab-compacta td:nth-child(1){width:130px}
+.tab-compacta th:nth-child(3),.tab-compacta td:nth-child(3){width:170px}
+.tab-compacta td:nth-child(4){min-width:190px}
+.tab-compacta th:nth-child(8),.tab-compacta td:nth-child(8){width:130px}
+.tab-compacta td small{display:block;color:var(--muted);font-size:12.5px;margin-top:2px}
+.tab-compacta .num-instr{font-size:15px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.tab-compacta .col-contr{min-width:260px;max-width:380px}
+.tab-compacta .col-contr b{display:block;font-weight:650}
+.tab-compacta .obj{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;color:var(--muted);font-size:13px;margin-top:2px}
+.proc{font-variant-numeric:tabular-nums;font-weight:600}
+.proc-acoes{display:flex;gap:8px;align-items:center;margin-top:5px}
+.proc-acoes .link-processo{margin:0;font-size:12.5px}
+.cel-renov{display:flex;flex-direction:column;align-items:flex-start;gap:3px;min-width:210px}
+.rv-tit{color:var(--cor);font-size:13.5px}
+.rv-etapa,.rv-ini{font-size:12.5px;color:var(--muted)}
+.ate{white-space:nowrap}
+.cad-ok{color:var(--vig);font-weight:600;font-size:13px}
+.cad-pend{font-weight:650;color:var(--f60);font-size:13px;cursor:help}
+.cad-pend.grave{color:var(--venc)}
+.acoes-lin{display:flex;flex-direction:column;gap:6px;align-items:stretch;min-width:112px}
+.acoes-lin .abrir{width:100%}
+.visao{margin-left:auto;display:inline-flex;border:1px solid var(--line);border-radius:9px;overflow:hidden;background:#fff}
+.visao button{all:unset;cursor:pointer;padding:6px 12px;font-size:13px;color:var(--muted);font-weight:600}
+.visao button.on{background:var(--acc-soft);color:var(--acc)}
+.visao button:focus-visible{outline:2px solid var(--acc);outline-offset:-2px}
+.filtros-completos{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+.filtros-completos #busca{grid-column:span 2}
+
+/* Formulário */
+.modal label{text-transform:none;letter-spacing:0;font-size:12.5px;font-weight:650;color:#4A5C64}
+.modal label.obrig::after{content:" *";color:var(--venc)}
+.form-sec{margin-top:18px;padding-top:14px;border-top:1px solid var(--line)}
+.form-sec h3{margin:0 0 2px;font-size:15.5px;color:var(--ink)}
+.form-sec .span2{grid-column:span 2}
+textarea.curto{min-height:64px}
+.campo-erro{border-color:var(--venc)!important;background:#FFF8F8!important}
+.campo-aviso{border-color:#D8B25A!important}
+.campo-msg{display:block;margin-top:4px;color:var(--venc);font-size:12px;font-weight:600}
+.sugestao{margin-top:6px;font-size:12.5px;color:var(--muted);line-height:1.5}
+.valor-calc{margin-top:7px;padding:11px 12px;border-radius:12px;background:var(--acc-soft);color:var(--acc);font-weight:650;font-size:13.5px}
+.sec-renov{background:linear-gradient(#fff,#fff) padding-box}
+.barra-salvar{position:sticky;bottom:-22px;background:#f8fafb;padding:12px 0 6px;margin-top:14px;border-top:1px solid var(--line);z-index:2}
+.barra-salvar #salvar{width:auto;min-width:200px}
+.ficha-resumo{display:grid;gap:10px;margin-top:14px}
+.fr-risco{display:grid;grid-template-columns:auto 1fr minmax(160px,220px);gap:12px;align-items:center;padding:12px 14px;border-radius:10px;background:var(--cor-bg);border-left:4px solid var(--cor)}
+.fr-risco b{display:block;color:var(--ink)}
+.fr-risco span{font-size:13px;color:var(--muted)}
+.fr-risco .regua{margin:0}
+.fr-cad{padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fff}
+.fr-cad>b{font-size:13.5px;margin-right:10px}
+.fr-barra{height:6px;border-radius:3px;background:#E6ECEE;overflow:hidden;margin-bottom:8px}
+.fr-barra span{display:block;height:100%;background:var(--vig);transition:width .25s}
+.fr-cad ul{margin:8px 0 0;padding-left:18px;columns:2;column-gap:24px;font-size:13px}
+.fr-cad li{margin:2px 0;break-inside:avoid;color:var(--f60)}
+.fr-cad li.grave{color:var(--venc)}
+.fr-cad li .linkbtn{color:inherit;font-weight:500}
+.cfg-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px 14px;margin:12px 0}
+.cfg-grid label{margin-top:10px}
+#toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:var(--ink);color:#fff;padding:11px 16px;border-radius:10px;font-size:14px;z-index:60;transition:.2s;max-width:min(560px,92vw)}
+#toast.on{opacity:1;transform:translate(-50%,0)}
+
+@media(max-width:1250px){.ct-lanes{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){
+ .central{padding:14px 12px;margin:0 -4px 14px}
+ .ct-lanes{grid-template-columns:1fr}
+ .ct-botoes{width:100%}.ct-botoes button{flex:1}
+ .form-sec .span2{grid-column:auto}
+ .fr-risco{grid-template-columns:1fr}
+ .fr-cad ul{columns:1}
+ .cfg-grid{grid-template-columns:1fr}
+ .visao{margin-left:0}
+ .filtros-completos{grid-template-columns:1fr!important}
+ .filtros-completos #busca{grid-column:auto}
+ .tabela-completa.cards-mobile{max-height:none;overflow:visible}
+ .tabela-completa.cards-mobile .tab-compacta{min-width:0!important}
+ .tabela-completa.cards-mobile thead{display:none!important}
+ .tabela-completa.cards-mobile tbody,.tabela-completa.cards-mobile tr{display:block!important}
+ .tabela-completa.cards-mobile td{display:grid!important;grid-template-columns:minmax(88px,32%) minmax(0,1fr);gap:10px;width:auto!important}
+ .tabela-completa.cards-mobile td::before{display:block!important}
+ .tabela-completa.cards-mobile td:first-child,.tabela-completa.cards-mobile td:last-child{display:block!important}
+ .tabela-completa.cards-mobile td:first-child::before,.tabela-completa.cards-mobile td:last-child::before{display:none!important}
+ .cel-renov,.acoes-lin{min-width:0}
+ .acoes-lin{flex-direction:row}
+}
+@media(prefers-reduced-motion:reduce){#toast,.fr-barra span{transition:none}}
+</style>
+<header class="topo"><div class="topo-in"><div class="marca"><span class="marca-nome">Controle de Compras</span><span class="marca-sub">Contratos, convênios e termos de cooperação</span></div><div class="acoes-topo"><button id="importar" class="sec">Consolidar Excel</button><button id="novo">Novo<span class="so-desk"> instrumento</span></button><div class="menu-wrap"><button id="btnMais" class="sec" aria-haspopup="true" aria-expanded="false" aria-controls="menuMais" aria-label="Mais opções" title="Mais opções">⋯</button><div id="menuMais" class="menu" role="menu"><button id="importarMenu" class="so-mobile" role="menuitem">Consolidar Excel</button><button id="btnCalendario" role="menuitem">Calendário de prazos</button><button id="btnRelatorio" role="menuitem">Relatório de renovações</button><button id="btnCfgAlertas" role="menuitem">Configurar prazos de alerta</button><button id="btnPadronizar" role="menuitem">Padronizar cadastros</button><button id="btnHistoricoConsolidacoes" role="menuitem">Histórico de consolidações</button><button id="modelo" role="menuitem">Baixar modelo da planilha</button><button id="exportar" role="menuitem">Exportar para Excel</button><hr><div id="usuario" class="menu-user"></div><button id="sair" class="sair" role="menuitem">Sair</button></div></div></div></div></header>
 <div class="wrap" id="login"><div class="card"><h2>Acesso</h2><div class="grid2"><div><label for="email">E-mail</label><input id="email" type="email"></div><div><label for="senha">Senha</label><input id="senha" type="password"></div></div><div class="toolbar"><button id="entrar">Entrar</button><button id="cadastrar" class="ok">Cadastrar usuário</button><button id="resetar" class="outline">Recuperar senha</button></div><div id="msgLogin" class="feedback hidden"></div></div></div>
-<main class="wrap hidden" id="app"><input id="arquivo" type="file" accept=".xlsx,.xls,.csv" class="hidden"><nav class="abas" id="abasTipo"></nav><section class="faixas" id="faixas"></section><section id="avisoVencimentos" class="aviso-vencimentos"></section><div class="prazo-legenda"><span class="lg-v">● Vencido até 30 dias</span><span class="lg-30">● Até 30 dias</span><span class="lg-60">● 31 a 60 dias</span><span class="lg-90">● 61 a 90 dias</span><span class="lg-ok">● Mais de 90 dias</span></div><div class="filtros filtros-completos"><input id="busca" type="search" placeholder="Buscar instrumento, processo, contratado, objeto, gestor ou SISLOG"><select id="fTipo"><option value="">Todos os tipos</option><option>Contrato</option><option>Convênio</option><option>Termo de Cooperação</option><option>Termo de Colaboração</option><option>Termo de Fomento</option><option>Ata de Registro de Preços</option><option>Acordo</option><option>Outro</option></select><input id="fClass" placeholder="Classificação"><select id="ordenacao"><option value="vencimento">Ordem de vencimento</option><option value="recentes">Mais recentes primeiro</option><option value="antigos">Mais antigos primeiro</option><option value="instrumento">Número do instrumento</option><option value="contratado">Contratado / partícipe</option><option value="valor">Maior valor global</option><option value="gestor">Gestor / responsável</option></select></div><div class="lista-cab" id="resumo">Carregando instrumentos...</div><div class="top-scroll" id="topScroll"><div></div></div><div class="lista tabela-completa" id="mainTableWrap"><table class="tab-inst tabela-dados"><thead><tr><th>Número</th><th>Instrumento</th><th>Ano</th><th>Tipo</th><th>Classificação</th><th>Processo</th><th>Contratado/Partícipe</th><th>CPF/CNPJ</th><th>Objeto</th><th>Data inicial</th><th>Data final original</th><th>Fim da vigência</th><th>Dias</th><th>Situação</th><th>Status administrativo</th><th>Gestor/Responsável</th><th>Unidade responsável</th><th>Valor mensal</th><th>Valor total</th><th>Valor global</th><th>Aditivos</th><th>Apostilamentos</th><th>SISLOG</th><th>Observação</th><th>Ações</th></tr></thead><tbody id="tbody"></tbody></table></div></main>
-<div id="modalbg" class="modalbg hidden"><div class="modal"><div class="toolbar"><h2 id="tituloModal" style="flex:1">Novo instrumento</h2><button id="excluirInstr" class="outline btn-excluir hidden">Excluir</button><button id="fechar" class="outline">Fechar</button></div><input id="id" type="hidden"><div class="grid">
-<div><label for="numero">NUMERO</label><input id="numero"></div><div><label for="contrato">CONTRATO / INSTRUMENTO</label><input id="contrato"></div><div><label for="ano">ANO</label><input id="ano" type="number"></div><div><label for="classificacao">CLASSIFICAÇÃO</label><input id="classificacao"></div>
-<div><label for="processo">PROCESSO</label><input id="processo"></div><div><label for="linkProcesso">LINK DO PROCESSO</label><input id="linkProcesso" type="url" inputmode="url" placeholder="https://..."><small class="campo-ajuda">O link será aberto em outra guia.</small></div><div><label for="tipo">TIPO</label><select id="tipo"><option>Contrato</option><option>Convênio</option><option>Termo de Cooperação</option><option>Termo de Colaboração</option><option>Termo de Fomento</option><option>Ata de Registro de Preços</option><option>Acordo</option><option>Outro</option></select></div><div><label for="contratado">CONTRATADO / PARTÍCIPE</label><input id="contratado"></div><div><label for="cnpj">CNPJ</label><input id="cnpj"></div>
-</div><label for="objeto">OBJETO</label><textarea id="objeto"></textarea><div class="grid"><div><label for="valorMensal">VALOR MENSAL</label><input id="valorMensal" inputmode="decimal"></div><div><label for="valorTotal">VALOR TOTAL</label><input id="valorTotal" inputmode="decimal"></div><div><label for="vigenciaMeses">VIGÊNCIA (MESES)</label><input id="vigenciaMeses" type="number"></div><div><label for="vigenciaDias">VIGÊNCIA (DIAS)</label><input id="vigenciaDias" type="number"></div><div><label for="dataInicial">DATA INICIAL</label><input id="dataInicial" type="date"></div><div><label for="dataFinal">DATA FINAL ORIGINAL</label><input id="dataFinal" type="date"></div><div><label for="dataFimVigencia">DATA FIM VIGÊNCIA CONSOLIDADA</label><input id="dataFimVigencia" type="date"></div><div><label for="valorGlobal">VALOR GLOBAL ATUALIZADO</label><input id="valorGlobal" inputmode="decimal"></div><div><label for="vigenciaGlobalMeses">VIGÊNCIA GLOBAL (M)</label><input id="vigenciaGlobalMeses" type="number"></div><div><label for="sislog">SISLOG</label><input id="sislog"></div><div><label for="statusAdministrativo">STATUS ADMINISTRATIVO</label><select id="statusAdministrativo"><option>Ativo</option><option>Em renovação</option><option>Encerrado</option><option>Rescindido</option><option>Suspenso</option></select></div><div><label for="gestorResponsavel">GESTOR / RESPONSÁVEL</label><input id="gestorResponsavel"></div><div><label for="unidadeResponsavel">UNIDADE RESPONSÁVEL</label><input id="unidadeResponsavel"></div></div><label for="observacao">OBSERVAÇÃO</label><textarea id="observacao"></textarea><div class="toolbar"><button id="salvar">Salvar instrumento</button></div>
+<main class="wrap hidden" id="app"><input id="arquivo" type="file" accept=".xlsx,.xls,.csv" class="hidden"><nav class="abas" id="abasTipo"></nav><section class="faixas" id="faixas"></section><section id="avisoVencimentos" class="aviso-vencimentos"></section><div class="prazo-legenda"><span class="lg-v">● Vencido até 30 dias</span><span class="lg-30">● Até 30 dias</span><span class="lg-60">● 31 a 60 dias</span><span class="lg-90">● 61 a 90 dias</span><span class="lg-ok">● Mais de 90 dias</span></div><div class="filtros filtros-completos"><input id="busca" type="search" placeholder="Buscar instrumento, processo, contratado, objeto, gestor ou SISLOG"><select id="fTipo"><option value="">Todos os tipos</option><option>Contrato</option><option>Convênio</option><option>Termo de Cooperação</option><option>Termo de Colaboração</option><option>Termo de Fomento</option><option>Ata de Registro de Preços</option><option>Acordo</option><option>Outro</option></select><input id="fClass" placeholder="Classificação"><select id="ordenacao"><option value="vencimento">Ordem de vencimento</option><option value="recentes">Mais recentes primeiro</option><option value="antigos">Mais antigos primeiro</option><option value="instrumento">Número do instrumento</option><option value="contratado">Contratado / partícipe</option><option value="valor">Maior valor global</option><option value="gestor">Gestor / responsável</option></select></div><div class="lista-cab" id="resumo">Carregando instrumentos...</div><div class="top-scroll" id="topScroll"><div></div></div><div class="lista tabela-completa" id="mainTableWrap"><table class="tab-inst tabela-dados"><thead></thead><tbody id="tbody"></tbody></table></div></main>
+<div id="modalbg" class="modalbg hidden"><div class="modal"><div class="toolbar"><h2 id="tituloModal" style="flex:1">Novo instrumento</h2><button id="excluirInstr" class="outline btn-excluir hidden">Excluir</button><button id="fechar" class="outline">Fechar</button></div><input id="id" type="hidden">
+<div id="fichaResumo" class="ficha-resumo"></div>
+<datalist id="dlUnidades"></datalist><datalist id="dlNaturezas"></datalist><datalist id="dlGestores"></datalist>
+
+<section class="form-sec">
+<h3>Identificação</h3>
+<div class="grid">
+<div><label for="tipo" class="obrig">Tipo de instrumento</label><select id="tipo"><option>Contrato</option><option>Convênio</option><option>Termo de Cooperação</option><option>Termo de Colaboração</option><option>Termo de Fomento</option><option>Comodato</option><option>Ata de Registro de Preços</option><option>Acordo</option><option>Outro</option></select></div>
+<div><label for="natureza">Natureza</label><input id="natureza" list="dlNaturezas" placeholder="Locação, Prestação de Serviços…"></div>
+<div><label for="contrato" class="obrig">Nº do instrumento</label><input id="contrato" placeholder="032/2020"></div>
+<div><label for="ano">Ano</label><input id="ano" type="number"></div>
+<div><label for="classificacao" class="obrig">Unidade demandante</label><input id="classificacao" list="dlUnidades" placeholder="GEREM, GEAAL…"></div>
+<div><label for="processo" class="obrig">Processo SEI</label><input id="processo" inputmode="numeric" placeholder="15 dígitos"></div>
+<div><label for="linkProcesso">Link do processo</label><input id="linkProcesso" type="url" inputmode="url" placeholder="https://..."></div>
+<div><label for="sislog">SISLOG</label><input id="sislog"></div>
+<div><label for="statusAdministrativo">Status administrativo</label><select id="statusAdministrativo"><option>Ativo</option><option>Em renovação</option><option>Encerrado</option><option>Rescindido</option><option>Suspenso</option></select></div>
+<div><label for="numero">Nº de ordem / referência</label><input id="numero"></div>
+<div><label for="idConsolidado">ID na planilha consolidada</label><input id="idConsolidado" placeholder="CT-032/2020"></div>
+</div>
+</section>
+
+<section class="form-sec">
+<h3>Partes e objeto</h3>
+<div class="grid">
+<div class="span2"><label for="contratado" class="obrig">Contratado / partícipe</label><input id="contratado"></div>
+<div><label for="cnpj" class="obrig">CPF / CNPJ</label><input id="cnpj" inputmode="numeric"></div>
+</div>
+<label for="objeto" class="obrig">Objeto</label><textarea id="objeto"></textarea>
+</section>
+
+<section class="form-sec">
+<h3>Vigência e valores</h3>
+<div class="grid">
+<div><label for="dataInicial" class="obrig">Data inicial</label><input id="dataInicial" type="date"></div>
+<div><label for="vigenciaMeses">Vigência inicial (meses)</label><input id="vigenciaMeses" type="number"></div>
+<div><label for="dataFinal">Data final original</label><input id="dataFinal" type="date"></div>
+<div><label for="dataFimVigencia" class="obrig">Fim da vigência atual</label><input id="dataFimVigencia" type="date"><small class="campo-ajuda">Considerando o último aditivo. É a data usada nos alertas.</small></div>
+<div><label for="vigenciaDias">Vigência (dias)</label><input id="vigenciaDias" type="number"></div>
+<div><label for="vigenciaGlobalMeses">Vigência global (meses)</label><input id="vigenciaGlobalMeses" type="number"></div>
+<div class="span2"><label for="limiteVigencia">Limite legal de vigência</label><input id="limiteVigencia" type="date"><div id="sugLimite" class="sugestao"></div></div>
+<div><label for="valorMensal">Valor mensal</label><input id="valorMensal" inputmode="decimal"></div>
+<div><label for="valorTotal">Valor inicial</label><input id="valorTotal" inputmode="decimal"></div>
+<div><label for="valorGlobal">Valor global atualizado</label><input id="valorGlobal" inputmode="decimal"></div>
+<div><label for="indiceReajuste">Índice de reajuste</label><input id="indiceReajuste" placeholder="IPCA, IGP-M…"></div>
+</div>
+</section>
+
+<section class="form-sec">
+<h3>Gestão e fiscalização</h3>
+<div class="grid">
+<div class="span2"><label for="gestorResponsavel" class="obrig">Gestor titular</label><input id="gestorResponsavel" list="dlGestores"><small class="campo-ajuda">Ao escolher um gestor já cadastrado, e-mail e telefone são preenchidos.</small></div>
+<div><label for="portariaGestor" class="obrig">Portaria de designação</label><input id="portariaGestor" placeholder="1728/2023"></div>
+<div><label for="emailGestor" class="obrig">E-mail do gestor</label><input id="emailGestor" type="email" placeholder="nome@goias.gov.br"></div>
+<div><label for="telefoneGestor">Telefone do gestor</label><input id="telefoneGestor" inputmode="tel"></div>
+<div class="span2"><label for="gestorSuplente">Gestor suplente</label><input id="gestorSuplente" list="dlGestores"></div>
+<div><label for="unidadeResponsavel">Unidade responsável</label><input id="unidadeResponsavel" list="dlUnidades"></div>
+</div>
+<label for="fiscais">Fiscais</label><textarea id="fiscais" class="curto" placeholder="Um nome por linha"></textarea>
+</section>
+
+<section class="form-sec sec-renov">
+<h3>Renovação</h3>
+<div class="grid">
+<div class="span2"><label for="etapaRenovacao">Etapa atual</label><select id="etapaRenovacao"></select><small id="etapaDesde" class="campo-ajuda"></small></div>
+<div><label for="antecedenciaRenovacao">Começar a renovação quantos dias antes do fim</label><input id="antecedenciaRenovacao" type="number" min="0"><small id="antecedenciaAjuda" class="campo-ajuda"></small></div>
+<div><label>Iniciar renovação até</label><div id="iniciarAteInfo" class="valor-calc">–</div></div>
+</div>
+<label for="andamentoRenovacao">Andamento</label><input id="andamentoRenovacao" placeholder="Ex.: Aguardando SEC juntar documentos (11/09)">
+<label for="proximaAcao">Próxima ação</label><input id="proximaAcao" placeholder="Ex.: Cobrar anuência da contratada até 30/09">
+</section>
+
+<label for="observacao">Observação</label><textarea id="observacao"></textarea>
+<div class="toolbar barra-salvar"><button id="salvar">Salvar instrumento</button><span id="salvarInfo" class="muted"></span></div>
+
 <div id="alteracoesBox" class="hidden"><hr><h3>Termos aditivos e apostilamentos</h3><div class="grid"><div><label for="altTipo">Tipo da alteração</label><select id="altTipo"><option>Termo Aditivo</option><option>Apostilamento</option></select></div><div><label for="altNumero">Número</label><input id="altNumero"></div><div><label for="altFinalidade">Finalidade</label><select id="altFinalidade"><option>Prorrogação</option><option>Acréscimo</option><option>Supressão</option><option>Reajuste</option><option>Repactuação</option><option>Revisão</option><option>Dotação orçamentária</option><option>Alteração administrativa</option><option>Correção material</option><option>Outra</option></select></div><div><label for="altAssinatura">Data de assinatura</label><input id="altAssinatura" type="date"></div><div><label for="altInicio">Data início</label><input id="altInicio" type="date"></div><div><label for="altFim">Data fim</label><input id="altFim" type="date"></div><div><label for="altMensal">Valor mensal</label><input id="altMensal"></div><div><label for="altTotal">Valor total</label><input id="altTotal"></div><div><label for="altMeses">Vigência (meses)</label><input id="altMeses" type="number"></div><div><label for="altPercentual">Percentual</label><input id="altPercentual" type="number" step="0.01"></div></div><label for="altObs">Observação da alteração</label><textarea id="altObs"></textarea><button id="adicionarAlt" class="ok">Adicionar ao histórico</button><div id="listaAlt"></div></div>
 <div id="prazosBox" class="hidden"><hr><h3>CONTROLE DE PRAZOS</h3><div class="muted">Cadastre vários prazos administrativos independentes para este instrumento.</div>
 <div class="grid prazo-form-grid"><input id="prazoId" type="hidden"><div><label for="prazoTipo">Tipo do prazo</label><select id="prazoTipo"><option>Vencimento da vigência</option><option>Renovação/Prorrogação</option><option>Manifestação</option><option>Parecer</option><option>Assinatura</option><option>Publicação</option><option>Prestação de contas</option><option>Repactuação</option><option>Reajuste</option><option>Revisão</option><option>Apostilamento</option><option>Termo Aditivo</option><option>Dotação orçamentária</option><option>Resposta a órgão externo</option><option>Diligência</option><option>Outro</option></select></div><div id="prazoOutroBox" class="hidden"><label for="prazoOutro">Tipo personalizado</label><input id="prazoOutro"></div><div><label for="prazoData">Data limite</label><input id="prazoData" type="date"></div><div><label for="prazoPrioridade">Prioridade</label><select id="prazoPrioridade"><option>Normal</option><option>Alta</option><option>Urgente</option></select></div><div><label for="prazoResponsavel">Responsável</label><input id="prazoResponsavel"></div><div><label for="prazoUnidade">Unidade responsável</label><input id="prazoUnidade"></div><div><label for="prazoStatus">Status</label><select id="prazoStatus"><option>Pendente</option><option>Concluído</option><option>Vencido</option><option>Cancelado</option><option>Prorrogado</option></select></div></div><label for="prazoDescricao">Descrição</label><textarea id="prazoDescricao"></textarea><label for="prazoObservacao">Observação</label><textarea id="prazoObservacao"></textarea><div class="toolbar"><button id="btnSalvarPrazo" class="ok">Adicionar prazo</button><button id="btnLimparPrazo" class="outline">Limpar</button></div>
 <div class="table prazo-table cards-mobile"><table style="min-width:1350px"><thead><tr><th>Tipo</th><th>Descrição</th><th>Data limite</th><th>Dias</th><th>Responsável</th><th>Unidade</th><th>Prioridade</th><th>Status</th><th>Observação</th><th>Ações</th></tr></thead><tbody id="tbodyPrazos"></tbody></table></div></div><div id="registroBox" class="hidden"><hr><h3>Outras informações da planilha</h3><div class="muted">Colunas da planilha sem campo próprio no sistema e textos que não puderam ser lidos como data ou valor.</div><div id="extrasLista"></div><hr><h3>Histórico do registro</h3><div id="historicoLista"></div></div></div></div>
 <div id="painelCalendario" class="wrap hidden modulo-painel"><div class="card"><div class="toolbar"><h2 style="flex:1">CALENDÁRIO DE PRAZOS</h2><div class="calendar-toolbar-view"><button id="calLista" class="outline">Lista</button><button id="calGrade" class="outline view-toggle-active">Calendário</button></div><button id="calAnterior" class="outline">Anterior</button><b id="calTitulo"></b><button id="calProximo" class="outline">Próximo</button><button class="outline fecharPainel">Fechar</button></div><div id="calendarioConteudo" class="calendario"></div><div id="calendarioLista" class="hidden"></div></div></div>
 <div id="painelHistoricoConsolidacoes" class="wrap hidden modulo-painel"><div class="card"><div class="toolbar"><h2 style="flex:1">HISTÓRICO DE CONSOLIDAÇÕES</h2><button class="outline fecharPainel">Fechar</button></div><div id="historicoConsolidacoesConteudo"></div></div></div>
-<div id="painelExclusaoProcessos" class="wrap hidden modulo-painel"><div class="card"><div class="toolbar"><h2 style="flex:1">SELECIONAR PROCESSOS PARA EXCLUIR</h2><button id="fecharExclusaoProcessos" class="outline">Fechar</button></div><div class="feedback alerta-alts"><b>Atenção:</b> os instrumentos selecionados serão removidos da tela principal. Uma cópia completa será guardada em <code>instrumentos_excluidos</code> para eventual recuperação.</div><div class="filtros" style="margin-top:14px"><input id="buscaExclusao" type="search" placeholder="Buscar processo, instrumento, contratado, CNPJ ou objeto"><select id="filtroExclusao"><option value="todos">Todos os registros</option><option value="selecionados">Somente selecionados</option><option value="semProcesso">Sem número de processo</option></select></div><div class="toolbar" style="margin-bottom:12px"><button id="selecionarVisiveis" class="outline">Selecionar visíveis</button><button id="limparSelecaoExclusao" class="outline">Limpar seleção</button><b id="resumoExclusao" class="muted" style="margin-right:auto"></b><button id="excluirSelecionados" class="danger">Excluir selecionados</button></div><div class="lista tabela-completa"><table class="tab-inst" style="min-width:1200px"><thead><tr><th style="width:55px">Selecionar</th><th>Processo</th><th>Instrumento</th><th>Ano</th><th>Contratado / Partícipe</th><th>CNPJ</th><th>Objeto</th><th>Situação</th></tr></thead><tbody id="tbodyExclusao"></tbody></table></div></div></div>
 <div id="importReviewBg" class="modalbg hidden"><div class="modal import-modal"><div class="toolbar"><h2 style="flex:1">ANÁLISE DA IMPORTAÇÃO</h2><button id="fecharImportReview" class="outline">Fechar</button></div><div id="importStatus" class="feedback">Analisando planilha...</div><div id="importResumo" class="import-kpis"></div><div id="importAlts" class="feedback hidden"></div><div id="importTabs" class="import-tabs hidden"><button data-import-tab="novos">Novos</button><button data-import-tab="duplicados">Duplicados</button><button data-import-tab="atualizacoes">Atualizações</button><button data-import-tab="conflitos">Conflitos</button></div><div id="importLista"></div><div class="toolbar"><button id="confirmarImportacao" class="ok hidden">CONFIRMAR CONSOLIDAÇÃO</button></div></div></div>
 <div id="prorrogarPrazoBg" class="modalbg hidden"><div class="modal" style="max-width:700px"><h2>Prorrogar prazo</h2><input id="prorrogarPrazoId" type="hidden"><label for="prorrogarNovaData">Nova data</label><input id="prorrogarNovaData" type="date"><label for="prorrogarMotivo">Motivo da prorrogação</label><input id="prorrogarMotivo"><label for="prorrogarObservacao">Observação</label><textarea id="prorrogarObservacao"></textarea><label for="prorrogarResponsavel">Usuário responsável</label><input id="prorrogarResponsavel"><div class="toolbar"><button id="confirmarProrrogacao" class="ok">Confirmar prorrogação</button><button id="cancelarProrrogacao" class="outline">Cancelar</button></div></div></div>
+<div id="cfgBg" class="modalbg hidden"><div class="modal" style="max-width:760px"><div class="toolbar"><h2 style="flex:1">Prazos de alerta de renovação</h2><button id="cfgFechar" class="outline">Fechar</button></div><div id="cfgCorpo"></div><div class="toolbar"><button id="cfgSalvar" class="ok">Salvar prazos</button><button id="cfgRestaurar" class="outline">Restaurar padrão</button></div></div></div>
 <script>const firebaseConfig = {
       apiKey: "AIzaSyCVPGxiN1yTn_059rXjZoBa39uqZtbhANw",
       authDomain: "gerenciadecomprasgov.firebaseapp.com",
@@ -237,12 +443,12 @@ function situacaoPelasDatas(i){
   if(d<=90)return {nome:'Vencendo entre 61 e 90 dias',dias:d}; return {nome:'Vigente',dias:d};
 }
 
-function abrir(i=null){$('modalbg').classList.remove('hidden');$('excluirInstr').classList.toggle('hidden',!i);ids.forEach(x=>$(x).value=i?.[x]??'');$('id').value=i?.id||'';$('tituloModal').textContent=i?'Editar instrumento':'Novo instrumento';$('alteracoesBox').classList.toggle('hidden',!i);renderAlt(i)}function fechar(){$('modalbg').classList.add('hidden')}function payload(){let p={};ids.forEach(x=>p[x]=$(x).value);['valorMensal','valorTotal','valorGlobal'].forEach(x=>p[x]=moeda(p[x]));['ano','vigenciaMeses','vigenciaDias','vigenciaGlobalMeses'].forEach(x=>p[x]=Number(p[x])||0);p.dataFimVigencia=p.dataFimVigencia||p.dataFinal;return p}
+function abrir(i=null){$('modalbg').classList.remove('hidden');$('excluirInstr').classList.toggle('hidden',!i);ids.forEach(x=>$(x).value=i?.[x]??'');$('id').value=i?.id||'';$('tituloModal').textContent=i?'Editar instrumento':'Novo instrumento';$('alteracoesBox').classList.toggle('hidden',!i);renderAlt(i)}function fechar(){$('modalbg').classList.add('hidden')}function payload(){let p={};ids.forEach(x=>p[x]=$(x).value);['valorMensal','valorTotal','valorGlobal'].forEach(x=>p[x]=moeda(p[x]));['ano','vigenciaMeses','vigenciaDias','vigenciaGlobalMeses','antecedenciaRenovacao'].forEach(x=>p[x]=Number(p[x])||0);if(p.emailGestor)p.emailGestor=p.emailGestor.trim().toLowerCase();p.dataFimVigencia=p.dataFimVigencia||p.dataFinal;return p}
 const ROT_CAMPO={numero:'Número',contrato:'Contrato / instrumento',ano:'Ano',classificacao:'Classificação',processo:'Processo',linkProcesso:'Link do processo',tipo:'Tipo',contratado:'Contratado / partícipe',cnpj:'CNPJ',objeto:'Objeto',valorMensal:'Valor mensal',valorTotal:'Valor total',vigenciaMeses:'Vigência (meses)',vigenciaDias:'Vigência (dias)',dataInicial:'Data inicial',dataFinal:'Data final original',dataFimVigencia:'Data fim vigência',valorGlobal:'Valor global',vigenciaGlobalMeses:'Vigência global (meses)',sislog:'SISLOG',statusAdministrativo:'Status administrativo',gestorResponsavel:'Gestor / responsável',unidadeResponsavel:'Unidade responsável',observacao:'Observação'};
 const agoraIso=()=>new Date().toISOString(),quem=()=>auth.currentUser?.email||'';
-async function salvar(){let p=payload();if(p.linkProcesso&&!linkSeguro(p.linkProcesso))return alert('Informe um link válido iniciado por http:// ou https://.');if(!p.contrato&&!p.processo)return alert('Informe o contrato/instrumento ou o processo.');if(p.dataInicial&&p.dataFimVigencia&&p.dataFimVigencia<p.dataInicial)return alert('A data final não pode ser anterior à data inicial.');
+async function salvar(){let p=payload();{let v=window.validarInstrumento?.(p);if(v){if(v.erros.length)return alert(v.erros.join('\n'));if(v.avisos.length&&!confirm('Atenção:\n• '+v.avisos.join('\n• ')+'\n\nSem esses dados os avisos de renovação podem falhar. Salvar assim mesmo?'))return}}if(p.linkProcesso&&!linkSeguro(p.linkProcesso))return alert('Informe um link válido iniciado por http:// ou https://.');if(!p.contrato&&!p.processo)return alert('Informe o contrato/instrumento ou o processo.');if(p.dataInicial&&p.dataFimVigencia&&p.dataFimVigencia<p.dataInicial)return alert('A data final não pode ser anterior à data inicial.');
  let id=$('id').value,ref=id?db.collection(COL).doc(id):db.collection(COL).doc(),ant=id?itens.find(x=>x.id===id):null;
- let base={...p,alteradoEm:firebase.firestore.FieldValue.serverTimestamp(),alteradoPor:quem()};
+ let base={...p,alteradoEm:firebase.firestore.FieldValue.serverTimestamp(),alteradoPor:quem()};if((ant?.etapaRenovacao||'')!==(p.etapaRenovacao||''))base.dataEtapaRenovacao=agoraIso();
  if(!id){base.criadoEm=firebase.firestore.FieldValue.serverTimestamp();base.criadoPor=quem();base.origem='Cadastro manual';base.alteracoes=[];base.prazos=[];base.historico=[{tipo:'cadastro manual',data:agoraIso(),usuario:quem()}];base.instrumentoFingerprint=[normalizarProcesso?.(base.processo)||'',normalizarNumeroInstrumento?.(base.contrato||base.numero)||'',normalizarCnpj?.(base.cnpj)||'',String(base.sislog||'').toUpperCase(),String(base.ano||'')].join('|')}
  else{const vz=v=>v===undefined||v===null||v===''||v===0?'':String(v);let mud=ids.filter(k=>vz(ant?.[k])!==vz(p[k])).map(k=>({campo:k,anterior:ant?.[k]??'',novo:p[k]}));
   if(!mud.length){fechar();return}
@@ -267,7 +473,7 @@ async function addAlt(){let id=$('id').value;if(!id)return;let i=itens.find(x=>x
  if(!novo.numero&&!novo.dataFim&&!novo.valorTotal&&!novo.dataAssinatura)return alert('Informe ao menos o número, uma data ou o valor da alteração.');
  let upd={alteracoes:[...(i.alteracoes||[]),novo],alteradoEm:firebase.firestore.FieldValue.serverTimestamp(),alteradoPor:quem()},mud=[];
  // a vigência só é estendida, nunca encurtada; o valor global recebe o valor da alteração
- if(novo.dataFim&&novo.dataFim>(dataFinalEfetiva(i)||'')){upd.dataFimVigencia=novo.dataFim;mud.push({campo:'dataFimVigencia',anterior:i.dataFimVigencia||'',novo:novo.dataFim})}
+ if(novo.dataFim&&novo.dataFim>(dataFinalEfetiva(i)||'')){upd.dataFimVigencia=novo.dataFim;if(i.etapaRenovacao&&i.etapaRenovacao!=='Não será renovado'){upd.etapaRenovacao='';upd.dataEtapaRenovacao=agoraIso();mud.push({campo:'etapaRenovacao',anterior:i.etapaRenovacao,novo:'Não iniciada (novo ciclo)'})}mud.push({campo:'dataFimVigencia',anterior:i.dataFimVigencia||'',novo:novo.dataFim})}
  if(novo.valorTotal){let delta=novo.finalidade==='Supressão'?-Math.abs(novo.valorTotal):novo.valorTotal;upd.valorGlobal=(i.valorGlobal||i.valorTotal||0)+delta;mud.push({campo:'valorGlobal',anterior:i.valorGlobal||0,novo:upd.valorGlobal})}
  upd.historico=[...(i.historico||[]),{tipo:'inclusão de '+novo.tipo.toLowerCase(),data:agoraIso(),usuario:quem(),detalhes:`${novo.tipo} ${novo.numero}`.trim(),alteracoes:mud}];
  try{await db.collection(COL).doc(id).update(upd)}catch(e){return alert('Não foi possível incluir: '+e.message)}
@@ -364,10 +570,10 @@ function mapRow(r){
  const dt=n=>{let v=g(n),x=iso(v),t=String(v).trim();if(!x&&t&&!['-','N/A','NA','S/D'].includes(t.toUpperCase()))orig(n,v);return x};
  const mo=n=>{let v=g(n);if(temLetras(v))orig(n,v);return moeda(v)};
  const nu=n=>{let v=g(n);if(v===''||v===null||v===undefined)return 0;if(typeof v==='number')return v;let x=parseFloat(String(v).replace(',','.'));if(isNaN(x)||temLetras(v))orig(n,v);return isNaN(x)?0:x};
- let tipoLido=s('TIPO'),tipoAlt='';if(/apost|aditiv/i.test(tipoLido)){tipoAlt=tipoLido;tipoLido=''}let tipo=TIPOS_INSTR.find(t=>norm(t)===norm(tipoLido))||tipoLido||'Contrato';
- let p={numero:s('NUMERO'),contrato:s('CONTRATO'),ano:nu('ANO'),classificacao:s('CLASSIFICAÇÃO'),processo:s('PROCESSO'),linkProcesso:s('LINK DO PROCESSO'),tipo,contratado:s('CONTRATADO'),cnpj:formatarCnpj(g('CNPJ')),objeto:s('OBJETO'),valorMensal:mo('VALOR MENSAL'),valorTotal:mo('VALOR TOTAL'),vigenciaMeses:nu('VIGÊNCIA (MESES)'),vigenciaDias:nu('VIGÊNCIA (DIAS)'),dataInicial:dt('DATA INICIAL'),dataFinal:dt('DATA FINAL'),dataFimVigencia:dt('DATA FIM VIGÊNCIA'),valorGlobal:mo('VALOR GLOBAL'),vigenciaGlobalMeses:nu('VIGENCIA GLOBAL (M)'),sislog:s('SISLOG'),gestorResponsavel:s('GESTOR / RESPONSÁVEL'),unidadeResponsavel:s('UNIDADE RESPONSÁVEL'),observacao:s('Observação'),statusAdministrativo:'Ativo',alteracoes:[],camposExtras:extras};
- let stLido=s('STATUS ADMINISTRATIVO'),st=STATUS_ADM.find(x=>norm(x)===norm(stLido));if(st){p.statusAdministrativo=st;p._statusExplicito=true}else if(stLido)extras['STATUS ADMINISTRATIVO (não reconhecido)']=stLido;
- if(!tipoLido)p._tipoPadrao=true;
+ let tipoLido=s('TIPO'),tipoAlt='';if(/apost|aditiv/i.test(tipoLido)){tipoAlt=tipoLido;tipoLido=''}let tipoMatch=TIPOS_INSTR.find(t=>norm(t)===norm(tipoLido))||(window.tipoPorTexto?window.tipoPorTexto(tipoLido):''),natTipo=!tipoMatch&&tipoLido?tipoLido:'';let tipo=tipoMatch||'Contrato';
+ let p={numero:s('NUMERO'),contrato:s('CONTRATO'),ano:nu('ANO'),classificacao:s('CLASSIFICAÇÃO'),processo:s('PROCESSO'),linkProcesso:s('LINK DO PROCESSO'),tipo,contratado:s('CONTRATADO'),cnpj:formatarCnpj(g('CNPJ')),objeto:s('OBJETO'),valorMensal:mo('VALOR MENSAL'),valorTotal:mo('VALOR TOTAL'),vigenciaMeses:nu('VIGÊNCIA (MESES)'),vigenciaDias:nu('VIGÊNCIA (DIAS)'),dataInicial:dt('DATA INICIAL'),dataFinal:dt('DATA FINAL'),dataFimVigencia:dt('DATA FIM VIGÊNCIA'),valorGlobal:mo('VALOR GLOBAL'),vigenciaGlobalMeses:nu('VIGENCIA GLOBAL (M)'),sislog:s('SISLOG'),gestorResponsavel:s('GESTOR / RESPONSÁVEL'),unidadeResponsavel:s('UNIDADE RESPONSÁVEL'),observacao:s('Observação'),statusAdministrativo:'Ativo',alteracoes:[],camposExtras:extras,natureza:s('NATUREZA')||natTipo,idConsolidado:s('ID CONSOLIDADO'),gestorSuplente:s('GESTOR SUPLENTE'),emailGestor:s('E-MAIL GESTOR').toLowerCase(),telefoneGestor:s('TELEFONE GESTOR'),portariaGestor:s('PORTARIA GESTOR'),fiscais:s('FISCAIS'),andamentoRenovacao:s('ANDAMENTO RENOVAÇÃO'),proximaAcao:s('PRÓXIMA AÇÃO'),antecedenciaRenovacao:nu('ANTECEDÊNCIA RENOVAÇÃO'),limiteVigencia:dt('LIMITE VIGÊNCIA'),indiceReajuste:s('ÍNDICE DE REAJUSTE'),_fimPlanilha:iso(g('DATA FIM VIGÊNCIA'))};{let e=s('ETAPA RENOVAÇÃO'),ee=(window.ETAPAS_RENOVACAO||[]).concat(['Não será renovado']).find(x=>x&&norm(x)===norm(e));p.etapaRenovacao=ee||'';if(e&&!ee)p._etapaInferida=window.inferirEtapa?window.inferirEtapa(e):''}
+ let stLido=s('STATUS ADMINISTRATIVO'),st=STATUS_ADM.find(x=>norm(x)===norm(stLido))||(window.mapStatus?window.mapStatus(stLido):'');if(st){p.statusAdministrativo=st;p._statusExplicito=true}else if(stLido)extras['STATUS ADMINISTRATIVO (não reconhecido)']=stLido;
+ if(!tipoMatch)p._tipoPadrao=true;
  let ad=s('ADITIVO'),fimAd=dt('DATA FIM ADITIVO'),totAd=mo('TOTAL ADITIVO');
  if(ad||fimAd||totAd||tipoAlt)p.alteracoes.push({tipo:/apost/i.test(ad+' '+tipoAlt)?'Apostilamento':'Termo Aditivo',numero:ad,finalidade:s('FINALIDADE ADITIVO')||(fimAd?'Prorrogação':totAd>0?'Acréscimo':totAd<0?'Supressão':'Alteração administrativa'),valorMensal:mo('MENSAL ADITIVO'),valorTotal:totAd,vigenciaMeses:nu('VIGÊNCIA ADITIVO (M)'),dataInicio:dt('DATA INICIO ADITIVO'),dataFim:fimAd,origem:'Excel'});
  let fimAlt=p.alteracoes.map(x=>x.dataFim).filter(Boolean).sort().pop();
@@ -379,7 +585,7 @@ const HEADERS_ALT=['CONTRATO','NUMERO','PROCESSO','TIPO ALTERAÇÃO','NÚMERO AL
 function exportar(){if(!itens.length){alert('Não há dados carregados para exportar. Verifique o login e as regras do Firestore.');return}
  const fx=d=>d?fmt(d):'',ad=i=>(i.alteracoes||[]).filter(x=>x.tipo==='Termo Aditivo'),ult=i=>ad(i).filter(x=>x.dataFim).sort((a,b)=>a.dataFim.localeCompare(b.dataFim)).pop();
  let extras=[...new Set(itens.flatMap(i=>Object.keys(i.camposExtras||{})))].sort();
- let data=itens.map(i=>{let o={'NUMERO':i.numero,'CONTRATO':i.contrato,'ANO':i.ano,'CLASSIFICAÇÃO':i.classificacao,'PROCESSO':i.processo,'LINK DO PROCESSO':i.linkProcesso||'','TIPO':i.tipo,'CONTRATADO':i.contratado,'CNPJ':i.cnpj,'OBJETO':i.objeto,'VALOR MENSAL':i.valorMensal,'VALOR TOTAL':i.valorTotal,'VIGÊNCIA (MESES)':i.vigenciaMeses,'VIGÊNCIA (DIAS)':i.vigenciaDias,'DATA INICIAL':fx(i.dataInicial),'DATA FINAL':fx(i.dataFinal),'ADITIVO':ad(i).map(x=>x.numero).filter(Boolean).join('; '),'MENSAL ADITIVO':ad(i).reduce((t,x)=>t+(x.valorMensal||0),0),'TOTAL ADITIVO':ad(i).reduce((t,x)=>t+(x.valorTotal||0),0),'VIGÊNCIA ADITIVO (M)':ad(i).reduce((t,x)=>t+(x.vigenciaMeses||0),0),'DATA INICIO ADITIVO':fx(ult(i)?.dataInicio),'DATA FIM ADITIVO':fx(ult(i)?.dataFim),'DATA FIM VIGÊNCIA':fx(i.dataFimVigencia),'VALOR GLOBAL':i.valorGlobal,'VIGENCIA GLOBAL (M)':i.vigenciaGlobalMeses,'SISLOG':i.sislog,'GESTOR / RESPONSÁVEL':i.gestorResponsavel||'','UNIDADE RESPONSÁVEL':i.unidadeResponsavel||'','STATUS ADMINISTRATIVO':i.statusAdministrativo||'Ativo','DIAS P/ VENCER':dias(i.dataFimVigencia||i.dataFinal),'Situação referente ao Vencimento':situacaoPelasDatas(i).nome,'SITUAÇÃO NO SISTEMA':ativo(i)?'Ativo':'Inativo','Observação':i.observacao};extras.forEach(k=>o['EXTRA: '+k]=(i.camposExtras||{})[k]??'');return o});
+ let data=itens.map(i=>{let o={'NUMERO':i.numero,'CONTRATO':i.contrato,'ANO':i.ano,'CLASSIFICAÇÃO':i.classificacao,'PROCESSO':i.processo,'LINK DO PROCESSO':i.linkProcesso||'','TIPO':i.tipo,'CONTRATADO':i.contratado,'CNPJ':i.cnpj,'OBJETO':i.objeto,'VALOR MENSAL':i.valorMensal,'VALOR TOTAL':i.valorTotal,'VIGÊNCIA (MESES)':i.vigenciaMeses,'VIGÊNCIA (DIAS)':i.vigenciaDias,'DATA INICIAL':fx(i.dataInicial),'DATA FINAL':fx(i.dataFinal),'ADITIVO':ad(i).map(x=>x.numero).filter(Boolean).join('; '),'MENSAL ADITIVO':ad(i).reduce((t,x)=>t+(x.valorMensal||0),0),'TOTAL ADITIVO':ad(i).reduce((t,x)=>t+(x.valorTotal||0),0),'VIGÊNCIA ADITIVO (M)':ad(i).reduce((t,x)=>t+(x.vigenciaMeses||0),0),'DATA INICIO ADITIVO':fx(ult(i)?.dataInicio),'DATA FIM ADITIVO':fx(ult(i)?.dataFim),'DATA FIM VIGÊNCIA':fx(i.dataFimVigencia),'VALOR GLOBAL':i.valorGlobal,'VIGENCIA GLOBAL (M)':i.vigenciaGlobalMeses,'SISLOG':i.sislog,'GESTOR / RESPONSÁVEL':i.gestorResponsavel||'','UNIDADE RESPONSÁVEL':i.unidadeResponsavel||'','STATUS ADMINISTRATIVO':i.statusAdministrativo||'Ativo','DIAS P/ VENCER':dias(i.dataFimVigencia||i.dataFinal),'Situação referente ao Vencimento':situacaoPelasDatas(i).nome,'SITUAÇÃO NO SISTEMA':ativo(i)?'Ativo':'Inativo','Observação':i.observacao,'ID CONSOLIDADO':i.idConsolidado||'','NATUREZA':i.natureza||'','GESTOR SUPLENTE':i.gestorSuplente||'','E-MAIL GESTOR':i.emailGestor||'','TELEFONE GESTOR':i.telefoneGestor||'','PORTARIA GESTOR':i.portariaGestor||'','FISCAIS':i.fiscais||'','ETAPA RENOVAÇÃO':i.etapaRenovacao||'','ANDAMENTO RENOVAÇÃO':i.andamentoRenovacao||'','PRÓXIMA AÇÃO':i.proximaAcao||'','ANTECEDÊNCIA RENOVAÇÃO (DIAS)':i.antecedenciaRenovacao||'','LIMITE VIGÊNCIA':i.limiteVigencia?fmt(i.limiteVigencia):'','ÍNDICE DE REAJUSTE':i.indiceReajuste||'','INICIAR RENOVAÇÃO ATÉ':window.riscoRenovacao?.(i)?.iniciarAte?fmt(window.riscoRenovacao(i).iniciarAte):'','ALERTA DE RENOVAÇÃO':window.riscoRenovacao?.(i)?.titulo||''};extras.forEach(k=>o['EXTRA: '+k]=(i.camposExtras||{})[k]??'');return o});
  let alts=itens.flatMap(i=>(i.alteracoes||[]).map(x=>({'CONTRATO':i.contrato,'NUMERO':i.numero,'PROCESSO':i.processo,'TIPO ALTERAÇÃO':x.tipo,'NÚMERO ALTERAÇÃO':x.numero,'FINALIDADE':x.finalidade,'DATA ASSINATURA':fx(x.dataAssinatura),'DATA INÍCIO':fx(x.dataInicio),'DATA FIM':fx(x.dataFim),'VALOR MENSAL':x.valorMensal||0,'VALOR TOTAL':x.valorTotal||0,'VIGÊNCIA (MESES)':x.vigenciaMeses||0,'PERCENTUAL':x.percentual||0,'OBSERVAÇÃO':x.observacao||'',...Object.fromEntries(Object.entries(x.camposExtras||{}).map(([k,v])=>['EXTRA: '+k,v]))})));
  let prz=itens.flatMap(i=>(i.prazos||[]).map(p=>({'CONTRATO':i.contrato,'PROCESSO':i.processo,'TIPO DO PRAZO':p.tipoPrazo,'DESCRIÇÃO':p.descricao||'','DATA LIMITE':fx(p.dataPrazo),'RESPONSÁVEL':p.responsavel||'','UNIDADE':p.unidadeResponsavel||'','PRIORIDADE':p.prioridade||'','STATUS':p.status||'','OBSERVAÇÃO':p.observacao||''})));
  let hist=itens.flatMap(i=>(i.historico||[]).map(h=>({'CONTRATO':i.contrato,'PROCESSO':i.processo,'DATA':quando(h.data),'USUÁRIO':h.usuario||'','TIPO':h.tipo||'','DETALHES':[h.detalhes,...(h.alteracoes||[]).map(c=>`${ROT_CAMPO[c.campo]||c.campo}: ${valorHist(c.campo,c.anterior)} -> ${valorHist(c.campo,c.novo)}`),(h.aditivosIncluidos||[]).length?'Incluídos: '+h.aditivosIncluidos.join(', '):''].filter(Boolean).join(' | ')})));
@@ -404,15 +610,16 @@ function nTexto(v){return vazio(v)?'':String(v).normalize('NFD').replace(/[\u030
 window.normalizarProcesso=v=>nTexto(v).replace(/[^A-Z0-9]/g,'');window.normalizarCnpj=v=>String(v||'').replace(/\D/g,'').padStart(14,'0');window.normalizarNumeroInstrumento=v=>nTexto(v).replace(/[.\-\s]/g,'').replace(/\\/g,'/').replace(/(^|\D)0+(?=\d)/g,'$1');window.normalizarNome=v=>nTexto(v).replace(/[^A-Z0-9 ]/g,'');window.normalizarData=v=>iso(v);window.normalizarValor=v=>moeda(v);
 function fingerprint(i){return [normalizarProcesso(i.processo),normalizarNumeroInstrumento(i.contrato||i.numero),normalizarCnpj(i.cnpj),nTexto(i.sislog),String(i.ano||'')].join('|')}
 function similaridadeTexto(a,b){a=new Set(normalizarNome(a).split(' ').filter(x=>x.length>2));b=new Set(normalizarNome(b).split(' ').filter(x=>x.length>2));if(!a.size||!b.size)return 0;let inter=[...a].filter(x=>b.has(x)).length;return inter/Math.max(a.size,b.size)}
-function score(a,b){let s=0,ra=[];if(normalizarProcesso(a.processo)&&normalizarProcesso(a.processo)===normalizarProcesso(b.processo)){s+=PESOS.processo;ra.push('processo')}if(normalizarNumeroInstrumento(a.contrato||a.numero)&&normalizarNumeroInstrumento(a.contrato||a.numero)===normalizarNumeroInstrumento(b.contrato||b.numero)){s+=PESOS.instrumento;ra.push('instrumento')}if(normalizarCnpj(a.cnpj).replace(/^0+$/,'')&&normalizarCnpj(a.cnpj)===normalizarCnpj(b.cnpj)){s+=PESOS.cnpj;ra.push('CNPJ')}if(nTexto(a.sislog)&&nTexto(a.sislog)===nTexto(b.sislog)){s+=PESOS.sislog;ra.push('SISLOG')}if(similaridadeTexto(a.contratado,b.contratado)>=.75){s+=PESOS.nome;ra.push('contratado')}if(String(a.ano||'')&&String(a.ano)===String(b.ano)){s+=PESOS.ano;ra.push('ano')}if(nTexto(a.tipo)&&nTexto(a.tipo)===nTexto(b.tipo)){s+=PESOS.tipo;ra.push('tipo')}if(similaridadeTexto(a.objeto,b.objeto)>=.65){s+=PESOS.objeto;ra.push('objeto')}return {score:s,razoes:ra}}
+function score(a,b){let s=0,ra=[];if(a.idConsolidado&&a.idConsolidado===b.idConsolidado){s+=60;ra.push('ID consolidado')}if(normalizarProcesso(a.processo)&&normalizarProcesso(a.processo)===normalizarProcesso(b.processo)){s+=PESOS.processo;ra.push('processo')}if(normalizarNumeroInstrumento(a.contrato||a.numero)&&normalizarNumeroInstrumento(a.contrato||a.numero)===normalizarNumeroInstrumento(b.contrato||b.numero)){s+=PESOS.instrumento;ra.push('instrumento')}if(normalizarCnpj(a.cnpj).replace(/^0+$/,'')&&normalizarCnpj(a.cnpj)===normalizarCnpj(b.cnpj)){s+=PESOS.cnpj;ra.push('CNPJ')}if(nTexto(a.sislog)&&nTexto(a.sislog)===nTexto(b.sislog)){s+=PESOS.sislog;ra.push('SISLOG')}if(similaridadeTexto(a.contratado,b.contratado)>=.75){s+=PESOS.nome;ra.push('contratado')}if(String(a.ano||'')&&String(a.ano)===String(b.ano)){s+=PESOS.ano;ra.push('ano')}if(nTexto(a.tipo)&&nTexto(a.tipo)===nTexto(b.tipo)){s+=PESOS.tipo;ra.push('tipo')}if(similaridadeTexto(a.objeto,b.objeto)>=.65){s+=PESOS.objeto;ra.push('objeto')}return {score:s,razoes:ra}}
 function igual(f,x,y){if(f==='cnpj')return normalizarCnpj(x)===normalizarCnpj(y);if(f==='processo')return normalizarProcesso(x)===normalizarProcesso(y);if(f==='numero'||f==='contrato')return normalizarNumeroInstrumento(x)===normalizarNumeroInstrumento(y);if(typeof x==='number'||typeof y==='number')return Number(x||0)===Number(y||0);return nTexto(x)===nTexto(y)}
 function chaveAlt(x){let t=nTexto(x.numero),nums=(t.match(/\d+/g)||[]).map(n=>String(+n)),tp=/APOST/.test(nTexto(x.tipo))?'AP':'TA';return nums.length?tp+':'+nums.join('-'):tp+':'+t+'|'+(x.dataInicio||'')+'|'+(x.dataFim||'')+'|'+Number(x.valorTotal||0)}
-function diferencas(a,b){let fs=['numero','contrato','ano','tipo','classificacao','processo','contratado','cnpj','objeto','valorMensal','valorTotal','vigenciaMeses','vigenciaDias','dataInicial','dataFinal','dataFimVigencia','valorGlobal','vigenciaGlobalMeses','sislog','observacao'];
+function diferencas(a,b){let fs=['numero','contrato','ano','tipo','classificacao','processo','contratado','cnpj','objeto','valorMensal','valorTotal','vigenciaMeses','vigenciaDias','dataInicial','dataFinal','dataFimVigencia','valorGlobal','vigenciaGlobalMeses','sislog','observacao','natureza','idConsolidado','gestorResponsavel','gestorSuplente','emailGestor','telefoneGestor','portariaGestor','fiscais','andamentoRenovacao','proximaAcao','indiceReajuste','limiteVigencia'];
  let out=fs.filter(f=>{let x=a[f];if(f==='tipo'&&a._tipoPadrao)return false;if(f==='valorGlobal'&&!a._vgExplicito&&b.valorGlobal)return false;if(vazio(x)||x===0)return false;return !igual(f,x,b[f])}).map(f=>({campo:f,planilha:a[f],existente:b[f]}));
  let ex=new Set((b.alteracoes||[]).map(chaveAlt)),nov=(a.alteracoes||[]).filter(x=>!ex.has(chaveAlt(x)));
  if(a._statusExplicito&&a.statusAdministrativo!==(b.statusAdministrativo||'Ativo'))out.push({campo:'statusAdministrativo',planilha:a.statusAdministrativo,existente:b.statusAdministrativo||'Ativo'});
  let ca=a.camposExtras||{},cb=b.camposExtras||{},dx=Object.keys(ca).filter(k=>String(cb[k]??'')!==String(ca[k]));
  if(dx.length)out.push({campo:'camposExtras',planilha:dx.map(k=>k+': '+ca[k]).join('\n'),existente:dx.map(k=>k+': '+(cb[k]??'vazio')).join('\n')});
+ {let np=window.prazosNovos?.(a,b)||[];if(np.length)out.push({campo:'prazos',planilha:np.length+' prazo(s) de processos em andamento',existente:(b.prazos||[]).length+' cadastrado(s)'})}if(!b.etapaRenovacao&&a._etapaInferida)out.push({campo:'etapaRenovacao',planilha:a._etapaInferida,existente:'Não iniciada'});
  if(nov.length)out.push({campo:'alteracoes',planilha:`${nov.length} novo(s): ${nov.map(x=>x.numero||fmt(x.dataFim)).join(', ')}`,existente:`${(b.alteracoes||[]).length} cadastrado(s)`});
  return out}
 function prazoStatus(p){if(p.status==='Concluído'||p.status==='Cancelado'||p.status==='Prorrogado')return p.status;let d=dias(p.dataPrazo);return d<0?'Vencido':'Pendente'}function prazoClasse(p){let st=prazoStatus(p),d=dias(p.dataPrazo);return st==='Concluído'?'prazo-concluido':st==='Cancelado'?'prazo-cancelado':d<0?'prazo-vencido':d===0?'prazo-hoje':d<=30?'prazo-proximo':''}function uid(){return crypto.randomUUID?crypto.randomUUID():Date.now().toString(36)+Math.random().toString(36).slice(2)}
@@ -441,8 +648,8 @@ function fecharPaineis(){document.querySelectorAll('.modulo-painel').forEach(x=>
 function renderCalendario(){let y=mesCalendario.getFullYear(),m=mesCalendario.getMonth();$('calTitulo').textContent=new Date(y,m,1).toLocaleDateString('pt-BR',{month:'long',year:'numeric'});let todos=todosPrazos(),temEvento=false,ini=new Date(y,m,1),start=new Date(y,m,1-ini.getDay()),html=['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'].map(x=>`<div class="cal-head">${x}</div>`).join('');for(let n=0;n<42;n++){let d=new Date(start);d.setDate(start.getDate()+n);let ds=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`,ev=todos.filter(x=>x.prazo.dataPrazo===ds);if(ev.length&&d.getMonth()===m)temEvento=true;html+=`<div class="cal-dia ${d.getMonth()!==m?'fora':''}"><div class="cal-num">${d.getDate()}</div>${ev.map(x=>`<div class="cal-evento ${x.status==='Concluído'?'concluido':x.dias<0?'vencido':''}" onclick="abrirPrazo('${x.instrumento.id}','${x.prazo.id}')">${esc(x.prazo.tipoPrazo)} • ${esc(x.instrumento.contrato||x.instrumento.numero)}</div>`).join('')}</div>`}if(!temEvento)html+='<div class="empty-state cal-vazio">Nenhum prazo neste mês. Use Anterior e Próximo para navegar ou veja todos em Lista.</div>';$('calendarioConteudo').innerHTML=html}
 function renderCalendarioLista(){let a=todosPrazos().filter(x=>x.prazo.dataPrazo).sort((x,y)=>x.prazo.dataPrazo.localeCompare(y.prazo.dataPrazo));$('calendarioLista').innerHTML=a.length?`<div class="central-table cards-mobile"><table><thead><tr><th>Data</th><th>Prazo</th><th>Instrumento</th><th>Responsável</th><th>Dias</th><th>Status</th><th>Ação</th></tr></thead><tbody>${a.map(x=>`<tr class="${prazoClasse(x.prazo)}"><td>${fmt(x.prazo.dataPrazo)}</td><td>${esc(x.prazo.tipoPrazo)}</td><td>${esc(x.instrumento.contrato||x.instrumento.numero)}</td><td>${esc(x.prazo.responsavel||'-')}</td><td>${x.dias}</td><td>${esc(x.status)}</td><td><button onclick="abrirPrazo('${x.instrumento.id}','${x.prazo.id}')">Abrir</button></td></tr>`).join('')}</tbody></table></div>`:'<div class="empty-state">Nenhum prazo cadastrado.</div>';rotularTabelas()}
 function mapRowInteligente(r,aba,linha){let p=mapRow(r);p._aba=aba;p._linha=linha;p._ref=`aba ${aba}, linha ${linha}`;p._linhas=[p._ref];p._altRepetidas=[];p.alteracoes.forEach(a=>a.linhaPlanilha=p._ref);p.instrumentoFingerprint=fingerprint(p);return p}
-function candidatos(p,base){let keys=new Set();base.forEach((x,idx)=>{if(normalizarProcesso(p.processo)&&normalizarProcesso(p.processo)===normalizarProcesso(x.processo))keys.add(idx);if(normalizarNumeroInstrumento(p.contrato||p.numero)&&normalizarNumeroInstrumento(p.contrato||p.numero)===normalizarNumeroInstrumento(x.contrato||x.numero))keys.add(idx);if(normalizarCnpj(p.cnpj).replace(/^0+$/,'')&&normalizarCnpj(p.cnpj)===normalizarCnpj(x.cnpj))keys.add(idx);if(nTexto(p.sislog)&&nTexto(p.sislog)===nTexto(x.sislog))keys.add(idx)});return [...keys].map(i=>base[i])}
-const ROTULOS={numero:'Número',contrato:'Contrato / instrumento',ano:'Ano',tipo:'Tipo',classificacao:'Classificação',processo:'Processo',contratado:'Contratado / partícipe',cnpj:'CNPJ',objeto:'Objeto',valorMensal:'Valor mensal',valorTotal:'Valor total',vigenciaMeses:'Vigência (meses)',vigenciaDias:'Vigência (dias)',dataInicial:'Data inicial',dataFinal:'Data final original',dataFimVigencia:'Data fim vigência',valorGlobal:'Valor global',vigenciaGlobalMeses:'Vigência global (meses)',sislog:'SISLOG',observacao:'Observação',statusAdministrativo:'Status administrativo',camposExtras:'Outras informações da planilha',alteracoes:'Aditivos e apostilamentos'};
+function candidatos(p,base){let keys=new Set();base.forEach((x,idx)=>{if(p.idConsolidado&&x.idConsolidado){if(p.idConsolidado===x.idConsolidado)keys.add(idx);return}if(normalizarProcesso(p.processo)&&normalizarProcesso(p.processo)===normalizarProcesso(x.processo))keys.add(idx);if(normalizarNumeroInstrumento(p.contrato||p.numero)&&normalizarNumeroInstrumento(p.contrato||p.numero)===normalizarNumeroInstrumento(x.contrato||x.numero))keys.add(idx);if(normalizarCnpj(p.cnpj).replace(/^0+$/,'')&&normalizarCnpj(p.cnpj)===normalizarCnpj(x.cnpj))keys.add(idx);if(nTexto(p.sislog)&&nTexto(p.sislog)===nTexto(x.sislog))keys.add(idx)});return [...keys].map(i=>base[i])}
+const ROTULOS={numero:'Número',contrato:'Contrato / instrumento',ano:'Ano',tipo:'Tipo',classificacao:'Classificação',processo:'Processo',contratado:'Contratado / partícipe',cnpj:'CNPJ',objeto:'Objeto',valorMensal:'Valor mensal',valorTotal:'Valor total',vigenciaMeses:'Vigência (meses)',vigenciaDias:'Vigência (dias)',dataInicial:'Data inicial',dataFinal:'Data final original',dataFimVigencia:'Data fim vigência',valorGlobal:'Valor global',vigenciaGlobalMeses:'Vigência global (meses)',sislog:'SISLOG',observacao:'Observação',statusAdministrativo:'Status administrativo',camposExtras:'Outras informações da planilha',alteracoes:'Aditivos e apostilamentos',prazos:'Prazos',natureza:'Natureza',idConsolidado:'ID consolidado',gestorResponsavel:'Gestor titular',gestorSuplente:'Gestor suplente',emailGestor:'E-mail do gestor',telefoneGestor:'Telefone do gestor',portariaGestor:'Portaria do gestor',fiscais:'Fiscais',andamentoRenovacao:'Andamento da renovação',proximaAcao:'Próxima ação',indiceReajuste:'Índice de reajuste',limiteVigencia:'Limite de vigência',etapaRenovacao:'Etapa da renovação'};
 const ROT_ACAO={criar:'Será criado',atualizar:'Será atualizado',ignorar:'Será ignorado',revisar:'Aguardando decisão'};
 const NOMES_ABA={novos:'Novos automáticos',duplicados:'Ignorados automaticamente',atualizacoes:'Atualizações automáticas',conflitos:'Decisão necessária'};
 const CATS=['novos','duplicados','atualizacoes','conflitos'];
@@ -454,7 +661,7 @@ function recalcVG(p){if(!p._vgExplicito)p.valorGlobal=(p.valorTotal||0)+(p.alter
 // Acrescenta aditivos sem duplicar; os repetidos ficam registrados para aparecer no balanço
 function adicionarAlts(p,lista){let vistos=new Set(p.alteracoes.map(chaveAlt));p._altRepetidas=p._altRepetidas||[];(lista||[]).forEach(x=>{let k=chaveAlt(x);if(vistos.has(k))p._altRepetidas.push(x);else{vistos.add(k);p.alteracoes.push(x)}})}
 function colLetra(j){let s='';j++;while(j>0){let m=(j-1)%26;s=String.fromCharCode(65+m)+s;j=Math.floor((j-1)/26)}return s}
-function lerAba(nome){let ws=workbookAtual.Sheets[nome];if(!ws||!ws['!ref'])return{nome,tipo:null,linhas:[]};let rows=XLSX.utils.sheet_to_json(ws,{header:1,defval:'',blankrows:false,raw:true}),hi=-1,ehAlt=false;for(let i=0;i<Math.min(rows.length,20);i++){let cels=rows[i].map(c=>normH(c)),conhecidas=new Set(cels.map(c=>MAPA_H[c]).filter(Boolean)).size,alt=cels.some(c=>c==='tipo alteracao'||c==='tipo da alteracao');
+function lerAba(nome){let ws=workbookAtual.Sheets[nome];if(!ws||!ws['!ref'])return{nome,tipo:null,linhas:[]};let rows=XLSX.utils.sheet_to_json(ws,{header:1,defval:'',blankrows:false,raw:true}),hi=-1,ehAlt=false;{let esp=window.formatoEspecial?.(nome,rows);if(esp)return esp}for(let i=0;i<Math.min(rows.length,20);i++){let cels=rows[i].map(c=>normH(c)),conhecidas=new Set(cels.map(c=>MAPA_H[c]).filter(Boolean)).size,alt=cels.some(c=>c==='tipo alteracao'||c==='tipo da alteracao');
   if(cels.includes('tipo do prazo'))return{nome,tipo:null,linhas:[],motivo:'Aba de prazos exportada pelo sistema; não é importada'};
   if(cels.includes('usuario')&&cels.includes('detalhes'))return{nome,tipo:null,linhas:[],motivo:'Aba de histórico exportada pelo sistema; não é importada'};
   if(alt||conhecidas>=2){hi=i;ehAlt=alt;break}}
@@ -477,7 +684,7 @@ function juntar(a,b){a._divergencias=a._divergencias||[];a.camposExtras=a.campos
  else if(b.dataFimVigencia&&b.dataFimVigencia!==a.dataFimVigencia)a.camposExtras[`Data fim vigência (${b._ref})`]=fmt(b.dataFimVigencia);
  if(b._vgExplicito&&a._vgExplicito&&!igual('valorGlobal',a.valorGlobal,b.valorGlobal)&&a.valorGlobal!==b.valorGlobal)a.camposExtras[`Valor global (${b._ref})`]=brl(b.valorGlobal);
  adicionarAlts(a,b.alteracoes);a._altRepetidas.push(...(b._altRepetidas||[]));a._linhas=[...a._linhas,...b._linhas];if(a._tipoPadrao&&!b._tipoPadrao){a.tipo=b.tipo;a._tipoPadrao=false}a._datasInvalidas=[...a._datasInvalidas,...b._datasInvalidas];recalcVG(a)}
-function compativeis(p,q,exigeAno){let cp=normalizarCnpj(p.cnpj).replace(/^0+$/,''),cq=normalizarCnpj(q.cnpj).replace(/^0+$/,'');if(cp&&cq&&cp!==cq)return false;if(exigeAno&&p.ano&&q.ano&&p.ano!==q.ano)return false;if(!cp||!cq){if(p.contratado&&q.contratado&&similaridadeTexto(p.contratado,q.contratado)<.5)return false}return true}
+function compativeis(p,q,exigeAno){if(p.idConsolidado&&q.idConsolidado&&p.idConsolidado!==q.idConsolidado)return false;let cp=normalizarCnpj(p.cnpj).replace(/^0+$/,''),cq=normalizarCnpj(q.cnpj).replace(/^0+$/,'');if(cp&&cq&&cp!==cq)return false;if(exigeAno&&p.ano&&q.ano&&p.ano!==q.ano)return false;if(!cp||!cq){if(p.contratado&&q.contratado&&similaridadeTexto(p.contratado,q.contratado)<.5)return false}return true}
 // 1ª passada: mesmo processo + número. 2ª: linhas sem processo (ex.: aba de aditivos) juntam-se ao instrumento com o mesmo número
 function agruparLinhas(linhas){let mapa=new Map(),out=[];for(const p of linhas){let k=chaveInstr(p);if(!k){out.push(p);continue}let g=mapa.get(k);if(g&&compativeis(g,p,!normalizarProcesso(p.processo))){juntar(g,p);continue}if(!g)mapa.set(k,p);out.push(p)}
  for(const p of [...out]){if(normalizarProcesso(p.processo))continue;let n=normalizarNumeroInstrumento(p.contrato||p.numero);if(!n)continue;let alvos=out.filter(q=>q!==p&&normalizarProcesso(q.processo)&&normalizarNumeroInstrumento(q.contrato||q.numero)===n&&compativeis(q,p,true));if(alvos.length===1){juntar(alvos[0],p);out.splice(out.indexOf(p),1)}}
@@ -489,11 +696,12 @@ async function iniciarImportacao(file){arquivoAtual=file;analiseAtual=null;$('im
  let abas=workbookAtual.SheetNames.map(lerAba),validas=abas.filter(a=>a.tipo);
  if(abas.length===1&&validas.length===1)return analisarImportacao(validas);
  $('importStatus').textContent=validas.length?'Escolha as abas que devem ser consolidadas.':'Nenhuma aba tem um cabeçalho reconhecido. Uma das 20 primeiras linhas precisa ter colunas como CONTRATO, PROCESSO, CONTRATADO ou CNPJ.';
- $('importLista').innerHTML=`<div class="abas-escolha">${abas.map((a,i)=>`<label for="aba_${i}"><input type="checkbox" id="aba_${i}" data-aba="${i}" ${a.tipo?'checked':'disabled'}><span><b>${esc(a.nome)}</b><br><span class="muted">${a.tipo?`${a.linhas.length} linha(s) ${a.tipo==='alteracoes'?'de aditivos e apostilamentos':'de instrumentos'}, cabeçalho na linha ${a.cabecalho}`:(a.motivo||'Sem cabeçalho reconhecido, não será lida')}</span></span></label>`).join('')}</div>${validas.length?'<button id="btnAnalisarAbas" style="width:auto">Analisar abas selecionadas</button>':''}`;
+ $('importLista').innerHTML=`<div class="abas-escolha">${abas.map((a,i)=>`<label for="aba_${i}"><input type="checkbox" id="aba_${i}" data-aba="${i}" ${a.tipo?'checked':'disabled'}><span><b>${esc(a.nome)}</b><br><span class="muted">${a.tipo?`${a.linhas.length} linha(s) ${({alteracoes:'de aditivos e apostilamentos',gestores:'de gestores e fiscais (completam os instrumentos)',processos:'de processos em andamento (viram prazos)'}[a.tipo]||'de instrumentos')}, cabeçalho na linha ${a.cabecalho}`:(a.motivo||'Sem cabeçalho reconhecido, não será lida')}</span></span></label>`).join('')}</div>${validas.length?'<button id="btnAnalisarAbas" style="width:auto">Analisar abas selecionadas</button>':''}`;
  if(validas.length)$('btnAnalisarAbas').onclick=()=>{let sel=[...document.querySelectorAll('[data-aba]:checked')].map(x=>abas[+x.dataset.aba]);if(!sel.length)return alert('Selecione pelo menos uma aba.');analisarImportacao(sel)}}
 async function analisarImportacao(abas){$('importStatus').textContent='Analisando planilha...';$('importLista').innerHTML='';
  let linhas=[],alts=new Map(),altLidos=0,semChave=[],descartadas=[];
- abas.forEach(a=>a.linhas.forEach(({obj,linha})=>{let ref=`aba ${a.nome}, linha ${linha}`;
+ let extrasImp=window.prepararExtrasImport?.(abas)||null;
+ abas.filter(a=>a.tipo==='instrumentos'||a.tipo==='alteracoes').forEach(a=>a.linhas.forEach(({obj,linha})=>{let ref=`aba ${a.nome}, linha ${linha}`;
   if(a.tipo==='alteracoes'){let r=mapAlteracao(obj,ref);altLidos++;if(!r.chave){semChave.push(r.alt);return}if(!alts.has(r.chave))alts.set(r.chave,{lista:[],dados:r.dados});alts.get(r.chave).lista.push(r.alt);return}
   let p=mapRowInteligente(obj,a.nome,linha);altLidos+=p.alteracoes.length;if(p.contrato||p.processo)linhas.push(p);else{semChave.push(...p.alteracoes);descartadas.push(`${ref}: ${Object.values(obj).map(v=>String(v).trim()).filter(Boolean).slice(0,5).join(' | ').slice(0,160)}`)}}));
  let colsExtras=[...new Set(linhas.flatMap(p=>Object.keys(p.camposExtras||{}).filter(k=>!k.endsWith('(texto original)'))))];
@@ -504,11 +712,12 @@ async function analisarImportacao(abas){$('importStatus').textContent='Analisand
  // Aditivos da aba de alterações cujo instrumento não está nas abas lidas: viram itens próprios para casar com o cadastro
  for(const [k,g] of alts){if(usados.has(k))continue;let p=mapRowInteligente({CONTRATO:g.dados.contrato,PROCESSO:g.dados.processo,NUMERO:g.dados.numero},'alterações',0);p._ref=g.lista[0].linhaPlanilha;p._linhas=g.lista.map(x=>x.linhaPlanilha);p._somenteAlteracoes=true;adicionarAlts(p,g.lista);linhas.push(p)}
  linhas.forEach(p=>{let fimAlt=p.alteracoes.map(x=>x.dataFim).filter(Boolean).sort().pop();if(!p._somenteAlteracoes&&fimAlt&&fimAlt>(p.dataFimVigencia||''))p.dataFimVigencia=fimAlt;recalcVG(p);p.instrumentoFingerprint=fingerprint(p)});
+ window.aplicarExtrasImport?.(linhas,extrasImp);
  let base=[...itens],rels=[];try{rels=(await db.collection(REL_COL).get()).docs.map(d=>d.data())}catch(e){console.warn('Decisões anteriores indisponíveis',e)}
  let res={novos:[],duplicados:[],atualizacoes:[],conflitos:[],linhas:lidas,registros:linhas.length,file:arquivoAtual?.name||'',altLidos,semChave,descartadas,colsExtras,repetidas:linhas.flatMap(p=>p._altRepetidas||[])};
  for(let p of linhas){
   let cand=candidatos(p,base),melhor=null;for(let x of cand){let sc=score(p,x);if(!melhor||sc.score>melhor.score)melhor={registro:x,...sc}}
-  let temId=melhor?.razoes.some(r=>['processo','instrumento','SISLOG'].includes(r)),aviso=datasSuspeitas(p);
+  let temId=melhor?.razoes.some(r=>['processo','instrumento','SISLOG','ID consolidado'].includes(r)),aviso=datasSuspeitas(p);
   if(!melhor||melhor.score<LIMITES.media||!temId){
    if(p._somenteAlteracoes){res.conflitos.push(itemImport(p,{acao:'revisar',motivo:'Aditivos/apostilamentos cujo instrumento não foi encontrado no cadastro nem na planilha'}));continue}
    let soAditivo=p.alteracoes.length&&!p.objeto&&!p.dataInicial&&!p.dataFinal&&!p.valorTotal;
@@ -518,7 +727,7 @@ async function analisarImportacao(abas){$('importStatus').textContent='Analisand
   let semProc=!normalizarProcesso(p.processo)||!normalizarProcesso(ex.processo);
   // Sem processo, número do instrumento + (CNPJ ou contratado) + ano compatível bastam para reconhecer o mesmo instrumento
   let mesmoPorNumero=melhor.razoes.includes('instrumento')&&(melhor.razoes.includes('CNPJ')||melhor.razoes.includes('contratado'))&&(melhor.razoes.includes('ano')||!p.ano||!ex.ano);
-  let confiavel=melhor.score>=LIMITES.alta||(semProc&&mesmoPorNumero);
+  let confiavel=melhor.score>=LIMITES.alta||(semProc&&mesmoPorNumero)||(!!p.idConsolidado&&p.idConsolidado===ex.idConsolidado);
   if(!ex.id){
    if(!dif.length)res.duplicados.push(itemImport(p,{...info,acao:'ignorar',motivo:'Repete outra linha desta planilha, sem nada novo'}));
    else if(confiavel&&!critico&&!aviso)res.atualizacoes.push(itemImport(p,{...info,acao:'atualizar',motivo:'Mesmo instrumento de outra linha desta planilha: dados e aditivos serão juntados'}));
@@ -570,7 +779,7 @@ function mesclar(ex,p){let out={...ex},confl=[];
  Object.keys(p).filter(k=>!k.startsWith('_')&&!PROTEGIDOS.includes(k)).forEach(k=>{if(k==='tipo'&&p._tipoPadrao)return;if(k==='statusAdministrativo'&&!p._statusExplicito)return;if(k==='valorGlobal'&&!p._vgExplicito&&ex.valorGlobal)return;if(vazio(p[k])||p[k]===0)return;if(vazio(ex[k])||ex[k]===0)out[k]=p[k];else if(!igual(k,ex[k],p[k])){out[k]=p[k];confl.push({campo:k,anterior:ex[k],novo:p[k]})}});
  let ce={...(ex.camposExtras||{})};Object.entries(p.camposExtras||{}).forEach(([k,v])=>{if(String(ce[k]??'')!==String(v)){if(ce[k]!==undefined&&ce[k]!=='')confl.push({campo:'Outras informações: '+k,anterior:ce[k],novo:v});ce[k]=v}});out.camposExtras=ce;
  let exist=new Set((ex.alteracoes||[]).map(chaveAlt)),novosAd=(p.alteracoes||[]).filter(x=>!exist.has(chaveAlt(x)));
- out.alteracoes=[...(ex.alteracoes||[]),...novosAd];
+ out.alteracoes=[...(ex.alteracoes||[]),...novosAd];{let np=window.prazosNovos?.(p,ex)||[];if(np.length)out.prazos=[...(ex.prazos||[]),...np]}if(!out.etapaRenovacao&&p._etapaInferida){out.etapaRenovacao=p._etapaInferida;out.dataEtapaRenovacao=new Date().toISOString()}
  let fimAlt=novosAd.map(x=>x.dataFim).filter(Boolean).sort().pop();if(fimAlt&&fimAlt>(out.dataFimVigencia||''))out.dataFimVigencia=fimAlt;
  out.instrumentoFingerprint=fingerprint(out);
  if(confl.length||novosAd.length)out.historico=[...(ex.historico||[]),{tipo:'atualização por consolidação',data:new Date().toISOString(),usuario:auth.currentUser?.email||'',alteracoes:confl,aditivosIncluidos:novosAd.map(x=>x.numero||x.dataFim||'')}];
@@ -585,7 +794,7 @@ async function confirmarImport(){if(!analiseAtual)return;let t=todosImport(),pen
   // Primeiro junta as linhas marcadas como "mesmo instrumento de outra linha" ao registro de destino
   for(const x of t)if(x.acao==='atualizar'&&x.existente&&!x.existente.id){juntar(x.existente,x.planilha);juntados++}
   for(const k of CATS)for(const x of analiseAtual[k]){
-   if(x.acao==='criar'){ops.push({ref:db.collection(COL).doc(),data:{...limparPrivados(x.planilha),prazos:[],historico:[],criadoEm:ts,criadoPor:email,alteradoEm:ts,alteradoPor:email,origem:'Consolidação Excel'}});criados++}
+   if(x.acao==='criar'){ops.push({ref:db.collection(COL).doc(),data:{...limparPrivados(x.planilha),prazos:x.planilha._prazosImport||[],etapaRenovacao:x.planilha.etapaRenovacao||x.planilha._etapaInferida||'',dataEtapaRenovacao:(x.planilha.etapaRenovacao||x.planilha._etapaInferida)?new Date().toISOString():'',historico:[],criadoEm:ts,criadoPor:email,alteradoEm:ts,alteradoPor:email,origem:'Consolidação Excel'}});criados++}
    else if(x.acao==='atualizar'&&x.existente?.id){ops.push({ref:db.collection(COL).doc(x.existente.id),data:{...mesclar(x.existente,x.planilha),alteradoEm:ts,alteradoPor:email},merge:true});atual++}
    else if(x.acao==='atualizar'){}
    else{ign++;if(k==='conflitos')confl++}
@@ -599,84 +808,501 @@ async function renderHistoricoImport(){let [a,b]=await Promise.all([db.collectio
 $('prazoTipo').onchange=()=>$('prazoOutroBox').classList.toggle('hidden',$('prazoTipo').value!=='Outro');$('btnSalvarPrazo').onclick=salvarPrazo;$('btnLimparPrazo').onclick=limparPrazo;$('confirmarProrrogacao').onclick=prorrogar;$('cancelarProrrogacao').onclick=()=>$('prorrogarPrazoBg').classList.add('hidden');$('btnCalendario').onclick=()=>{renderCalendario();abrirPainel('painelCalendario');if(window.innerWidth<600&&$('calendarioLista').classList.contains('hidden'))$('calLista').click()};$('btnHistoricoConsolidacoes').onclick=()=>{renderHistoricoImport();abrirPainel('painelHistoricoConsolidacoes')};document.querySelectorAll('.fecharPainel').forEach(x=>x.onclick=fecharPaineis);$('calLista').onclick=()=>{$('calendarioConteudo').classList.add('hidden');$('calendarioLista').classList.remove('hidden');$('calLista').classList.add('view-toggle-active');$('calGrade').classList.remove('view-toggle-active');renderCalendarioLista()};$('calGrade').onclick=()=>{$('calendarioLista').classList.add('hidden');$('calendarioConteudo').classList.remove('hidden');$('calGrade').classList.add('view-toggle-active');$('calLista').classList.remove('view-toggle-active');renderCalendario()};$('calAnterior').onclick=()=>{mesCalendario.setMonth(mesCalendario.getMonth()-1);renderCalendario()};$('calProximo').onclick=()=>{mesCalendario.setMonth(mesCalendario.getMonth()+1);renderCalendario()};$('fecharImportReview').onclick=()=>$('importReviewBg').classList.add('hidden');document.querySelectorAll('[data-import-tab]').forEach(b=>b.onclick=()=>{importTab=b.dataset.importTab;renderImportLista()});$('confirmarImportacao').onclick=confirmarImport;$('arquivo').onchange=()=>{let f=$('arquivo').files[0];if(f)iniciarImportacao(f);$('arquivo').value=''};
 
 })();
-</script><script>
+</script>
+<script>
+/* ==========================================================================
+   CONTROLE DE RENOVAÇÕES, PENDÊNCIAS E PREENCHIMENTO
+   Camada adicionada sobre o sistema existente. Não altera a estrutura dos
+   dados antigos: só acrescenta campos opcionais ao documento do instrumento.
+   ========================================================================== */
 (function(){
-  const selecionadosExclusao = new Set();
-  const painel = $('painelExclusaoProcessos');
-  const tbody = $('tbodyExclusao');
+/* ---------- campos novos (entram em abrir/salvar/histórico) ---------- */
+const NOVOS_CAMPOS=['natureza','idConsolidado','gestorSuplente','emailGestor','telefoneGestor','portariaGestor','fiscais','etapaRenovacao','andamentoRenovacao','proximaAcao','antecedenciaRenovacao','limiteVigencia','indiceReajuste'];
+NOVOS_CAMPOS.forEach(c=>{if(!ids.includes(c))ids.push(c)});
+Object.assign(ROT_CAMPO,{natureza:'Natureza',idConsolidado:'ID consolidado',gestorResponsavel:'Gestor titular',gestorSuplente:'Gestor suplente',emailGestor:'E-mail do gestor',telefoneGestor:'Telefone do gestor',portariaGestor:'Portaria do gestor',fiscais:'Fiscais',etapaRenovacao:'Etapa da renovação',andamentoRenovacao:'Andamento da renovação',proximaAcao:'Próxima ação',antecedenciaRenovacao:'Antecedência da renovação (dias)',limiteVigencia:'Limite legal de vigência',indiceReajuste:'Índice de reajuste',classificacao:'Unidade demandante'});
+if(!TIPOS_INSTR.includes('Comodato'))TIPOS_INSTR.splice(5,0,'Comodato');
+if(![...$('fTipo').options].some(o=>o.value==='Comodato'))$('fTipo').add(new Option('Comodato','Comodato'),6);
+headers.push('NATUREZA','GESTOR / RESPONSÁVEL','GESTOR SUPLENTE','E-MAIL GESTOR','TELEFONE GESTOR','PORTARIA GESTOR','FISCAIS','UNIDADE RESPONSÁVEL','STATUS ADMINISTRATIVO','ETAPA RENOVAÇÃO','ANDAMENTO RENOVAÇÃO','PRÓXIMA AÇÃO','ANTECEDÊNCIA RENOVAÇÃO (DIAS)','LIMITE VIGÊNCIA','ÍNDICE DE REAJUSTE');
+/* apelidos de cabeçalho para a importação */
+const NOVOS_ALIASES={
+ 'NATUREZA':['NATUREZA','NATUREZA DO OBJETO','MODALIDADE DO OBJETO'],
+ 'ID CONSOLIDADO':['ID CONSOLIDADO','ID DO INSTRUMENTO'],
+ 'GESTOR / RESPONSÁVEL':['GESTOR TITULAR','NOME GESTOR'],
+ 'GESTOR SUPLENTE':['GESTOR SUPLENTE','SUPLENTE'],
+ 'E-MAIL GESTOR':['E-MAIL GESTOR','EMAIL GESTOR','E-MAIL DO GESTOR','EMAIL DO GESTOR'],
+ 'TELEFONE GESTOR':['TELEFONE GESTOR','TELEFONE DO GESTOR'],
+ 'PORTARIA GESTOR':['PORTARIA GESTOR','PORTARIA DO GESTOR','N.º PORTARIA GESTOR','NO PORTARIA GESTOR','PORTARIA'],
+ 'FISCAIS':['FISCAIS','NOME FISCAL','FISCAL DO CONTRATO'],
+ 'ETAPA RENOVAÇÃO':['ETAPA RENOVACAO','ETAPA DA RENOVACAO'],
+ 'ANDAMENTO RENOVAÇÃO':['ANDAMENTO RENOVACAO','ANDAMENTO DA RENOVACAO','SITUACAO DA RENOVACAO'],
+ 'PRÓXIMA AÇÃO':['PROXIMA ACAO','PROVIDENCIA','PROVIDENCIAS'],
+ 'ANTECEDÊNCIA RENOVAÇÃO':['ANTECEDENCIA RENOVACAO','ANTECEDENCIA RENOVACAO (DIAS)'],
+ 'LIMITE VIGÊNCIA':['LIMITE VIGENCIA','LIMITE DE VIGENCIA','LIMITE LEGAL DE VIGENCIA'],
+ 'ÍNDICE DE REAJUSTE':['INDICE DE REAJUSTE','INDICE REAJUSTE','INDICE']
+};
+Object.entries(NOVOS_ALIASES).forEach(([c,al])=>[c,...al].forEach(a=>{MAPA_H[normH(a)]=c}));
+// "FISCAL" e "AGENTE" apontavam para o gestor; agora fiscal é campo próprio
+MAPA_H[normH('FISCAL')]='FISCAIS';
 
-  function textoBusca(i){
-    return norm([i.processo,i.contrato,i.numero,i.contratado,i.cnpj,i.objeto,i.ano].join(' '));
-  }
-  function listaExclusao(){
-    const q=norm($('buscaExclusao').value), filtro=$('filtroExclusao').value;
-    return [...itens].filter(i=>{
-      if(q&&!textoBusca(i).includes(q))return false;
-      if(filtro==='selecionados'&&!selecionadosExclusao.has(i.id))return false;
-      if(filtro==='semProcesso'&&String(i.processo||'').trim())return false;
-      return true;
-    }).sort((a,b)=>(a.processo||'').localeCompare(b.processo||'','pt-BR',{numeric:true})||(a.contrato||a.numero||'').localeCompare(b.contrato||b.numero||'','pt-BR',{numeric:true}));
-  }
-  function renderExclusao(){
-    const lista=listaExclusao();
-    tbody.innerHTML=lista.length?lista.map(i=>{
-      const marcado=selecionadosExclusao.has(i.id), sit=situacaoPelasDatas(i).nome;
-      return `<tr class="${marcado?'selecionado':''}"><td><input type="checkbox" data-excluir-id="${esc(i.id)}" ${marcado?'checked':''} aria-label="Selecionar ${esc(i.processo||i.contrato||i.numero||'registro')}"></td><td><b>${esc(i.processo||'Sem processo')}</b></td><td>${esc(i.contrato||i.numero||'Sem número')}</td><td>${esc(i.ano||'')}</td><td>${esc(i.contratado||'')}</td><td>${esc(i.cnpj||'')}</td><td>${esc(i.objeto||'')}</td><td>${esc(sit)}</td></tr>`;
-    }).join(''):'<tr><td colspan="8"><div class="empty-state">Nenhum registro encontrado.</div></td></tr>';
-    $('resumoExclusao').textContent=`${selecionadosExclusao.size} selecionado(s) • ${lista.length} visível(is) • ${itens.length} no sistema`;
-    $('excluirSelecionados').disabled=!selecionadosExclusao.size;
-  }
-  function abrirExclusao(){
-    document.querySelectorAll('.modulo-painel').forEach(x=>x.classList.add('hidden'));
-    painel.classList.remove('hidden');
-    renderExclusao();
-  }
-  function fecharExclusao(){painel.classList.add('hidden')}
+['situacao do vencimento','dias ate o prazo','qtd fiscais','qtd aditivos','iniciar renovacao ate','alerta de renovacao','situacao da renovacao no sistema'].forEach(h=>IGNORAR_H.add(h));
+/* ---------- utilidades ---------- */
+const p2=n=>String(n).padStart(2,'0');
+const hojeIso=()=>{let d=new Date();return `${d.getFullYear()}-${p2(d.getMonth()+1)}-${p2(d.getDate())}`};
+function somaDias(isoD,n){if(!isoD)return'';let d=new Date(isoD+'T00:00:00');d.setDate(d.getDate()+n);return `${d.getFullYear()}-${p2(d.getMonth()+1)}-${p2(d.getDate())}`}
+function somaMeses(isoD,n){if(!isoD)return'';let d=new Date(isoD+'T00:00:00'),dia=d.getDate();d.setDate(1);d.setMonth(d.getMonth()+n);let ult=new Date(d.getFullYear(),d.getMonth()+1,0).getDate();d.setDate(Math.min(dia,ult));return `${d.getFullYear()}-${p2(d.getMonth()+1)}-${p2(d.getDate())}`}
+function diasDesde(v){if(!v)return null;let d=v.toDate?v.toDate():new Date(v);if(isNaN(d))return null;let h=new Date();return Math.floor((h-d)/86400000)}
+const soDig=v=>String(v||'').replace(/\D/g,'');
+function uidLocal(){return crypto.randomUUID?crypto.randomUUID():Date.now().toString(36)+Math.random().toString(36).slice(2)}
+function cpfOk(d){if(d.length!==11||/^(\d)\1+$/.test(d))return false;for(let t=9;t<11;t++){let s=0;for(let i=0;i<t;i++)s+=+d[i]*(t+1-i);if(((s*10)%11)%10!==+d[t])return false}return true}
+function cnpjOk(d){if(d.length!==14||/^(\d)\1+$/.test(d))return false;const calc=n=>{let s=0,pos=n-7;for(let i=n;i>=1;i--){s+=+d[n-i]*pos--;if(pos<2)pos=9}let r=s%11;return r<2?0:11-r};return calc(12)===+d[12]&&calc(13)===+d[13]}
+function docValido(v){let partes=String(v||'').split(/;|\se\s|\s\/\s/).map(soDig).filter(Boolean);if(!partes.length)return null;return partes.every(d=>d.length===11?cpfOk(d):d.length===14?cnpjOk(d):false)}
+const emailOk=v=>/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(String(v||'').trim());
+const tipoDe=i=>TIPOS_INSTR.includes(i.tipo)?i.tipo:(i.tipo?'Contrato':'');
+const naturezaDe=i=>i.natureza||(!TIPOS_INSTR.includes(i.tipo)?i.tipo||'':'');
+const nomeInstr=i=>i.contrato||i.numero||'Sem número';
+const rotTipo=i=>{const t=tipoDe(i),n=naturezaDe(i);return n&&norm(n)!==norm(t)?`${t}, ${n}`:t};
+const listaFiscais=i=>String(i.fiscais||'').split(/\n|;/).map(s=>s.trim()).filter(Boolean);
+window.tipoPorTexto=t=>{let n=norm(t);if(!n)return'';if(n.includes('leilo'))return'Contrato';if(n.includes('conven'))return'Convênio';if(n.includes('cooper'))return'Termo de Cooperação';if(n.includes('comodato'))return'Comodato';if(n.includes('colabora'))return'Termo de Colaboração';if(n.includes('fomento'))return'Termo de Fomento';if(n.includes('registro de preco'))return'Ata de Registro de Preços';if(n==='contrato')return'Contrato';return''};
+window.mapStatus=t=>({vigente:'Ativo',ativo:'Ativo',encerrado:'Encerrado',inativo:'Encerrado',substituido:'Encerrado',rescindido:'Rescindido',suspenso:'Suspenso','em renovacao':'Em renovação'})[norm(t)]||'';
 
-  tbody.addEventListener('change',e=>{
-    const c=e.target.closest('[data-excluir-id]'); if(!c)return;
-    c.checked?selecionadosExclusao.add(c.dataset.excluirId):selecionadosExclusao.delete(c.dataset.excluirId);
-    renderExclusao();
-  });
-  $('buscaExclusao').addEventListener('input',renderExclusao);
-  $('filtroExclusao').addEventListener('change',renderExclusao);
-  $('selecionarVisiveis').onclick=()=>{listaExclusao().forEach(i=>selecionadosExclusao.add(i.id));renderExclusao()};
-  $('limparSelecaoExclusao').onclick=()=>{selecionadosExclusao.clear();renderExclusao()};
-  $('btnExclusaoProcessos').onclick=abrirExclusao;
-  $('fecharExclusaoProcessos').onclick=fecharExclusao;
+/* ---------- etapas da renovação ---------- */
+const ETAPAS=['','Consulta ao gestor/área','Aguardando área demandante','Anuência do contratado','Instrução na GECG','Análise jurídica/assessoria','Aguardando assinatura','Publicação','Concluída'];
+const NAO_RENOVA='Não será renovado';
+const ETAPA_ROT=e=>e||'Não iniciada';
+window.ETAPAS_RENOVACAO=ETAPAS;
+function etapaDe(i){if(i.etapaRenovacao)return i.etapaRenovacao;return i.statusAdministrativo==='Em renovação'?'Instrução na GECG':''}
+const idxEtapa=e=>e===NAO_RENOVA?-1:Math.max(0,ETAPAS.indexOf(e));
+window.inferirEtapa=t=>{let n=norm(t);if(!n)return'';
+ if(/nao ser[aá] renov|nova (contrata|licita)/.test(n))return NAO_RENOVA;
+ if(/assinatura/.test(n))return'Aguardando assinatura';
+ if(/public/.test(n))return'Publicação';
+ if(/juridic|assessoria|pge|parecer|sgi/.test(n))return'Análise jurídica/assessoria';
+ if(/retornou a gecg|na gecg|aguardando gecg|bloco de corre|elabora/.test(n))return'Instrução na GECG';
+ if(/anuencia|contratad/.test(n))return'Anuência do contratado';
+ if(/nao enviado|aguardando (a )?area|demandante|juntar|instru/.test(n))return'Aguardando área demandante';
+ return''};
 
-  $('excluirSelecionados').onclick=async()=>{
-    const regs=itens.filter(i=>selecionadosExclusao.has(i.id));
-    if(!regs.length)return;
-    const processos=[...new Set(regs.map(i=>i.processo||'(sem processo)'))];
-    const resumo=processos.slice(0,12).join('\n')+(processos.length>12?`\n... e mais ${processos.length-12}`:'');
-    if(!confirm(`Você selecionou ${regs.length} instrumento(s), em ${processos.length} processo(s):\n\n${resumo}\n\nUma cópia será guardada em instrumentos_excluidos. Deseja continuar?`))return;
-    const frase=prompt('Para confirmar a exclusão, digite exatamente: EXCLUIR');
-    if(frase!=='EXCLUIR')return alert('Exclusão cancelada. A confirmação não corresponde.');
-    const btn=$('excluirSelecionados'); btn.disabled=true; btn.textContent='Excluindo...';
-    try{
-      let total=0;
-      for(let pos=0;pos<regs.length;pos+=200){
-        const lote=regs.slice(pos,pos+200), batch=db.batch();
-        lote.forEach(i=>{
-          const {id,...dados}=i;
-          batch.set(db.collection('instrumentos_excluidos').doc(id),{...dados,idOriginal:id,excluidoEm:firebase.firestore.FieldValue.serverTimestamp(),excluidoPor:quem(),exclusaoEmLote:true});
-          batch.delete(db.collection(COL).doc(id));
-        });
-        await batch.commit(); total+=lote.length;
-      }
-      selecionadosExclusao.clear();
-      alert(`${total} instrumento(s) excluído(s). As cópias foram guardadas em instrumentos_excluidos.`);
-      renderExclusao();
-    }catch(e){
-      console.error(e);
-      alert('A exclusão foi interrompida: '+e.message+'\nOs lotes concluídos antes do erro permanecem excluídos e com cópia de segurança.');
-      renderExclusao();
-    }finally{btn.disabled=!selecionadosExclusao.size;btn.textContent='Excluir selecionados'}
-  };
+/* ---------- configuração de alertas ---------- */
+const CFG_PADRAO={antecedencia:{'Locação':180,'Prestação de Serviços':150,'Fornecimento de serviço essencial':90,'Aquisição':90,'Concurso':90,'Convênio':120,'Termo de Cooperação':120,'Comodato':120,'padrao':120},parado:15,aviso:30};
+let CFG=JSON.parse(JSON.stringify(CFG_PADRAO)),cfgOrigem='padrão';
+try{let l=JSON.parse(localStorage.getItem('cfgAlertas')||'null');if(l){CFG={...CFG,...l,antecedencia:{...CFG.antecedencia,...(l.antecedencia||{})}};cfgOrigem='este navegador'}}catch{}
+async function carregarCfg(){try{let d=await db.collection('configuracoes').doc('alertas').get();if(d.exists){let l=d.data();CFG={...CFG_PADRAO,...l,antecedencia:{...CFG_PADRAO.antecedencia,...(l.antecedencia||{})}};cfgOrigem='compartilhada';localStorage.setItem('cfgAlertas',JSON.stringify(CFG));window.render?.()}}catch(e){console.info('Configuração compartilhada indisponível; usando a do navegador.',e.message)}}
+function antecedenciaPadrao(i){let n=naturezaDe(i),t=tipoDe(i),a=CFG.antecedencia;return a[n]??a[t]??a.padrao}
+function antecedencia(i){let v=Number(i.antecedenciaRenovacao);return v>0?v:antecedenciaPadrao(i)}
 
-  // Atualiza a aba quando o snapshot principal mudar.
-  const renderAnterior=window.render;
-  window.render=function(){renderAnterior();if(!painel.classList.contains('hidden'))renderExclusao()};
+/* ---------- motor de risco da renovação ---------- */
+const NIVEIS={
+ critico:{ordem:0,nome:'Crítico',cor:'var(--venc)',bg:'var(--venc-bg)',expl:'Vencido, ou vence em até 30 dias sem estar na assinatura'},
+ atrasado:{ordem:1,nome:'Renovação atrasada',cor:'var(--f30)',bg:'var(--f30-bg)',expl:'Já deveria ter começado e ainda não começou'},
+ parado:{ordem:2,nome:'Parado',cor:'var(--f60)',bg:'var(--f60-bg)',expl:''},
+ proximo:{ordem:3,nome:'Começar em breve',cor:'var(--f90)',bg:'var(--f90-bg)',expl:''},
+ andamento:{ordem:4,nome:'Em andamento',cor:'var(--acc)',bg:'var(--acc-soft)',expl:''},
+ ok:{ordem:5,nome:'Em dia',cor:'var(--vig)',bg:'var(--vig-bg)',expl:''},
+ revisar:{ordem:6,nome:'Revisar datas',cor:'var(--cinza)',bg:'var(--cinza-bg)',expl:''},
+ naorenova:{ordem:7,nome:'Não será renovado',cor:'var(--cinza)',bg:'var(--cinza-bg)',expl:''}
+};
+NIVEIS.parado.expl=()=>`Renovação sem mudança de etapa há mais de ${CFG.parado} dias`;
+NIVEIS.proximo.expl=()=>`A renovação deve começar nos próximos ${CFG.aviso} dias`;
+let cacheRisco=new Map();
+function risco(i){if(cacheRisco.has(i))return cacheRisco.get(i);let r=calcRisco(i);cacheRisco.set(i,r);return r}
+function calcRisco(i){
+ if(!ativo(i))return null;
+ const fim=dataFinalEfetiva(i),st=situacaoPelasDatas(i),etapa=etapaDe(i),idx=idxEtapa(etapa),ant=antecedencia(i);
+ const base={etapa,idx,ant,fim};
+ if(!fim||st.nome==='Datas inconsistentes')return{...base,nivel:'revisar',titulo:!fim?'Sem data fim da vigência':'Fim anterior ao início',detalhe:'Corrija a vigência para o sistema calcular os prazos.'};
+ const d=dias(fim),iniciarAte=somaDias(fim,-ant),dIni=d-ant,parado=idx>0&&idx<8?diasDesde(i.dataEtapaRenovacao):null;
+ const tempoPct=Math.round(Math.max(0,Math.min(100,(ant-d)/ant*100))),etapaPct=Math.round(Math.max(0,idx)/8*100);
+ const limiteEstoura=i.limiteVigencia&&somaMeses(fim,12)>i.limiteVigencia;
+ const r={...base,d,iniciarAte,dIni,parado,tempoPct,etapaPct,limiteEstoura};
+ const quando=d<0?`venceu há ${plural(-d,'dia','dias')}`:d===0?'vence hoje':`vence em ${plural(d,'dia','dias')}`;
+ if(etapa===NAO_RENOVA){
+  if(d<0)return{...r,nivel:'critico',titulo:'Vencido, sem substituto registrado',detalhe:`Marcado para não renovar e ${quando}. Encerre ou registre a nova contratação.`};
+  if(d<=60)return{...r,nivel:'parado',titulo:'Encerramento próximo',detalhe:`Não será renovado e ${quando}. Confira se a nova contratação está garantida.`};
+  return{...r,nivel:'naorenova',titulo:'Não será renovado',detalhe:`Vigência até ${fmt(fim)}.`}}
+ if(etapa==='Concluída'){
+  if(d<=ant)return{...r,nivel:d<=30?'critico':'parado',titulo:'Vigência não foi atualizada',detalhe:`Renovação marcada como concluída, mas o fim continua em ${fmt(fim)} (${quando}). Registre o aditivo com a nova data.`};
+  return{...r,nivel:'ok',titulo:'Renovação concluída',detalhe:`Próximo ciclo a partir de ${fmt(iniciarAte)}.`}}
+ if(d<0)return{...r,nivel:'critico',titulo:`Vencido há ${plural(-d,'dia','dias')}`,detalhe:idx>0?`A renovação parou em "${etapa}".`:'A renovação não foi iniciada.'};
+ if(d<=30&&idx<6)return{...r,nivel:'critico',titulo:d===0?'Vence hoje':`Vence em ${plural(d,'dia','dias')}`,detalhe:idx>0?`Ainda está em "${etapa}".`:'A renovação não foi iniciada.'};
+ if(dIni<0&&idx===0)return{...r,nivel:d<=ant/2?'critico':'atrasado',titulo:`Deveria ter começado há ${plural(-dIni,'dia','dias')}`,detalhe:`Início previsto em ${fmt(iniciarAte)}; ${quando}.`};
+ if(parado!==null&&parado>CFG.parado&&dIni<=CFG.aviso)return{...r,nivel:'parado',titulo:`Parado há ${plural(parado,'dia','dias')}`,detalhe:`Em "${etapa}"; ${quando}.`};
+ if(limiteEstoura&&dIni<=CFG.aviso)return{...r,nivel:'parado',titulo:'Limite legal de vigência',detalhe:`Uma nova prorrogação de 12 meses passaria de ${fmt(i.limiteVigencia)}. Planeje nova contratação.`};
+ if(idx>0)return{...r,nivel:'andamento',titulo:`Em andamento: ${etapa}`,detalhe:quando[0].toUpperCase()+quando.slice(1)+'.'};
+ if(dIni<=CFG.aviso)return{...r,nivel:'proximo',titulo:dIni===0?'Começar hoje':`Começar em ${plural(dIni,'dia','dias')}`,detalhe:`Iniciar a renovação até ${fmt(iniciarAte)}; ${quando}.`};
+ return{...r,nivel:'ok',titulo:`Iniciar em ${fmt(iniciarAte)}`,detalhe:`Faltam ${plural(dIni,'dia','dias')} para abrir a janela de renovação.`};
+}
+window.riscoRenovacao=risco;
+
+/* ---------- pendências de cadastro ---------- */
+function pendencias(i){
+ const out=[],add=(campo,msg,grave)=>out.push({campo,msg,grave:!!grave}),t=tipoDe(i)||i.tipo,contrato=t==='Contrato';
+ if(!String(i.contrato||'').trim())add('contrato','Informe o número do instrumento',true);
+ let pr=String(i.processo||'').trim(),pd=soDig(pr);
+ if(!pr)add('processo','Informe o processo SEI',true);
+ else if(!/\se\s|;/.test(pr)&&pd.length!==15)add('processo',`Processo SEI com ${pd.length} dígitos (esperado 15)`);
+ if(!String(i.contratado||'').trim())add('contratado','Informe o contratado ou partícipe',true);
+ let dv=docValido(i.cnpj);
+ if(dv===null)add('cnpj','Informe o CPF ou CNPJ');else if(!dv)add('cnpj','CPF/CNPJ com dígito verificador inválido');
+ if(!String(i.objeto||'').trim())add('objeto','Descreva o objeto');
+ if(!String(i.classificacao||'').trim())add('classificacao','Informe a unidade demandante');
+ if(!i.dataInicial)add('dataInicial','Informe a data inicial');
+ let fim=dataFinalEfetiva(i);
+ if(!fim)add('dataFimVigencia','Informe o fim da vigência',true);
+ else{if(i.dataInicial&&fim<i.dataInicial)add('dataFimVigencia','Fim antes do início',true);
+  if(fim.slice(0,4)>String(new Date().getFullYear()+15))add('dataFimVigencia',`Fim em ${fmt(fim)}: confira (prazo indeterminado?)`)}
+ if(!String(i.gestorResponsavel||'').trim())add('gestorResponsavel','Sem gestor designado',true);
+ else{if(!String(i.portariaGestor||'').trim())add('portariaGestor','Sem portaria do gestor');
+  if(!String(i.emailGestor||'').trim())add('emailGestor','Sem e-mail do gestor (necessário para avisos)');
+  else if(!emailOk(i.emailGestor))add('emailGestor','E-mail do gestor inválido')}
+ if(contrato&&!listaFiscais(i).length)add('fiscais','Sem fiscal cadastrado');
+ if(contrato&&!Number(i.valorGlobal||i.valorTotal))add('valorGlobal','Sem valor do contrato');
+ return out}
+window.pendenciasCadastro=pendencias;
+
+/* ---------- validação no salvar ---------- */
+window.validarInstrumento=function(p){
+ let erros=[],avisos=[];
+ if(p.emailGestor&&!emailOk(p.emailGestor))erros.push('O e-mail do gestor não é válido.');
+ if(p.limiteVigencia&&p.dataInicial&&p.limiteVigencia<p.dataInicial)erros.push('O limite de vigência é anterior à data inicial.');
+ let graves=pendencias({...p,statusAdministrativo:p.statusAdministrativo||'Ativo'}).filter(x=>x.grave||(x.campo==='cnpj'&&/verificador/.test(x.msg)));
+ if(['Encerrado','Rescindido'].includes(p.statusAdministrativo))graves=[];
+ graves.forEach(x=>avisos.push(x.msg));
+ return{erros,avisos}};
+
+/* ---------- avisar gestor por e-mail e registrar cobrança ---------- */
+function textoEmailGestor(i,r,prazoResp){
+ const linhas=[`Prezado(a) ${i.gestorResponsavel||'gestor(a)'},`,'',
+ `A vigência do ${tipoDe(i).toLowerCase()||'instrumento'} nº ${nomeInstr(i)} termina em ${fmt(dataFinalEfetiva(i))}.`,'',
+ `Contratado/partícipe: ${i.contratado||'-'}`,`Objeto: ${i.objeto||'-'}`,`Processo SEI: ${i.processo||'-'}`,'',
+ `Para garantir a continuidade sem interrupção, solicitamos que a unidade se manifeste até ${fmt(prazoResp)} sobre o interesse na prorrogação, encaminhando no processo SEI:`,
+ '- justificativa da necessidade de continuidade;','- avaliação da execução e da vantajosidade (pesquisa de preços, quando couber);','- anuência da contratada/partícipe.','',
+ 'Caso não haja interesse na prorrogação, pedimos informar para que a nova contratação ou o encerramento sejam planejados a tempo.','',
+ 'Atenciosamente,','Gerência de Compras Governamentais – SEAD'];
+ return linhas.join('\n')}
+async function avisarGestor(id){
+ const i=itens.find(x=>x.id===id);if(!i)return;
+ const r=risco(i)||{},prazoResp=somaDias(hojeIso(),10),para=(i.emailGestor||'').trim();
+ const assunto=`Renovação ${tipoDe(i)||''} ${nomeInstr(i)} – vigência até ${fmt(dataFinalEfetiva(i))}`.replace(/\s+/g,' ');
+ if(!para&&!confirm(`Este instrumento não tem e-mail do gestor cadastrado.\nAbrir o e-mail mesmo assim para você preencher o destinatário?`))return;
+ window.location.href=`mailto:${encodeURIComponent(para)}?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(textoEmailGestor(i,r,prazoResp))}`;
+ setTimeout(async()=>{
+  if(!confirm(`Registrar esta cobrança no instrumento ${nomeInstr(i)}?\n\nSerá criado um prazo "Manifestação" para ${fmt(prazoResp)}${!etapaDe(i)?' e a etapa passará para "Consulta ao gestor/área"':''}.`))return;
+  const agora=new Date().toISOString(),email=auth.currentUser?.email||'';
+  const prazo={id:uidLocal(),tipoPrazo:'Manifestação',descricao:'Manifestação do gestor sobre a renovação',dataPrazo:prazoResp,responsavel:i.gestorResponsavel||'',unidadeResponsavel:i.classificacao||'',prioridade:r.nivel==='critico'?'Urgente':'Alta',status:'Pendente',observacao:`Cobrança enviada por e-mail${para?' para '+para:''} em ${fmt(hojeIso())}`,dataConclusao:null,concluidoPor:'',criadoEm:agora,criadoPor:email,alteradoEm:agora,alteradoPor:email,historico:[{tipo:'criação',detalhes:'Cobrança ao gestor',data:agora,usuario:email}]};
+  const upd={prazos:[...(i.prazos||[]),prazo],alteradoEm:firebase.firestore.FieldValue.serverTimestamp(),alteradoPor:email};
+  const mud=[];
+  if(!etapaDe(i)){upd.etapaRenovacao='Consulta ao gestor/área';upd.dataEtapaRenovacao=agora;mud.push({campo:'etapaRenovacao',anterior:'',novo:upd.etapaRenovacao})}
+  upd.historico=[...(i.historico||[]),{tipo:'cobrança ao gestor',data:agora,usuario:email,detalhes:`E-mail de renovação${para?' para '+para:''}; manifestação até ${fmt(prazoResp)}`,alteracoes:mud}];
+  try{await db.collection(COL).doc(id).update(upd);toast('Cobrança registrada no instrumento.')}catch(e){alert('Não foi possível registrar: '+e.message)}
+ },600)}
+window.avisarGestor=avisarGestor;
+
+async function mudarEtapa(id,etapa){
+ const i=itens.find(x=>x.id===id);if(!i||etapa===(i.etapaRenovacao||''))return;
+ const agora=new Date().toISOString(),email=auth.currentUser?.email||'';
+ try{await db.collection(COL).doc(id).update({etapaRenovacao:etapa,dataEtapaRenovacao:agora,alteradoEm:firebase.firestore.FieldValue.serverTimestamp(),alteradoPor:email,
+  historico:[...(i.historico||[]),{tipo:'mudança de etapa da renovação',data:agora,usuario:email,alteracoes:[{campo:'etapaRenovacao',anterior:ETAPA_ROT(i.etapaRenovacao),novo:ETAPA_ROT(etapa)}]}]});toast(`Etapa de ${nomeInstr(i)}: ${ETAPA_ROT(etapa)}.`)}
+ catch(e){alert('Não foi possível mudar a etapa: '+e.message)}}
+
+function toast(msg){let t=$('toast');if(!t){t=document.createElement('div');t.id='toast';t.setAttribute('role','status');document.body.appendChild(t)}t.textContent=msg;t.classList.add('on');clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove('on'),3200)}
+function copiar(txt){(navigator.clipboard?.writeText(txt)||Promise.reject()).then(()=>toast(`Copiado: ${txt}`)).catch(()=>prompt('Copie o número:',txt))}
+
+/* ---------- peças visuais ---------- */
+const opcoesEtapa=sel=>[...ETAPAS,NAO_RENOVA].map(e=>`<option value="${esc(e)}" ${e===(sel||'')?'selected':''}>${esc(ETAPA_ROT(e))}</option>`).join('');
+function regua(r){
+ if(!r||r.nivel==='revisar'||r.nivel==='naorenova'||r.d===undefined)return'';
+ const c=NIVEIS[r.nivel].cor,atras=r.tempoPct>r.etapaPct+25&&r.tempoPct>0;
+ return`<div class="regua ${atras?'atras':''}" style="--cor:${c}" role="img" aria-label="Prazo da janela consumido ${r.tempoPct}%, andamento da renovação ${r.etapaPct}%"><span class="rg-lin"><i style="width:${r.tempoPct}%"></i></span><span class="rg-lin rg-etapa"><i style="width:${r.etapaPct}%"></i></span><small>Prazo usado ${r.tempoPct}%, andamento ${r.etapaPct}%</small></div>`}
+function pillNivel(r){if(!r)return'';const n=NIVEIS[r.nivel];return`<span class="nivel" style="--cor:${n.cor};--cor-bg:${n.bg}">${esc(n.nome)}</span>`}
+function celRenovacao(i){
+ const r=risco(i);if(!r)return`<span class="muted">${esc(i.statusAdministrativo||'Inativo')}</span>`;
+ const et=r.etapa===NAO_RENOVA?NAO_RENOVA:ETAPA_ROT(r.etapa);
+ return`<div class="cel-renov" style="--cor:${NIVEIS[r.nivel].cor}">${pillNivel(r)}<b class="rv-tit">${esc(r.titulo)}</b><span class="rv-etapa">Etapa: ${esc(et)}${r.idx>0&&r.parado!=null?(r.parado<1?', desde hoje':`, há ${plural(r.parado,'dia','dias')}`):''}</span>${r.iniciarAte&&r.nivel!=='naorenova'?`<span class="rv-ini">Iniciar até ${fmt(r.iniciarAte)}</span>`:''}${regua(r)}</div>`}
+function celGestao(i){
+ const f=listaFiscais(i);
+ return`${i.gestorResponsavel?`<b>${esc(i.gestorResponsavel)}</b>`:'<span class="falta">Sem gestor</span>'}${i.portariaGestor?`<small>Portaria ${esc(i.portariaGestor)}</small>`:''}${i.gestorSuplente?`<small>Suplente: ${esc(i.gestorSuplente)}</small>`:''}<small class="${f.length||tipoDe(i)!=='Contrato'?'':'falta'}">${f.length?plural(f.length,'fiscal','fiscais'):'Sem fiscal'}</small>`}
+function celProcesso(i){
+ const p=String(i.processo||'').trim(),l=linkSeguro(i.linkProcesso);
+ if(!p)return'<span class="falta">Sem processo</span>';
+ return`<span class="proc">${esc(p)}</span><span class="proc-acoes"><button class="mini sec" data-copiar="${esc(p)}" title="Copiar o número do processo">Copiar</button>${l?`<a class="link-processo" href="${esc(l)}" target="_blank" rel="noopener noreferrer">Abrir no SEI</a>`:''}</span>${i.sislog?`<small>SISLOG ${esc(i.sislog)}</small>`:''}`}
+function celCadastro(i){
+ const p=pendencias(i);if(!ativo(i))return'<span class="muted">–</span>';
+ if(!p.length)return'<span class="cad-ok">Completo</span>';
+ const g=p.some(x=>x.grave);
+ return`<span class="cad-pend ${g?'grave':''}" title="${esc(p.map(x=>'• '+x.msg).join('\n'))}">${plural(p.length,'pendência','pendências')}</span><small>${esc(p[0].msg)}</small>`}
+
+/* ---------- filtros e visão ---------- */
+let recolhida=localStorage.getItem('centralRecolhida')==='1',visao=localStorage.getItem('visaoTabela')||'compacta',filtroRisco='',filtroPend='';
+function montarFiltrosExtras(){
+ const f=document.querySelector('.filtros-completos');if(!f||$('fRisco'))return;
+ f.insertAdjacentHTML('beforeend',`<select id="fRisco" aria-label="Situação da renovação"><option value="">Toda situação de renovação</option>${Object.entries(NIVEIS).map(([k,n])=>`<option value="${k}">${n.nome}</option>`).join('')}</select><input id="fGestor" list="dlGestores" placeholder="Gestor" aria-label="Filtrar por gestor"><select id="fPend" aria-label="Cadastro"><option value="">Todos os cadastros</option><option value="qualquer">Com pendências</option><option value="gestor">Sem gestor</option><option value="email">Sem e-mail do gestor</option><option value="processo">Processo ausente ou inválido</option><option value="fiscais">Sem fiscal</option></select>`);
+ $('fTipo').setAttribute('aria-label','Tipo');$('fClass').setAttribute('list','dlUnidades');$('fClass').placeholder='Unidade demandante';
+ const o=$('ordenacao');o.insertBefore(new Option('Prioridade de renovação','prioridade'),o.firstChild);o.value='prioridade';
+ $('fRisco').onchange=e=>{filtroRisco=e.target.value;window.render()};
+ $('fPend').onchange=e=>{filtroPend=e.target.value;window.render()};
+ $('fGestor').oninput=()=>window.render();
+}
+function preencherDatalists(){
+ const uniq=a=>[...new Set(a.map(s=>String(s||'').trim()).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'pt-BR'));
+ const opt=a=>a.map(v=>`<option value="${esc(v)}">`).join('');
+ $('dlUnidades').innerHTML=opt(uniq(itens.flatMap(i=>[i.classificacao,i.unidadeResponsavel])));
+ $('dlNaturezas').innerHTML=opt(uniq([...Object.keys(CFG.antecedencia).filter(k=>k!=='padrao'&&!TIPOS_INSTR.includes(k)),...itens.map(naturezaDe)]));
+ $('dlGestores').innerHTML=opt(uniq(itens.flatMap(i=>[i.gestorResponsavel,i.gestorSuplente])));
+}
+
+/* ---------- central de ação ---------- */
+function itemCentral(i,r){
+ return`<li class="ct-item" data-abrir-inst="${i.id}" style="--cor:${NIVEIS[r.nivel].cor}">
+ <div class="ct-l1"><b>${esc(nomeInstr(i))}</b><span>${esc(rotTipo(i))}</span><em>${fmt(dataFinalEfetiva(i))}</em></div>
+ <div class="ct-contr">${esc(i.contratado||'Sem contratado')}</div>
+ <div class="ct-msg"><b>${esc(r.titulo)}.</b> ${esc(r.detalhe)}</div>
+ <div class="ct-l4"><span class="${i.gestorResponsavel?'':'falta'}">${esc(i.gestorResponsavel||'Sem gestor')}</span>${i.classificacao?`<span>${esc(i.classificacao)}</span>`:''}</div>
+ <div class="ct-acoes"><select data-etapa-id="${i.id}" aria-label="Etapa da renovação de ${esc(nomeInstr(i))}">${opcoesEtapa(r.etapa)}</select><button class="mini sec" data-avisar="${i.id}">Avisar gestor</button></div></li>`}
+function renderCentral(ativosList){
+ const box=$('avisoVencimentos');
+ if(abaAtual==='inativos'){box.innerHTML='';box.className='';return}
+ box.className='central'+(recolhida?' recolhida':'');
+ const rs=ativosList.map(i=>({i,r:risco(i)})).filter(x=>x.r).sort((a,b)=>(a.r.d??9e9)-(b.r.d??9e9));
+ const lanes=['critico','atrasado','parado','proximo'],grp={};lanes.forEach(k=>grp[k]=rs.filter(x=>x.r.nivel===k));
+ const incompletos=ativosList.filter(i=>pendencias(i).some(p=>p.grave)).length,total=lanes.reduce((t,k)=>t+grp[k].length,0);
+ const notif='Notification' in window&&Notification.permission==='default';
+ box.innerHTML=`<div class="ct-cab"><div><h2>${total?`${plural(total,'renovação precisa','renovações precisam')} de ação`:'Nenhuma renovação precisa de ação agora'}</h2><p>O alerta começa antes do vencimento, conforme o tempo que cada natureza leva para renovar (locação ${CFG.antecedencia['Locação']} dias, serviços ${CFG.antecedencia['Prestação de Serviços']} dias…). <button class="linkbtn" data-cfg>Ajustar prazos</button></p></div>
+ <div class="ct-botoes"><button class="sec" data-recolher aria-expanded="${!recolhida}">${recolhida?'Mostrar':'Recolher'}</button><button class="sec" data-resumo-email>Enviar resumo por e-mail</button><button class="sec" data-relatorio>Relatório de renovações</button>${notif?'<button class="sec" data-notif>Ativar lembretes no navegador</button>':''}</div></div>
+ <div class="ct-lanes">${lanes.map(k=>{const n=NIVEIS[k],arr=grp[k],ex=typeof n.expl==='function'?n.expl():n.expl;
+  return`<section class="ct-lane ${arr.length?'':'vazia'}" style="--cor:${n.cor};--cor-bg:${n.bg}"><div class="ln-cab"><b>${arr.length}</b><div><h3>${n.nome}</h3><p>${esc(ex)}</p></div></div>
+  ${arr.length?`<ul>${arr.slice(0,4).map(x=>itemCentral(x.i,x.r)).join('')}</ul>${arr.length>4?`<button class="linkbtn ct-mais" data-ver-risco="${k}">Ver os ${arr.length} na lista</button>`:`<button class="linkbtn ct-mais" data-ver-risco="${k}">Filtrar na lista</button>`}`:`<p class="ct-vazio">${{critico:'Nada crítico.',atrasado:'Nenhuma renovação atrasada.',parado:'Nenhuma renovação parada.',proximo:'Nada para começar nos próximos dias.'}[k]}</p>`}</section>`}).join('')}</div>
+ ${incompletos?`<button class="ct-pend" data-ver-pend>${plural(incompletos,'instrumento ativo está','instrumentos ativos estão')} sem gestor, processo ou data fim. Sem esses dados o aviso pode não acontecer. <u>Ver quais</u></button>`:''}`;
+ document.title=(grp.critico.length?`(${grp.critico.length}) `:'')+'Controle de Compras';
+ notificarDia(grp);
+}
+function notificarDia(grp){
+ if(!('Notification' in window)||Notification.permission!=='granted')return;
+ const k='notifDia',h=hojeIso();if(localStorage.getItem(k)===h)return;
+ const c=grp.critico.length,a=grp.atrasado.length;if(!c&&!a)return;
+ localStorage.setItem(k,h);
+ try{new Notification('Controle de Compras: renovações',{body:`${plural(c,'instrumento crítico','instrumentos críticos')} e ${plural(a,'renovação atrasada','renovações atrasadas')}.`,tag:'renov-'+h})}catch{}
+}
+function resumoEmail(){
+ const at=itens.filter(ativo).map(i=>({i,r:risco(i)})).filter(x=>x.r);
+ const sec=(k,max=12)=>{let a=at.filter(x=>x.r.nivel===k).sort((x,y)=>(x.r.d??9e9)-(y.r.d??9e9));if(!a.length)return'';return`${NIVEIS[k].nome.toUpperCase()} (${a.length})\n`+a.slice(0,max).map(({i,r})=>`- ${nomeInstr(i)} | ${i.contratado||''} | fim ${fmt(dataFinalEfetiva(i))} | ${r.titulo} | gestor: ${i.gestorResponsavel||'SEM GESTOR'}`).join('\n')+(a.length>max?`\n  … e mais ${a.length-max}`:'')+'\n\n'};
+ let corpo=`Resumo de renovações em ${fmt(hojeIso())}\n\n`+sec('critico')+sec('atrasado')+sec('parado',8)+sec('proximo',8);
+ if(corpo.length>1800)corpo=corpo.slice(0,1750)+'\n…\n(Use o Relatório de renovações para a lista completa.)';
+ window.location.href=`mailto:${encodeURIComponent(auth.currentUser?.email||'')}?subject=${encodeURIComponent('Resumo de renovações – '+fmt(hojeIso()))}&body=${encodeURIComponent(corpo)}`}
+function relatorio(){
+ const lin=itens.filter(ativo).map(i=>{const r=risco(i)||{},p=pendencias(i);return{
+  'Situação':r.nivel?NIVEIS[r.nivel].nome:'','Alerta':r.titulo||'','Detalhe':r.detalhe||'','Instrumento':nomeInstr(i),'Tipo':tipoDe(i),'Natureza':naturezaDe(i),'Unidade':i.classificacao||'','Contratado':i.contratado||'','CPF/CNPJ':i.cnpj||'','Objeto':i.objeto||'','Processo SEI':i.processo||'','Gestor titular':i.gestorResponsavel||'','Portaria':i.portariaGestor||'','E-mail gestor':i.emailGestor||'','Suplente':i.gestorSuplente||'','Fiscais':listaFiscais(i).join('; '),
+  'Fim da vigência':fmt(dataFinalEfetiva(i)),'Dias para vencer':r.d??'','Antecedência (dias)':r.ant??'','Iniciar renovação até':r.iniciarAte?fmt(r.iniciarAte):'','Etapa':r.etapa===NAO_RENOVA?NAO_RENOVA:ETAPA_ROT(r.etapa),'Etapa desde':i.dataEtapaRenovacao?quando(i.dataEtapaRenovacao):'','Andamento':i.andamentoRenovacao||'','Próxima ação':i.proximaAcao||'','Pendências de cadastro':p.map(x=>x.msg).join('; '),_o:r.nivel?NIVEIS[r.nivel].ordem:9,_d:r.d??9e9}}).sort((a,b)=>a._o-b._o||a._d-b._d).map(({_o,_d,...x})=>x);
+ const ws=XLSX.utils.json_to_sheet(lin);ws['!cols']=Object.keys(lin[0]||{}).map(k=>({wch:['Objeto','Detalhe','Contratado','Pendências de cadastro'].includes(k)?45:Math.max(12,k.length+2)}));ws['!autofilter']={ref:ws['!ref']};
+ const wb=XLSX.utils.book_new();XLSX.utils.book_append_sheet(wb,ws,'Renovações');XLSX.writeFile(wb,`renovacoes_${hojeIso()}.xlsx`)}
+
+/* ---------- tabela ---------- */
+const CAB_COMPACTA=['Instrumento','Contratado e objeto','Processo SEI','Gestão','Vigência','Renovação','Cadastro',''];
+const CAB_COMPLETA=['Instrumento','Nº ordem','Ano','Tipo','Natureza','Unidade','Processo','Contratado/Partícipe','CPF/CNPJ','Objeto','Data inicial','Fim original','Fim da vigência','Dias','Situação','Status administrativo','Gestor titular','Portaria','E-mail gestor','Suplente','Fiscais','Etapa da renovação','Iniciar renovação até','Alerta de renovação','Andamento','Pendências','Valor mensal','Valor inicial','Valor global','Aditivos','Apostilamentos','SISLOG','Observação',''];
+function linhaCompacta(i){
+ const f=faixaDe(i),fim=dataFinalEfetiva(i);
+ return`<tr data-id="${i.id}" class="linha-${f}"><td><b class="num-instr">${esc(nomeInstr(i))}</b><small>${esc(rotTipo(i))}</small>${i.classificacao?`<span class="chip">${esc(i.classificacao)}</span>`:''}</td>
+ <td class="col-contr"><b>${esc(i.contratado||'')}</b><span class="obj">${esc(i.objeto||'')}</span></td>
+ <td class="nowrap">${celProcesso(i)}</td><td>${celGestao(i)}</td>
+ <td>${celulaPrazo(i,f)}${fim?`<small class="ate">até ${fmt(fim)}</small>`:''}</td>
+ <td>${celRenovacao(i)}</td><td>${celCadastro(i)}</td>
+ <td><div class="acoes-lin"><button class="sec abrir" data-abrir="${i.id}">Abrir</button>${ativo(i)?`<button class="mini sec" data-avisar="${i.id}">Avisar gestor</button>`:''}</div></td></tr>`}
+function linhaCompleta(i){
+ const f=faixaDe(i),alts=i.alteracoes||[],ta=alts.filter(x=>x.tipo==='Termo Aditivo').length,ap=alts.filter(x=>x.tipo==='Apostilamento').length,st=situacaoPelasDatas(i),r=risco(i),p=pendencias(i);
+ const td=v=>`<td>${v}</td>`;
+ return`<tr data-id="${i.id}" class="linha-${f}">`+[`<b>${esc(nomeInstr(i))}</b>`,esc(i.numero||''),esc(i.ano||''),esc(tipoDe(i)),esc(naturezaDe(i)),esc(i.classificacao||''),celProcesso(i),esc(i.contratado||''),esc(i.cnpj||''),`<div class="col-objeto">${esc(i.objeto||'')}</div>`,fmt(i.dataInicial),fmt(i.dataFinal),`<b>${fmt(dataFinalEfetiva(i))}</b>`,`<span class="${st.dias<0?'txt-vencido':''}">${st.dias??'-'}</span>`,`<span class="badge ${classe(st.nome)}">${esc(st.nome)}</span>`,esc(i.statusAdministrativo||'Ativo'),i.gestorResponsavel?`<b>${esc(i.gestorResponsavel)}</b>`:'<span class="falta">Não informado</span>',esc(i.portariaGestor||''),esc(i.emailGestor||''),esc(i.gestorSuplente||''),esc(listaFiscais(i).join('; ')),r?esc(r.etapa===NAO_RENOVA?NAO_RENOVA:ETAPA_ROT(r.etapa)):'',r?.iniciarAte?fmt(r.iniciarAte):'',r?`${pillNivel(r)}<div>${esc(r.titulo)}</div>`:'',esc(i.andamentoRenovacao||''),ativo(i)?esc(p.map(x=>x.msg).join('; ')):'',brl(i.valorMensal),brl(i.valorTotal),`<b>${brl(i.valorGlobal)}</b>`,ta,ap,esc(i.sislog||''),`<div class="col-obs">${esc(i.observacao||'')}</div>`,`<button class="sec abrir" data-abrir="${i.id}">Abrir</button>`].map(td).join('')+'</tr>'}
+
+function renderNovo(){
+ cacheRisco=new Map();montarFiltrosExtras();preencherDatalists();
+ const q=norm($('busca').value),cl=norm($('fClass').value),tp=$('fTipo').value,ord=$('ordenacao').value,fg=norm($('fGestor')?.value||'');
+ const ativos=itens.filter(ativo),inativos=itens.filter(i=>!ativo(i)),base=abaAtual==='inativos'?inativos:ativos;
+ $('abasTipo').innerHTML=ABAS_TIPO.map(a=>`<button class="aba" aria-selected="${a.id===abaAtual}" data-aba-tipo="${a.id}">${a.nome}<span class="n">${a.id==='inativos'?inativos.length:ativos.length}</span></button>`).join('');
+ const pendOk=i=>{if(!filtroPend)return true;const p=pendencias(i);if(filtroPend==='qualquer')return p.length>0;if(filtroPend==='gestor')return p.some(x=>x.campo==='gestorResponsavel');if(filtroPend==='email')return p.some(x=>x.campo==='emailGestor');if(filtroPend==='processo')return p.some(x=>x.campo==='processo');if(filtroPend==='fiscais')return p.some(x=>x.campo==='fiscais');return true};
+ const casa=i=>(!q||norm([i.numero,i.contrato,i.idConsolidado,i.processo,i.linkProcesso,i.contratado,i.cnpj,i.objeto,i.sislog,i.observacao,i.classificacao,naturezaDe(i),i.gestorResponsavel,i.gestorSuplente,i.fiscais,i.emailGestor,i.portariaGestor,i.unidadeResponsavel,i.andamentoRenovacao,i.proximaAcao,...Object.values(i.camposExtras||{})].join(' ')).includes(q))
+  &&(!cl||norm(i.classificacao).includes(cl)||norm(i.unidadeResponsavel).includes(cl))&&(!tp||tipoDe(i)===tp)
+  &&(!fg||norm([i.gestorResponsavel,i.gestorSuplente,i.fiscais].join(' ')).includes(fg))
+  &&(!filtroRisco||risco(i)?.nivel===filtroRisco)&&pendOk(i);
+ let filtrados=base.filter(casa),faixas=abaAtual==='inativos'?['encerrado','expirado']:['vencido','d30','d60','d90','vigente','revisar'],cont={};
+ faixas.forEach(f=>cont[f]=filtrados.filter(i=>faixaDe(i)===f).length);
+ if(faixaAtual&&!faixas.includes(faixaAtual))faixaAtual='';
+ $('faixas').innerHTML=faixas.map(f=>{let c=FAIXAS[f];return`<button class="faixa ${cont[f]?'':'zero'}" aria-pressed="${faixaAtual===f}" data-faixa="${f}" style="--cor:${c.cor};--cor-bg:${c.bg}"><b>${cont[f]}</b><span>${c.nome}</span>${c.sub?`<small>${f==='vencido'?'últimos 30 dias':c.sub}</small>`:''}</button>`}).join('');
+ const ano=i=>Number(i.ano)||0,ven=i=>dias(dataFinalEfetiva(i)),ordR=i=>{let r=risco(i);return r?NIVEIS[r.nivel].ordem:9};
+ const sorts={prioridade:(a,b)=>ordR(a)-ordR(b)||(ven(a)??1e9)-(ven(b)??1e9),vencimento:(a,b)=>(ven(a)??1e9)-(ven(b)??1e9),recentes:(a,b)=>ano(b)-ano(a),antigos:(a,b)=>ano(a)-ano(b),instrumento:(a,b)=>normalizarNumeroInstrumento(nomeInstr(a)).localeCompare(normalizarNumeroInstrumento(nomeInstr(b)),undefined,{numeric:true}),contratado:(a,b)=>(a.contratado||'').localeCompare(b.contratado||'','pt-BR'),valor:(a,b)=>(b.valorGlobal||0)-(a.valorGlobal||0),gestor:(a,b)=>(a.gestorResponsavel||'ZZZ').localeCompare(b.gestorResponsavel||'ZZZ','pt-BR')};
+ let mostrados=filtrados.filter(i=>!faixaAtual||faixaDe(i)===faixaAtual).sort(sorts[ord]||sorts.prioridade);
+ renderCentral(ativos);
+ const filtrosAtivos=[faixaAtual&&FAIXAS[faixaAtual].nome,filtroRisco&&NIVEIS[filtroRisco].nome,filtroPend&&$('fPend').selectedOptions[0].text].filter(Boolean);
+ $('resumo').innerHTML=`<span><b>${mostrados.length}</b> de ${base.length} instrumento(s)${filtrosAtivos.length?`, filtro: ${esc(filtrosAtivos.join(', '))}`:''}.</span>${filtrosAtivos.length?'<button class="outline" data-limpar-tudo>Limpar filtros</button>':''}<span class="visao" role="group" aria-label="Visão da tabela"><button class="${visao==='compacta'?'on':''}" data-visao="compacta">Visão de acompanhamento</button><button class="${visao==='completa'?'on':''}" data-visao="completa">Todas as colunas</button></span>`;
+ const cab=visao==='compacta'?CAB_COMPACTA:CAB_COMPLETA,wrap=$('mainTableWrap'),tab=wrap.querySelector('table');
+ wrap.classList.toggle('cards-mobile',visao==='compacta');tab.classList.toggle('tab-compacta',visao==='compacta');
+ tab.querySelector('thead').innerHTML=`<tr>${cab.map(h=>`<th>${h}</th>`).join('')}</tr>`;
+ $('tbody').innerHTML=mostrados.length?mostrados.map(visao==='compacta'?linhaCompacta:linhaCompleta).join(''):`<tr><td colspan="${cab.length}"><div class="empty-state">Nenhum instrumento com esses filtros. <button class="linkbtn" data-limpar-tudo>Limpar filtros</button></div></td></tr>`;
+ rotularTabelas();sincronizarScrollTopo();
+ const id=$('id').value;if(id&&!$('modalbg').classList.contains('hidden')){let i=itens.find(x=>x.id===id);window.renderPrazosAtual?.(i);atualizarFicha()}
+}
+render=window.render=renderNovo;
+
+/* ---------- eventos da lista e da central ---------- */
+function limparFiltros(){faixaAtual='';filtroRisco='';filtroPend='';['busca','fClass','fGestor'].forEach(x=>$(x)&&($(x).value=''));$('fTipo').value='';if($('fRisco'))$('fRisco').value='';if($('fPend'))$('fPend').value='';window.render()}
+$('tbody').onclick=e=>{
+ const cp=e.target.closest('[data-copiar]');if(cp){e.stopPropagation();return copiar(cp.dataset.copiar)}
+ const av=e.target.closest('[data-avisar]');if(av)return avisarGestor(av.dataset.avisar);
+ if(e.target.closest('a,[data-limpar-tudo]')){if(e.target.closest('[data-limpar-tudo]'))limparFiltros();return}
+ const b=e.target.closest('[data-abrir]'),tr=e.target.closest('tr[data-id]'),id=b?.dataset.abrir||tr?.dataset.id;if(id)edit(id)};
+$('resumo').onclick=e=>{
+ const v=e.target.closest('[data-visao]');if(v){visao=v.dataset.visao;localStorage.setItem('visaoTabela',visao);return window.render()}
+ if(e.target.closest('[data-limpar-tudo]'))limparFiltros()};
+$('avisoVencimentos').onclick=e=>{
+ if(e.target.closest('select'))return;
+ const av=e.target.closest('[data-avisar]');if(av)return avisarGestor(av.dataset.avisar);
+ const vr=e.target.closest('[data-ver-risco]');if(vr){filtroRisco=vr.dataset.verRisco;$('fRisco').value=filtroRisco;faixaAtual='';window.render();return $('mainTableWrap').scrollIntoView({behavior:'smooth'})}
+ if(e.target.closest('[data-ver-pend]')){filtroPend='qualquer';$('fPend').value='qualquer';window.render();return $('mainTableWrap').scrollIntoView({behavior:'smooth'})}
+ if(e.target.closest('[data-recolher]')){recolhida=!recolhida;localStorage.setItem('centralRecolhida',recolhida?'1':'');return window.render()}
+ if(e.target.closest('[data-cfg]'))return abrirCfg();
+ if(e.target.closest('[data-resumo-email]'))return resumoEmail();
+ if(e.target.closest('[data-relatorio]'))return relatorio();
+ if(e.target.closest('[data-notif]'))return Notification.requestPermission().then(()=>{localStorage.removeItem('notifDia');window.render()});
+ const it=e.target.closest('[data-abrir-inst]');if(it)edit(it.dataset.abrirInst)};
+$('avisoVencimentos').addEventListener('change',e=>{const s=e.target.closest('[data-etapa-id]');if(s)mudarEtapa(s.dataset.etapaId,s.value)});
+
+/* ---------- formulário: ficha, validação ao vivo e preenchimento assistido ---------- */
+$('etapaRenovacao').innerHTML=opcoesEtapa('');
+function marcarCampos(p){
+ document.querySelectorAll('.modal .campo-msg').forEach(m=>m.remove());
+ document.querySelectorAll('.modal .campo-erro,.modal .campo-aviso').forEach(x=>x.classList.remove('campo-erro','campo-aviso'));
+ const ctx={...p,statusAdministrativo:p.statusAdministrativo||'Ativo'};
+ pendencias(ctx).forEach(x=>{const el=$(x.campo==='valorGlobal'?'valorGlobal':x.campo);if(!el)return;const vazio=!String(el.value||'').trim();
+  if(vazio&&!x.grave)return; // campos opcionais vazios não gritam
+  el.classList.add(x.grave||!vazio?'campo-erro':'campo-aviso');el.insertAdjacentHTML('afterend',`<small class="campo-msg">${esc(x.msg)}</small>`)})}
+function atualizarFicha(){
+ const box=$('fichaResumo');if(!box)return;
+ const p=payload(),id=$('id').value,orig=itens.find(x=>x.id===id)||{},ctx={...orig,...p,dataEtapaRenovacao:orig.dataEtapaRenovacao};
+ cacheRisco.delete(ctx);const r=calcRisco({...ctx,statusAdministrativo:p.statusAdministrativo||'Ativo'}),pend=pendencias({...ctx,statusAdministrativo:'Ativo'});
+ const obrig=['contrato','processo','contratado','cnpj','objeto','classificacao','dataInicial','dataFimVigencia','gestorResponsavel','portariaGestor','emailGestor'];
+ const ok=obrig.filter(c=>!pend.some(x=>x.campo===c)).length,pct=Math.round(ok/obrig.length*100);
+ box.innerHTML=`${r&&!['Encerrado','Rescindido'].includes(p.statusAdministrativo)?`<div class="fr-risco" style="--cor:${NIVEIS[r.nivel].cor};--cor-bg:${NIVEIS[r.nivel].bg}">${pillNivel(r)}<div><b>${esc(r.titulo)}</b><span>${esc(r.detalhe||'')}</span></div>${regua(r)}</div>`:''}
+ <div class="fr-cad"><div class="fr-barra"><span style="width:${pct}%"></span></div><b>Cadastro ${pct}% completo</b>${pend.length?`<ul>${pend.map(x=>`<li class="${x.grave?'grave':''}"><button class="linkbtn" data-foco="${x.campo}">${esc(x.msg)}</button></li>`).join('')}</ul>`:'<span class="cad-ok">Nenhuma pendência.</span>'}</div>`;
+ marcarCampos(p);
+ // renovação: data de início e ajuda de antecedência
+ const ant=Number(p.antecedenciaRenovacao)>0?Number(p.antecedenciaRenovacao):antecedenciaPadrao(ctx),fim=p.dataFimVigencia||p.dataFinal;
+ $('antecedenciaRenovacao').placeholder=String(antecedenciaPadrao(ctx));
+ $('antecedenciaAjuda').textContent=`Padrão para ${naturezaDe(ctx)||tipoDe(ctx)||'este tipo'}: ${antecedenciaPadrao(ctx)} dias. Deixe vazio para usar o padrão.`;
+ $('iniciarAteInfo').textContent=fim?`${fmt(somaDias(fim,-ant))} (${ant} dias antes de ${fmt(fim)})`:'Informe o fim da vigência';
+ $('etapaDesde').textContent=orig.dataEtapaRenovacao&&p.etapaRenovacao===(orig.etapaRenovacao||'')?`Nesta etapa desde ${quando(orig.dataEtapaRenovacao)}`:'';
+ // sugestão de limite legal
+ const nat=norm(naturezaDe(ctx)),cont=/servic|essencial|fornecimento|locacao de mao/.test(nat)&&tipoDe(ctx)==='Contrato';
+ $('sugLimite').innerHTML=p.dataInicial&&cont&&!p.limiteVigencia?`Serviços contínuos: <button class="linkbtn" data-limite="${somaDias(somaMeses(p.dataInicial,120),-1)}">10 anos, Lei 14.133 (${fmt(somaDias(somaMeses(p.dataInicial,120),-1))})</button> ou <button class="linkbtn" data-limite="${somaDias(somaMeses(p.dataInicial,60),-1)}">60 meses, Lei 8.666 (${fmt(somaDias(somaMeses(p.dataInicial,60),-1))})</button>`:'';
+}
+window.atualizarFichaInstrumento=atualizarFicha;
+const modal=document.querySelector('#modalbg .modal');
+modal.addEventListener('input',e=>{if(e.target.closest('#prazosBox,#alteracoesBox'))return;clearTimeout(modal._t);modal._t=setTimeout(atualizarFicha,250)});
+modal.addEventListener('change',e=>{
+ const id=e.target.id;
+ if(id==='cnpj'){e.target.value=formatarCnpj(e.target.value)}
+ if(id==='processo'){const v=e.target.value.trim();if(/^[\d.\-\/\s]+$/.test(v))e.target.value=soDig(v)}
+ if(id==='contrato'){const m=e.target.value.trim().match(/^(\d{1,4})\s*\/\s*(\d{2}|\d{4})$/);if(m){let a=m[2].length===2?'20'+m[2]:m[2];e.target.value=`${m[1].padStart(3,'0')}/${a}`;if(!$('ano').value)$('ano').value=a}}
+ if(id==='dataInicial'||id==='vigenciaMeses'){const ini=$('dataInicial').value,m=Number($('vigenciaMeses').value);if(ini&&m>0&&!$('dataFinal').value){$('dataFinal').value=somaDias(somaMeses(ini,m),-1);toast('Data final original calculada a partir da vigência em meses.')}}
+ if(['dataInicial','dataFinal','dataFimVigencia'].includes(id)){const ini=$('dataInicial').value,fim=$('dataFimVigencia').value||$('dataFinal').value;if(ini&&$('dataFinal').value&&!$('vigenciaDias').value)$('vigenciaDias').value=Math.round((new Date($('dataFinal').value)-new Date(ini))/864e5)+1;if(id==='dataFinal'&&!$('dataFimVigencia').value)$('dataFimVigencia').value=$('dataFinal').value}
+ if(id==='gestorResponsavel'||id==='gestorSuplente'){const nome=norm(e.target.value);const ref=itens.find(x=>norm(x.gestorResponsavel)===nome&&(x.emailGestor||x.telefoneGestor));if(id==='gestorResponsavel'&&ref){if(!$('emailGestor').value)$('emailGestor').value=ref.emailGestor||'';if(!$('telefoneGestor').value)$('telefoneGestor').value=ref.telefoneGestor||'';toast('E-mail e telefone preenchidos a partir de outro instrumento do mesmo gestor.')}}
+ atualizarFicha()});
+modal.addEventListener('click',e=>{
+ const f=e.target.closest('[data-foco]');if(f){const el=$(f.dataset.foco);if(el){el.scrollIntoView({behavior:'smooth',block:'center'});setTimeout(()=>el.focus(),250)}return}
+ const l=e.target.closest('[data-limite]');if(l){$('limiteVigencia').value=l.dataset.limite;atualizarFicha()}});
+const abrirAnterior=window.abrir;
+window.abrir=abrir=function(i=null){
+ abrirAnterior(i);
+ if(i&&!TIPOS_INSTR.includes(i.tipo)&&i.tipo){$('tipo').value=window.tipoPorTexto(i.tipo)||'Contrato';if(!$('natureza').value)$('natureza').value=i.tipo}
+ if(!i){$('tipo').value='Contrato';$('statusAdministrativo').value='Ativo'}
+ if(i&&!i.statusAdministrativo)$('statusAdministrativo').value='Ativo';
+ $('etapaRenovacao').value=i?.etapaRenovacao||'';
+ $('salvarInfo').textContent=i?'':'Campos com * orientam os avisos de renovação.';
+ atualizarFicha();modal.scrollTop=0};
+
+/* ---------- configuração de alertas (modal) ---------- */
+function abrirCfg(){
+ const chaves=Object.keys(CFG.antecedencia).filter(k=>k!=='padrao');
+ $('cfgCorpo').innerHTML=`<p class="muted">Quantos dias antes do fim da vigência a renovação deve começar. Considere o tempo real do processo: manifestação da área, anuência, instrução, análise jurídica e assinatura.</p>
+ <div class="cfg-grid">${chaves.map(k=>`<label>${esc(k)}<input type="number" min="0" data-cfg-ant="${esc(k)}" value="${CFG.antecedencia[k]}"></label>`).join('')}<label>Demais naturezas<input type="number" min="0" data-cfg-ant="padrao" value="${CFG.antecedencia.padrao}"></label></div>
+ <div class="cfg-grid"><label>Avisar "começar em breve" com quantos dias de folga<input type="number" min="0" id="cfgAviso" value="${CFG.aviso}"></label><label>Considerar parado depois de quantos dias na mesma etapa<input type="number" min="1" id="cfgParado" value="${CFG.parado}"></label></div>
+ <p class="muted">Configuração atual: ${esc(cfgOrigem)}. Um instrumento específico pode ter antecedência própria no campo Renovação do cadastro.</p>`;
+ $('cfgBg').classList.remove('hidden')}
+async function salvarCfg(){
+ document.querySelectorAll('[data-cfg-ant]').forEach(x=>{const v=Number(x.value);if(v>=0)CFG.antecedencia[x.dataset.cfgAnt]=v});
+ CFG.aviso=Number($('cfgAviso').value)||CFG_PADRAO.aviso;CFG.parado=Number($('cfgParado').value)||CFG_PADRAO.parado;
+ localStorage.setItem('cfgAlertas',JSON.stringify(CFG));cfgOrigem='este navegador';
+ try{await db.collection('configuracoes').doc('alertas').set({...CFG,alteradoPor:auth.currentUser?.email||'',alteradoEm:firebase.firestore.FieldValue.serverTimestamp()});cfgOrigem='compartilhada';toast('Prazos de alerta salvos para toda a equipe.')}
+ catch(e){toast('Prazos salvos neste navegador. Para compartilhar, libere a coleção "configuracoes" nas regras do Firestore.')}
+ $('cfgBg').classList.add('hidden');window.render()}
+$('cfgSalvar').onclick=salvarCfg;$('cfgFechar').onclick=()=>$('cfgBg').classList.add('hidden');
+$('cfgRestaurar').onclick=()=>{CFG=JSON.parse(JSON.stringify(CFG_PADRAO));abrirCfg()};
+$('btnCfgAlertas').onclick=abrirCfg;
+
+/* ---------- padronizar cadastros existentes ---------- */
+async function padronizar(){
+ const mud=[];
+ itens.forEach(i=>{const u={},m=[];
+  if(i.tipo&&!TIPOS_INSTR.includes(i.tipo)){const t=window.tipoPorTexto(i.tipo)||'Contrato';u.tipo=t;m.push({campo:'tipo',anterior:i.tipo,novo:t});if(!i.natureza){u.natureza=i.tipo;m.push({campo:'natureza',anterior:'',novo:i.tipo})}}
+  const c=formatarCnpj(i.cnpj);if(i.cnpj&&c!==i.cnpj&&!/;/.test(i.cnpj)){u.cnpj=c;m.push({campo:'cnpj',anterior:i.cnpj,novo:c})}
+  const pr=String(i.processo||'');if(pr&&/^[\d.\-\/\s]+$/.test(pr)&&soDig(pr)!==pr){u.processo=soDig(pr);m.push({campo:'processo',anterior:pr,novo:u.processo})}
+  ['contratado','gestorResponsavel','objeto'].forEach(k=>{const v=i[k];if(typeof v==='string'&&v!==v.replace(/\s+/g,' ').trim()){u[k]=v.replace(/\s+/g,' ').trim();m.push({campo:k,anterior:v,novo:u[k]})}});
+  if(m.length)mud.push({i,u,m})});
+ if(!mud.length)return alert('Nada a padronizar: os cadastros já estão no padrão.');
+ const resumo={};mud.forEach(x=>x.m.forEach(c=>resumo[c.campo]=(resumo[c.campo]||0)+1));
+ if(!confirm(`Padronizar ${mud.length} instrumento(s)?\n\n${Object.entries(resumo).map(([k,n])=>`• ${ROT_CAMPO[k]||k}: ${n}`).join('\n')}\n\nTipos como "Locação" passam a ser Contrato com natureza Locação; CNPJ e processo ganham formato único. Cada alteração fica no histórico do instrumento.`))return;
+ const email=auth.currentUser?.email||'',agora=new Date().toISOString();
+ try{for(let k=0;k<mud.length;k+=400){const b=db.batch();mud.slice(k,k+400).forEach(({i,u,m})=>b.update(db.collection(COL).doc(i.id),{...u,alteradoEm:firebase.firestore.FieldValue.serverTimestamp(),alteradoPor:email,historico:[...(i.historico||[]),{tipo:'padronização de cadastro',data:agora,usuario:email,alteracoes:m}]}));await b.commit()}toast(`${mud.length} instrumento(s) padronizado(s).`)}
+ catch(e){alert('A padronização falhou: '+e.message)}}
+$('btnPadronizar').onclick=padronizar;
+$('btnRelatorio').onclick=relatorio;
+
+/* ---------- importação: formato da planilha consolidada ---------- */
+const H=s=>normH(String(s||'')).replace(/\s*\(r\$\)/,'');
+const ABAS_APOIO=['leia-me','painel','listas','log da consolidacao','licitacoes sislog','hist regularizacoes','resumo contratos'];
+window.formatoEspecial=function(nome,rows){
+ const nn=normH(nome);
+ if(ABAS_APOIO.includes(nn))return{nome,tipo:null,linhas:[],motivo:'Aba de apoio da planilha consolidada; não é importada'};
+ let hi=-1,cab=[];
+ for(let k=0;k<Math.min(rows.length,6);k++){const c=rows[k].map(H);if(c.includes('id')&&c.includes('categoria')&&c.some(x=>x.startsWith('fim vigencia atual'))){hi=k;cab=c;break}
+  if(c.includes('id do instrumento')&&(c.includes('papel')||c.includes('aditivo / apostila')||c.includes('providencia'))){hi=k;cab=c;break}
+  if(c.includes('processo sei')&&c.includes('providencia')){hi=k;cab=c;break}}
+ if(hi<0)return null;
+ const col=n=>cab.indexOf(n),val=(r,n)=>{const j=col(n);return j<0?'':r[j]??''},linhas=[];
+ const idParaContrato=id=>{const m=String(id||'').trim().match(/^(CT|LE|CV|TC|CO)-(.+?)(-[A-Z])?$/i);return m?m[2]:''};
+ const pular=r=>!r.some(c=>String(c).trim()!=='');
+ let tipo=null;
+ if(cab.includes('categoria')){tipo='instrumentos';
+  for(let k=hi+1;k<rows.length;k++){const r=rows[k];if(pular(r))continue;const id=String(val(r,'id')).trim(),contrato=idParaContrato(id)||[val(r,'no'),val(r,'ano')].filter(Boolean).join('/');
+   const o={'ID CONSOLIDADO':id,'NUMERO':contrato,'CONTRATO':contrato,'ANO':val(r,'ano'),'TIPO':val(r,'categoria'),'NATUREZA':val(r,'natureza'),'CLASSIFICAÇÃO':val(r,'unidade demandante'),'PROCESSO':val(r,'processo sei'),'CONTRATADO':val(r,'contratado / participe'),'CNPJ':val(r,'cpf / cnpj'),'OBJETO':val(r,'objeto'),'VALOR MENSAL':val(r,'valor mensal'),'VALOR TOTAL':val(r,'valor inicial'),'VALOR GLOBAL':val(r,'valor global atualizado'),'DATA INICIAL':val(r,'inicio vigencia'),'DATA FINAL':val(r,'fim original'),'DATA FIM VIGÊNCIA':val(r,'fim vigencia atual'),'STATUS ADMINISTRATIVO':val(r,'status'),'ANDAMENTO RENOVAÇÃO':val(r,'andamento da renovacao'),'GESTOR / RESPONSÁVEL':val(r,'gestor titular'),'PORTARIA GESTOR':val(r,'portaria do gestor'),'ÍNDICE DE REAJUSTE':val(r,'indice de reajuste'),'SISLOG':val(r,'sislog'),'Observação':val(r,'observacao'),'EXTRA: Representante do partícipe':val(r,'representante do participe'),'EXTRA: Imóvel / endereço':val(r,'imovel / endereco'),'EXTRA: Alerta de qualidade (planilha)':val(r,'alerta de qualidade'),'EXTRA: Fonte original':val(r,'fonte original')};
+   linhas.push({obj:o,linha:(r.__rowNum__??k)+1})}}
+ else if(cab.includes('aditivo / apostila')){tipo='alteracoes';
+  for(let k=hi+1;k<rows.length;k++){const r=rows[k];if(pular(r))continue;const c=idParaContrato(val(r,'id do instrumento'));if(!c)continue;const fim=val(r,'fim');
+   linhas.push({obj:{'CONTRATO':c,'TIPO ALTERAÇÃO':val(r,'tipo'),'NÚMERO ALTERAÇÃO':val(r,'aditivo / apostila'),'FINALIDADE':String(fim).trim()?'Prorrogação':'Outra','DATA INÍCIO':val(r,'inicio'),'DATA FIM':fim,'VALOR MENSAL':val(r,'valor mensal'),'VALOR TOTAL':val(r,'valor do aditivo'),'VIGÊNCIA (MESES)':val(r,'vigencia (meses)'),'OBSERVAÇÃO':val(r,'observacao')},linha:(r.__rowNum__??k)+1})}}
+ else if(cab.includes('papel')){tipo='gestores';
+  for(let k=hi+1;k<rows.length;k++){const r=rows[k];if(pular(r))continue;linhas.push({obj:{id:String(val(r,'id do instrumento')).trim(),papel:val(r,'papel'),nome:String(val(r,'nome')).trim(),email:String(val(r,'e-mail')).trim(),tel:String(val(r,'telefone')).trim(),portaria:String(val(r,'portaria')).trim()},linha:(r.__rowNum__??k)+1})}}
+ else{tipo='processos';
+  for(let k=hi+1;k<rows.length;k++){const r=rows[k];if(pular(r))continue;linhas.push({obj:{id:String(val(r,'id do instrumento')).trim(),processo:soDig(val(r,'processo sei')),objeto:String(val(r,'objeto')).trim(),providencia:String(val(r,'providencia')).trim(),situacao:String(val(r,'situacao')).trim(),responsavel:String(val(r,'responsavel')).trim(),data:iso(val(r,'prazo / vencimento'))},linha:(r.__rowNum__??k)+1})}}
+ return{nome,tipo,linhas,cabecalho:hi+1}};
+/* gestores e processos em andamento completam os instrumentos lidos */
+window.prepararExtrasImport=function(abas){
+ const g=new Map(),pz=[];
+ abas.filter(a=>a.tipo==='gestores').forEach(a=>a.linhas.forEach(({obj:o})=>{if(!o.id||!o.nome||o.id.startsWith('('))return;const x=g.get(o.id)||{fiscais:[]};const p=norm(o.papel);
+  if(p.includes('titular')&&!x.titular)x.titular=o;else if(p.includes('suplente')&&!x.suplente)x.suplente=o;else if(p.includes('fiscal')&&!x.fiscais.includes(o.nome))x.fiscais.push(o.nome);g.set(o.id,x)}));
+ abas.filter(a=>a.tipo==='processos').forEach(a=>a.linhas.forEach(({obj:o,linha})=>pz.push({...o,ref:`aba ${a.nome}, linha ${linha}`})));
+ return{g,pz}};
+window.aplicarExtrasImport=function(linhas,ex){
+ if(!ex)return;
+ linhas.forEach(p=>{const x=p.idConsolidado&&ex.g.get(p.idConsolidado);
+  // na planilha consolidada o "fim da vigência atual" é conferido; aditivos com datas-marcador (ex.: 31/12/2040) não o substituem
+  if(p.idConsolidado&&p._fimPlanilha&&p.dataFimVigencia!==p._fimPlanilha){(p.camposExtras=p.camposExtras||{})['Maior data fim entre os aditivos']=fmt(p.dataFimVigencia);p.dataFimVigencia=p._fimPlanilha}
+  if(x){if(x.titular){p.gestorResponsavel=p.gestorResponsavel||x.titular.nome;if(norm(x.titular.nome)===norm(p.gestorResponsavel)){p.emailGestor=p.emailGestor||x.titular.email;p.telefoneGestor=p.telefoneGestor||x.titular.tel;p.portariaGestor=p.portariaGestor||x.titular.portaria}}
+   if(x.suplente)p.gestorSuplente=p.gestorSuplente||x.suplente.nome;if(x.fiscais.length)p.fiscais=p.fiscais||x.fiscais.join('\n')}
+  const meus=ex.pz.filter(o=>(o.id&&o.id===p.idConsolidado)||(o.processo&&o.processo===soDig(p.processo)));
+  if(meus.length){p._prazosImport=meus.map(o=>({id:uidLocal(),tipoPrazo:/aditivo|prorroga|renova/i.test(o.providencia)?'Renovação/Prorrogação':/apostila/i.test(o.providencia)?'Apostilamento':'Outro',descricao:o.providencia||o.objeto,dataPrazo:o.data||'',responsavel:o.responsavel&&o.responsavel!=='-'?o.responsavel:'',unidadeResponsavel:p.classificacao||'',prioridade:'Alta',status:'Pendente',observacao:o.situacao,origem:o.ref,criadoEm:new Date().toISOString(),criadoPor:auth.currentUser?.email||'',historico:[{tipo:'criação',detalhes:'Importado de processos em andamento',data:new Date().toISOString(),usuario:auth.currentUser?.email||''}]})).filter(z=>z.dataPrazo);
+   if(!p.andamentoRenovacao&&meus[0].situacao)p.andamentoRenovacao=meus[0].situacao;
+   if(!p._etapaInferida)p._etapaInferida=window.inferirEtapa(meus[0].situacao+' '+meus[0].providencia)}
+  if(!p._etapaInferida&&p.andamentoRenovacao)p._etapaInferida=window.inferirEtapa(p.andamentoRenovacao)})};
+window.prazosNovos=function(p,ex){const chave=z=>norm(z.tipoPrazo)+'|'+z.dataPrazo+'|'+norm(z.descricao);const tem=new Set((ex.prazos||[]).map(chave));return(p._prazosImport||[]).filter(z=>!tem.has(chave(z)))};
+
+/* ---------- inicialização ---------- */
+auth.onAuthStateChanged(u=>{if(u)carregarCfg()});
 })();
-</script></body></html>
+</script>
+</body></html>
