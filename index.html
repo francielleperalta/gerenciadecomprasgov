@@ -3493,75 +3493,7 @@ Assunto: Manifestação de interesse quanto ao recebimento de bens móveis inser
         </div>
       </div>
       
-      <div id="abaDashboard" class="hidden">
-        <div class="dashboard-executive-shell">
-          <section class="card dashboard-command-card">
-            <div class="dashboard-section-title"><div><h3>Resumo executivo</h3><small>Visão consolidada da carteira filtrada e das ações prioritárias.</small></div><span id="dashboardNivelGeral" class="decision-status controlado">Controlado</span></div>
-            <div class="dashboard-kpi-grid dashboard-kpi-principal">
-              <div class="mini-kpi"><div class="k">Pendências ativas</div><div class="v" id="kpiPendenciasAtivas">0</div><div class="s">ainda exigem resposta</div></div>
-              <div class="mini-kpi kpi-danger"><div class="k">Atrasados</div><div class="v" id="kpiAtrasados">0</div><div class="s">ação imediata</div></div>
-              <div class="mini-kpi kpi-warning"><div class="k">Vence hoje</div><div class="v" id="kpiHoje">0</div><div class="s">prioridade do dia</div></div>
-              <div class="mini-kpi kpi-attention"><div class="k">Vencendo</div><div class="v" id="kpiVencendo">0</div><div class="s">próximos dias</div></div>
-              <div class="mini-kpi"><div class="k">Total visível</div><div class="v" id="kpiTotal">0</div><div class="s">processos únicos</div></div>
-              <div class="mini-kpi"><div class="k">Com prazo</div><div class="v" id="kpiComPrazo">0</div><div class="s">com data final</div></div>
-              <div class="mini-kpi"><div class="k">Sem prazo</div><div class="v" id="kpiSemPrazo">0</div><div class="s">requer revisão cadastral</div></div>
-              <div class="mini-kpi"><div class="k">Cumprimento no prazo</div><div class="v" id="kpiTaxaNoPrazo">0%</div><div class="s">histórico com base válida</div></div>
-            </div>
-            <div id="dashboardSinteseExecutiva" class="executive-synthesis"></div>
-          </section>
-
-          <section class="card dashboard-priority-card">
-            <div class="dashboard-section-title"><div><h3>Fila de ação imediata</h3><small>Processos ordenados por criticidade, com ações disponíveis no próprio painel.</small></div></div>
-            <div id="dashboardTopCriticos" class="dashboard-actions dashboard-actions-grid"></div>
-          </section>
-
-          <div class="dashboard-main-grid">
-            <section class="card chart-card dashboard-chart-tall">
-              <div class="dashboard-section-title"><div><h4>Pressão de prazo</h4><small>Distribuição da carteira conforme a urgência.</small></div></div>
-              <div class="chart-box"><canvas id="graficoPrazo"></canvas></div>
-            </section>
-            <section class="card chart-card dashboard-chart-tall">
-              <div class="dashboard-section-title"><div><h4>Carga por área</h4><small>Volume de processos únicos por área principal.</small></div></div>
-              <div class="chart-box chart-box-areas"><canvas id="graficoAreas"></canvas></div>
-            </section>
-            <section class="card chart-card dashboard-chart-medium">
-              <div class="dashboard-section-title"><div><h4>Tendência de demanda</h4><small>Entradas registradas nos últimos 12 meses.</small></div></div>
-              <div class="chart-box"><canvas id="graficoEntradas"></canvas></div>
-            </section>
-            <section class="card chart-card dashboard-chart-medium">
-              <div class="dashboard-section-title"><div><h4>Situação da carteira</h4><small>Distribuição por estágio operacional.</small></div></div>
-              <div class="chart-box"><canvas id="graficoSituacao"></canvas></div>
-            </section>
-          </div>
-
-          <div class="dashboard-insight-grid">
-            <section class="card">
-              <div class="dashboard-section-title"><div><h4>Carga por unidade da SGI</h4><small>Conta cada encaminhamento responsável, inclusive unidades complementares.</small></div></div>
-              <div class="chart-box dashboard-chart-short"><canvas id="graficoSGI"></canvas></div>
-            </section>
-            <section class="card">
-              <div class="dashboard-section-title"><div><h4>Áreas que exigem apoio</h4><small>Criticidade ponderada por atrasos e vencimentos próximos.</small></div></div>
-              <div id="dashboardRankingAtrasos" class="dashboard-list"></div>
-            </section>
-            <section class="card">
-              <div class="dashboard-section-title"><div><h4>Qualidade cadastral</h4><small>Registros que reduzem a confiabilidade dos indicadores.</small></div></div>
-              <div id="dashboardQualidadeCadastro" class="dashboard-list"></div>
-            </section>
-            <section class="card">
-              <div class="dashboard-section-title"><div><h4>Histórico de cumprimento</h4><small>Resultado das respostas sem criar uma área operacional separada.</small></div></div>
-              <div class="chart-box dashboard-chart-short"><canvas id="graficoRespostas"></canvas></div>
-              <div id="dashboardRespostaResumo" class="dashboard-list"></div>
-            </section>
-          </div>
-        </div>
-      </div>
-
-
-      
-
-
     </div>
-  </div>
   </div>
 
   <div id="drawerOverlay" class="drawer-overlay hidden"></div>
@@ -4105,7 +4037,6 @@ Assunto: Manifestação de interesse quanto ao recebimento de bens móveis inser
       // mantém compatibilidade com preferências antigas
       localStorage.setItem("sgp_theme_dark", modo === "dark" ? "1" : "0");
       if (!appBox?.classList.contains("hidden")) {
-        if (filteredItems?.length) renderDashboard(filteredItems);
         renderTable(filteredItems || []);
         sincronizarScrollTabela();
       }
@@ -4137,10 +4068,8 @@ Assunto: Manifestação de interesse quanto ao recebimento de bens móveis inser
     const btnLimparBuscaGlobal = $("btnLimparBuscaGlobal");
     const painelBuscaGlobal = $("painelBuscaGlobal");
     const tabProcessosBtn = $("tabProcessosBtn");
-    const tabDashboardBtn = $("tabDashboardBtn");
     const tabRespondidosBtn = $("tabRespondidosBtn");
     const abaProcessos = $("abaProcessos");
-    const abaDashboard = $("abaDashboard");
     const abaRespondidos = $("abaRespondidos");
     const listaRespondidos = $("listaRespondidos");
     const respondidosResumo = $("respondidosResumo");
@@ -5271,28 +5200,15 @@ function imprimirRelatorioAtual() {
       } catch (e) { console.warn(e); }
     }
 
-    function abrirAba(aba) {
-      if (aba === "dashboard") {
-        abaProcessos.classList.add("hidden");
-        abaDashboard.classList.remove("hidden");
-        abaRespondidos?.classList.add("hidden");
-        tabProcessosBtn.classList.remove("active");
-        tabDashboardBtn.classList.add("active");
-        tabRespondidosBtn?.classList.remove("active");
-        localStorage.setItem(STORAGE_KEYS.aba, "dashboard");
-        } else {
-        abaProcessos.classList.remove("hidden");
-        abaDashboard.classList.add("hidden");
-        abaRespondidos?.classList.add("hidden");
-        tabProcessosBtn.classList.add("active");
-        tabDashboardBtn.classList.remove("active");
-        tabRespondidosBtn?.classList.remove("active");
-        localStorage.setItem(STORAGE_KEYS.aba, "processos");
-      }
+    function abrirAba() {
+      abaProcessos.classList.remove("hidden");
+      abaRespondidos?.classList.add("hidden");
+      tabProcessosBtn.classList.add("active");
+      tabRespondidosBtn?.classList.remove("active");
+      localStorage.setItem(STORAGE_KEYS.aba, "processos");
     }
-
     function aplicarAbaSalva() {
-      abrirAba("processos");
+      abrirAba();
     }
 
     async function login() {
@@ -6134,7 +6050,6 @@ function imprimirRelatorioAtual() {
       renderResumo(filteredItems);
       renderAlertas(filteredItems, notificar);
       renderCentralPendencias(filteredItems);
-      renderDashboard(filteredItems);
       if (abaRespondidos && !abaRespondidos?.classList.contains("hidden")) renderRespondidos();
       atualizarCardsAtivos();
       atualizarDrawerSeAberto();
@@ -6181,7 +6096,7 @@ function imprimirRelatorioAtual() {
     function aplicarResumoClicavel(card) {
       const type = card.dataset.summaryType;
       const value = card.dataset.summaryValue;
-      abrirAba('processos');
+      abrirAba();
       if (!type) return limparFiltros(false);
       const alvo = type === 'statusPrazo' ? filtroStatusPrazo : filtroArea;
       alvo.value = alvo.value === value ? '' : value;
@@ -6928,10 +6843,9 @@ function imprimirRelatorioAtual() {
       btnResetar.addEventListener("click", resetarSenha);
       btnSair.addEventListener("click", logout);
       btnNotificacao.addEventListener("click", solicitarPermissaoNotificacao);
-      tabProcessosBtn.addEventListener("click", () => abrirAba("processos"));
-      tabDashboardBtn.addEventListener("click", () => abrirAba("dashboard"));
+      tabProcessosBtn.addEventListener("click", () => abrirAba());
       if (tabRespondidosBtn) tabRespondidosBtn.addEventListener("click", () => abrirAba("respondidos"));
-      if (btnVoltarProcessosRespondidos) btnVoltarProcessosRespondidos.addEventListener("click", () => abrirAba("processos"));
+      if (btnVoltarProcessosRespondidos) btnVoltarProcessosRespondidos.addEventListener("click", () => abrirAba());
 
       semPrazoManual.addEventListener("change", () => {
         dataFinalManual.disabled = semPrazoManual.checked;
