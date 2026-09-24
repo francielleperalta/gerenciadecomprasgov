@@ -295,6 +295,96 @@ textarea.curto{min-height:64px}
 #toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:var(--ink);color:#fff;padding:11px 16px;border-radius:10px;font-size:14px;z-index:60;transition:.2s;max-width:min(560px,92vw)}
 #toast.on{opacity:1;transform:translate(-50%,0)}
 
+.reabrir{display:block;margin-top:6px;font-size:13px}
+/* Aditivos e apostilamentos */
+.alt-titulo{display:flex;align-items:baseline;gap:6px;font-size:17px;margin:0 0 10px}
+.alt-titulo span{color:var(--muted);font-weight:600}
+.alt-kpis{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.ak{background:#fff;padding:11px 12px;display:flex;flex-direction:column;gap:2px;border-top:3px solid var(--cor,transparent)}
+.ak span{font-size:12px;color:var(--muted);font-weight:600}
+.ak b{font-size:17px;line-height:1.25;color:var(--cor,var(--ink));font-variant-numeric:tabular-nums}
+.ak small{font-size:12px;color:var(--cor,var(--muted))}
+.alt-acr{margin:10px 0 0;font-size:13px;color:var(--muted)}
+.alt-aviso{margin:8px 0 0;padding:9px 12px;border-radius:8px;background:var(--f60-bg);color:#6B5208;font-size:13px;font-weight:600}
+.lt{margin:16px 2px 6px}
+.lt-trilho{position:relative;height:30px;background:#EEF2F3;border-radius:6px}
+.lt-seg{position:absolute;top:3px;bottom:3px;border-radius:4px;font-size:11.5px;font-weight:700;color:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden;white-space:nowrap;border-right:2px solid #fff}
+.seg-orig{background:#8FA3AB}.seg-ad{background:#5E8595}.seg-vigor{background:var(--acc);box-shadow:0 0 0 2px var(--acc-soft)}
+.lt-hoje,.lt-lim{position:absolute;top:-6px;bottom:-6px;width:0;border-left:2px solid var(--venc)}
+.lt-lim{border-left:2px dashed var(--ink)}
+.lt-hoje b,.lt-lim b{position:absolute;top:-17px;left:-14px;font-size:11px;color:var(--venc);white-space:nowrap}
+.lt-lim b{color:var(--ink);left:auto;right:4px}
+.lt-anos{position:relative;height:18px;margin-top:6px}
+.lt-anos span{position:absolute;transform:translateX(-50%);font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}
+.alt-novo{margin-top:16px;border:1px solid var(--line);border-radius:10px;background:#fff;padding:0 14px}
+.alt-novo summary{cursor:pointer;padding:12px 0;font-weight:650;color:var(--acc)}
+.alt-novo[open]{padding-bottom:14px}
+.alt-novo #adicionarAlt{width:auto;margin-top:12px}
+.alt-h4{margin:18px 0 8px;font-size:14.5px}
+.alt-tab table{min-width:760px!important}
+.alt-tab td small{display:block;color:var(--muted);font-size:12px}
+.alt-tab tr.alt-atual td{background:var(--acc-soft)!important}
+.alt-tab tr.alt-obs td{padding-top:0!important;color:var(--muted);font-size:12.5px;border-top:0}
+.sa{display:inline-block;padding:3px 9px;border-radius:999px;font-size:12px;font-weight:700;white-space:nowrap}
+.sa-vig{background:var(--vig-bg);color:var(--vig)}.sa-v90{background:var(--f60-bg);color:var(--f60)}.sa-v30{background:var(--f30-bg);color:var(--f30)}
+.sa-enc,.sa-reg{background:var(--cinza-bg);color:var(--cinza)}.sa-fut{background:var(--f90-bg);color:var(--f90)}
+.alt-mini{display:block;margin-top:4px;font-size:12px;color:var(--acc);font-weight:600;cursor:help}
+.alt-mini.sem{color:var(--muted);font-weight:500}
+.fr-alt{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:11px 14px;border:1px solid var(--line);border-left:4px solid var(--acc);border-radius:10px;background:#fff}
+.fr-alt b{display:block;font-size:13.5px}.fr-alt span{font-size:13px;color:var(--muted)}
+.modulo-painel{margin:0!important;max-width:none!important;padding:18px!important}
+.modulo-painel>.card{max-width:1700px;margin:0 auto}
+.rs-card h2{margin:0}
+.rs-filtros label{text-transform:none;letter-spacing:0;font-size:12.5px;font-weight:650;color:#4A5C64}
+.rs-topo{flex-wrap:wrap;gap:8px}.rs-topo button{width:auto}
+.rs-filtros{margin:14px 0 6px;padding:14px;border:1px solid var(--line);border-radius:12px;background:#FBFCFC}
+.rs-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px 14px}
+.rs-grid label{margin-top:4px}
+.rs-filtros fieldset{border:0;margin:12px 0 0;padding:0}
+.rs-filtros legend{font-size:12.5px;font-weight:650;color:#4A5C64;margin-bottom:6px}
+.rs-chips{display:flex;flex-wrap:wrap;gap:6px}
+.rs-chip{display:inline-flex!important;align-items:center;gap:6px;margin:0!important;padding:5px 11px;border:1px solid var(--line);border-radius:999px;background:#fff;font-size:13px!important;font-weight:600!important;color:var(--ink)!important;cursor:pointer}
+.rs-chip input{width:auto;margin:0;accent-color:var(--cor,var(--acc))}
+.rs-chip:has(input:checked){border-color:var(--cor,var(--acc));background:var(--cor-bg,var(--acc-soft))}
+#rsLimpar{margin-top:12px;font-size:13px}
+.rs-conteudo{max-width:1400px}
+.rs-cab{padding:14px 0 4px;border-bottom:2px solid var(--ink);margin-bottom:6px}
+.rs-cab h3{margin:0 0 6px;font-size:20px}
+.rs-cab p{margin:2px 0;font-size:13.5px;color:var(--muted);max-width:110ch}
+.rs-cab p b{color:var(--ink)}
+.rs-conteudo section{margin-top:22px;break-inside:auto}
+.rs-conteudo h4{margin:0 0 8px;font-size:16px;display:flex;align-items:baseline;gap:8px}
+.rs-conteudo h4 span{font-size:13px;color:var(--muted);font-weight:600}
+.rs-nota{margin:-4px 0 8px;font-size:13px;color:var(--muted)}
+.rs-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.rs-k{background:#fff;padding:11px 13px;border-left:4px solid var(--cor,transparent)}
+.rs-k span{display:block;font-size:12.5px;color:var(--muted);font-weight:600}
+.rs-k b{font-size:24px;font-variant-numeric:tabular-nums;color:var(--cor,var(--ink))}
+.rs-k small{display:block;font-size:12px;color:var(--muted)}
+.rs-tab{overflow:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+.rs-tab table{min-width:760px!important;width:100%;border-collapse:collapse}
+.rs-tab th{position:static;background:#F4F7F8;color:var(--muted);text-transform:none;letter-spacing:0;font-size:12.5px;font-weight:650;padding:9px 11px;text-align:left;border-bottom:1px solid var(--line);white-space:nowrap}
+.rs-tab td{padding:9px 11px;border-bottom:1px solid #EEF2F3;font-size:13.5px;vertical-align:top;background:#fff}
+.rs-tab tr:last-child td{border-bottom:0}
+.rs-tab td small{display:block;color:var(--muted);font-size:12px}
+.rs-tab td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+.rs-tab .rs-det{min-width:260px;max-width:520px}
+.rs-neg{color:var(--venc);font-weight:700}.rs-alerta{color:var(--f30);font-weight:650}
+.rs-vazio{margin:0;padding:12px 14px;border:1px dashed var(--line);border-radius:10px;color:var(--muted);font-size:13.5px}
+@media print{
+ body.imprimindo-rs>*:not(#painelRelSemanal){display:none!important}
+ body.imprimindo-rs #painelRelSemanal{position:static!important;display:block!important;overflow:visible;padding:0;background:#fff}
+ body.imprimindo-rs .rs-card{box-shadow:none;border:0;padding:0;min-height:0}
+ body.imprimindo-rs .rs-topo,body.imprimindo-rs .rs-filtros{display:none!important}
+ body.imprimindo-rs .rs-tab{overflow:visible;border-color:#ccc}
+ body.imprimindo-rs .rs-tab table{min-width:0!important}
+ body.imprimindo-rs .rs-tab td,body.imprimindo-rs .rs-tab th{font-size:10.5px;padding:5px 6px}
+ body.imprimindo-rs .linkbtn{color:#000;text-decoration:none}
+ body.imprimindo-rs tr{break-inside:avoid}
+ body.imprimindo-rs .rs-conteudo h4{break-after:avoid}
+ @page{size:A4 landscape;margin:12mm}
+}
+@media(max-width:1250px){.alt-kpis{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:1250px){.ct-lanes{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:760px){
  .central{padding:14px 12px;margin:0 -4px 14px}
@@ -305,6 +395,9 @@ textarea.curto{min-height:64px}
  .fr-cad ul{columns:1}
  .cfg-grid{grid-template-columns:1fr}
  .visao{margin-left:0}
+ .alt-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .rs-grid,.rs-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .fr-alt{flex-direction:column;align-items:flex-start}
  .filtros-completos{grid-template-columns:1fr!important}
  .filtros-completos #busca{grid-column:auto}
  .tabela-completa.cards-mobile{max-height:none;overflow:visible}
@@ -320,7 +413,7 @@ textarea.curto{min-height:64px}
 }
 @media(prefers-reduced-motion:reduce){#toast,.fr-barra span{transition:none}}
 </style>
-<header class="topo"><div class="topo-in"><div class="marca"><span class="marca-nome">Controle de Compras</span><span class="marca-sub">Contratos, convênios e termos de cooperação</span></div><div class="acoes-topo"><button id="importar" class="sec">Consolidar Excel</button><button id="novo">Novo<span class="so-desk"> instrumento</span></button><div class="menu-wrap"><button id="btnMais" class="sec" aria-haspopup="true" aria-expanded="false" aria-controls="menuMais" aria-label="Mais opções" title="Mais opções">⋯</button><div id="menuMais" class="menu" role="menu"><button id="importarMenu" class="so-mobile" role="menuitem">Consolidar Excel</button><button id="btnCalendario" role="menuitem">Calendário de prazos</button><button id="btnRelatorio" role="menuitem">Relatório de renovações</button><button id="btnCfgAlertas" role="menuitem">Configurar prazos de alerta</button><button id="btnPadronizar" role="menuitem">Padronizar cadastros</button><button id="btnHistoricoConsolidacoes" role="menuitem">Histórico de consolidações</button><button id="modelo" role="menuitem">Baixar modelo da planilha</button><button id="exportar" role="menuitem">Exportar para Excel</button><hr><div id="usuario" class="menu-user"></div><button id="sair" class="sair" role="menuitem">Sair</button></div></div></div></div></header>
+<header class="topo"><div class="topo-in"><div class="marca"><span class="marca-nome">Controle de Compras</span><span class="marca-sub">Contratos, convênios e termos de cooperação</span></div><div class="acoes-topo"><button id="importar" class="sec">Consolidar Excel</button><button id="novo">Novo<span class="so-desk"> instrumento</span></button><div class="menu-wrap"><button id="btnMais" class="sec" aria-haspopup="true" aria-expanded="false" aria-controls="menuMais" aria-label="Mais opções" title="Mais opções">⋯</button><div id="menuMais" class="menu" role="menu"><button id="importarMenu" class="so-mobile" role="menuitem">Consolidar Excel</button><button id="btnCalendario" role="menuitem">Calendário de prazos</button><button id="btnRelSemanal" role="menuitem">Relatório semanal</button><button id="btnRelatorio" role="menuitem">Relatório de renovações</button><button id="btnCfgAlertas" role="menuitem">Configurar prazos de alerta</button><button id="btnPadronizar" role="menuitem">Padronizar cadastros</button><button id="btnHistoricoConsolidacoes" role="menuitem">Histórico de consolidações</button><button id="modelo" role="menuitem">Baixar modelo da planilha</button><button id="exportar" role="menuitem">Exportar para Excel</button><hr><div id="usuario" class="menu-user"></div><button id="sair" class="sair" role="menuitem">Sair</button></div></div></div></div></header>
 <div class="wrap" id="login"><div class="card"><h2>Acesso</h2><div class="grid2"><div><label for="email">E-mail</label><input id="email" type="email"></div><div><label for="senha">Senha</label><input id="senha" type="password"></div></div><div class="toolbar"><button id="entrar">Entrar</button><button id="cadastrar" class="ok">Cadastrar usuário</button><button id="resetar" class="outline">Recuperar senha</button></div><div id="msgLogin" class="feedback hidden"></div></div></div>
 <main class="wrap hidden" id="app"><input id="arquivo" type="file" accept=".xlsx,.xls,.csv" class="hidden"><nav class="abas" id="abasTipo"></nav><section class="faixas" id="faixas"></section><section id="avisoVencimentos" class="aviso-vencimentos"></section><div class="prazo-legenda"><span class="lg-v">● Vencido até 30 dias</span><span class="lg-30">● Até 30 dias</span><span class="lg-60">● 31 a 60 dias</span><span class="lg-90">● 61 a 90 dias</span><span class="lg-ok">● Mais de 90 dias</span></div><div class="filtros filtros-completos"><input id="busca" type="search" placeholder="Buscar instrumento, processo, contratado, objeto, gestor ou SISLOG"><select id="fTipo"><option value="">Todos os tipos</option><option>Contrato</option><option>Convênio</option><option>Termo de Cooperação</option><option>Termo de Colaboração</option><option>Termo de Fomento</option><option>Ata de Registro de Preços</option><option>Acordo</option><option>Outro</option></select><input id="fClass" placeholder="Classificação"><select id="ordenacao"><option value="vencimento">Ordem de vencimento</option><option value="recentes">Mais recentes primeiro</option><option value="antigos">Mais antigos primeiro</option><option value="instrumento">Número do instrumento</option><option value="contratado">Contratado / partícipe</option><option value="valor">Maior valor global</option><option value="gestor">Gestor / responsável</option></select></div><div class="lista-cab" id="resumo">Carregando instrumentos...</div><div class="top-scroll" id="topScroll"><div></div></div><div class="lista tabela-completa" id="mainTableWrap"><table class="tab-inst tabela-dados"><thead></thead><tbody id="tbody"></tbody></table></div></main>
 <div id="modalbg" class="modalbg hidden"><div class="modal"><div class="toolbar"><h2 id="tituloModal" style="flex:1">Novo instrumento</h2><button id="excluirInstr" class="outline btn-excluir hidden">Excluir</button><button id="fechar" class="outline">Fechar</button></div><input id="id" type="hidden">
@@ -397,7 +490,7 @@ textarea.curto{min-height:64px}
 <label for="observacao">Observação</label><textarea id="observacao"></textarea>
 <div class="toolbar barra-salvar"><button id="salvar">Salvar instrumento</button><span id="salvarInfo" class="muted"></span></div>
 
-<div id="alteracoesBox" class="hidden"><hr><h3>Termos aditivos e apostilamentos</h3><div class="grid"><div><label for="altTipo">Tipo da alteração</label><select id="altTipo"><option>Termo Aditivo</option><option>Apostilamento</option></select></div><div><label for="altNumero">Número</label><input id="altNumero"></div><div><label for="altFinalidade">Finalidade</label><select id="altFinalidade"><option>Prorrogação</option><option>Acréscimo</option><option>Supressão</option><option>Reajuste</option><option>Repactuação</option><option>Revisão</option><option>Dotação orçamentária</option><option>Alteração administrativa</option><option>Correção material</option><option>Outra</option></select></div><div><label for="altAssinatura">Data de assinatura</label><input id="altAssinatura" type="date"></div><div><label for="altInicio">Data início</label><input id="altInicio" type="date"></div><div><label for="altFim">Data fim</label><input id="altFim" type="date"></div><div><label for="altMensal">Valor mensal</label><input id="altMensal"></div><div><label for="altTotal">Valor total</label><input id="altTotal"></div><div><label for="altMeses">Vigência (meses)</label><input id="altMeses" type="number"></div><div><label for="altPercentual">Percentual</label><input id="altPercentual" type="number" step="0.01"></div></div><label for="altObs">Observação da alteração</label><textarea id="altObs"></textarea><button id="adicionarAlt" class="ok">Adicionar ao histórico</button><div id="listaAlt"></div></div>
+<div id="alteracoesBox" class="hidden"><hr><h3 class="alt-titulo">Aditivos e apostilamentos <span id="altContagem"></span></h3><div id="altPainel"></div><details id="altNovo" class="alt-novo"><summary>Registrar novo termo aditivo ou apostilamento</summary><div class="grid"><div><label for="altTipo">Tipo da alteração</label><select id="altTipo"><option>Termo Aditivo</option><option>Apostilamento</option></select></div><div><label for="altNumero">Número</label><input id="altNumero"></div><div><label for="altFinalidade">Finalidade</label><select id="altFinalidade"><option>Prorrogação</option><option>Acréscimo</option><option>Supressão</option><option>Reajuste</option><option>Repactuação</option><option>Revisão</option><option>Dotação orçamentária</option><option>Alteração administrativa</option><option>Correção material</option><option>Outra</option></select></div><div><label for="altAssinatura">Data de assinatura</label><input id="altAssinatura" type="date"></div><div><label for="altInicio">Data início</label><input id="altInicio" type="date"></div><div><label for="altFim">Data fim</label><input id="altFim" type="date"></div><div><label for="altMensal">Valor mensal</label><input id="altMensal"></div><div><label for="altTotal">Valor total</label><input id="altTotal"></div><div><label for="altMeses">Vigência (meses)</label><input id="altMeses" type="number"></div><div><label for="altPercentual">Percentual</label><input id="altPercentual" type="number" step="0.01"></div></div><label for="altObs">Observação da alteração</label><textarea id="altObs"></textarea><button id="adicionarAlt" class="ok">Adicionar ao histórico</button></details><h4 class="alt-h4">Histórico de alterações</h4><div id="listaAlt"></div></div>
 <div id="prazosBox" class="hidden"><hr><h3>CONTROLE DE PRAZOS</h3><div class="muted">Cadastre vários prazos administrativos independentes para este instrumento.</div>
 <div class="grid prazo-form-grid"><input id="prazoId" type="hidden"><div><label for="prazoTipo">Tipo do prazo</label><select id="prazoTipo"><option>Vencimento da vigência</option><option>Renovação/Prorrogação</option><option>Manifestação</option><option>Parecer</option><option>Assinatura</option><option>Publicação</option><option>Prestação de contas</option><option>Repactuação</option><option>Reajuste</option><option>Revisão</option><option>Apostilamento</option><option>Termo Aditivo</option><option>Dotação orçamentária</option><option>Resposta a órgão externo</option><option>Diligência</option><option>Outro</option></select></div><div id="prazoOutroBox" class="hidden"><label for="prazoOutro">Tipo personalizado</label><input id="prazoOutro"></div><div><label for="prazoData">Data limite</label><input id="prazoData" type="date"></div><div><label for="prazoPrioridade">Prioridade</label><select id="prazoPrioridade"><option>Normal</option><option>Alta</option><option>Urgente</option></select></div><div><label for="prazoResponsavel">Responsável</label><input id="prazoResponsavel"></div><div><label for="prazoUnidade">Unidade responsável</label><input id="prazoUnidade"></div><div><label for="prazoStatus">Status</label><select id="prazoStatus"><option>Pendente</option><option>Concluído</option><option>Vencido</option><option>Cancelado</option><option>Prorrogado</option></select></div></div><label for="prazoDescricao">Descrição</label><textarea id="prazoDescricao"></textarea><label for="prazoObservacao">Observação</label><textarea id="prazoObservacao"></textarea><div class="toolbar"><button id="btnSalvarPrazo" class="ok">Adicionar prazo</button><button id="btnLimparPrazo" class="outline">Limpar</button></div>
 <div class="table prazo-table cards-mobile"><table style="min-width:1350px"><thead><tr><th>Tipo</th><th>Descrição</th><th>Data limite</th><th>Dias</th><th>Responsável</th><th>Unidade</th><th>Prioridade</th><th>Status</th><th>Observação</th><th>Ações</th></tr></thead><tbody id="tbodyPrazos"></tbody></table></div></div><div id="registroBox" class="hidden"><hr><h3>Outras informações da planilha</h3><div class="muted">Colunas da planilha sem campo próprio no sistema e textos que não puderam ser lidos como data ou valor.</div><div id="extrasLista"></div><hr><h3>Histórico do registro</h3><div id="historicoLista"></div></div></div></div>
@@ -405,6 +498,20 @@ textarea.curto{min-height:64px}
 <div id="painelHistoricoConsolidacoes" class="wrap hidden modulo-painel"><div class="card"><div class="toolbar"><h2 style="flex:1">HISTÓRICO DE CONSOLIDAÇÕES</h2><button class="outline fecharPainel">Fechar</button></div><div id="historicoConsolidacoesConteudo"></div></div></div>
 <div id="importReviewBg" class="modalbg hidden"><div class="modal import-modal"><div class="toolbar"><h2 style="flex:1">ANÁLISE DA IMPORTAÇÃO</h2><button id="fecharImportReview" class="outline">Fechar</button></div><div id="importStatus" class="feedback">Analisando planilha...</div><div id="importResumo" class="import-kpis"></div><div id="importAlts" class="feedback hidden"></div><div id="importTabs" class="import-tabs hidden"><button data-import-tab="novos">Novos</button><button data-import-tab="duplicados">Duplicados</button><button data-import-tab="atualizacoes">Atualizações</button><button data-import-tab="conflitos">Conflitos</button></div><div id="importLista"></div><div class="toolbar"><button id="confirmarImportacao" class="ok hidden">CONFIRMAR CONSOLIDAÇÃO</button></div></div></div>
 <div id="prorrogarPrazoBg" class="modalbg hidden"><div class="modal" style="max-width:700px"><h2>Prorrogar prazo</h2><input id="prorrogarPrazoId" type="hidden"><label for="prorrogarNovaData">Nova data</label><input id="prorrogarNovaData" type="date"><label for="prorrogarMotivo">Motivo da prorrogação</label><input id="prorrogarMotivo"><label for="prorrogarObservacao">Observação</label><textarea id="prorrogarObservacao"></textarea><label for="prorrogarResponsavel">Usuário responsável</label><input id="prorrogarResponsavel"><div class="toolbar"><button id="confirmarProrrogacao" class="ok">Confirmar prorrogação</button><button id="cancelarProrrogacao" class="outline">Cancelar</button></div></div></div>
+<div id="painelRelSemanal" class="wrap hidden modulo-painel"><div class="card rs-card"><div class="toolbar rs-topo"><div style="flex:1"><h2>Relatório semanal</h2><span id="rsPeriodoTxt" class="muted"></span></div><button id="rsImprimir" class="outline">Imprimir ou salvar PDF</button><button id="rsExcel" class="outline">Exportar Excel</button><button id="rsEmail" class="outline">Enviar por e-mail</button><button class="outline fecharPainel">Fechar</button></div>
+<div id="rsFiltros" class="rs-filtros"><div class="rs-grid">
+<div><label for="rsPeriodo">Período</label><select id="rsPeriodo"><option value="atual">Semana atual (segunda a domingo)</option><option value="anterior">Semana anterior</option><option value="proxima">Próxima semana</option><option value="ult7">Últimos 7 dias</option><option value="personalizado">Personalizado</option></select></div>
+<div><label for="rsIni">De</label><input id="rsIni" type="date"></div><div><label for="rsFim">Até</label><input id="rsFim" type="date"></div>
+<div><label for="rsHorizonte">Olhar vencimentos e prazos até</label><select id="rsHorizonte"><option value="7">7 dias após o período</option><option value="15">15 dias após</option><option value="30">30 dias após</option><option value="60">60 dias após</option><option value="90">90 dias após</option><option value="180">180 dias após</option></select></div>
+<div><label for="rsUnidade">Unidade</label><input id="rsUnidade" list="dlUnidades" placeholder="Todas"></div>
+<div><label for="rsTipo">Tipo</label><select id="rsTipo"></select></div>
+<div><label for="rsNatureza">Natureza</label><input id="rsNatureza" list="dlNaturezas" placeholder="Todas"></div>
+<div><label for="rsGestor">Gestor</label><input id="rsGestor" list="dlGestores" placeholder="Todos"></div>
+</div>
+<fieldset><legend>Situação da renovação</legend><div id="rsNiveis" class="rs-chips"></div></fieldset>
+<fieldset><legend>Seções do relatório</legend><div id="rsSecoes" class="rs-chips"></div></fieldset>
+<button id="rsLimpar" class="linkbtn">Limpar filtros</button></div>
+<div id="rsConteudo" class="rs-conteudo"></div></div></div>
 <div id="cfgBg" class="modalbg hidden"><div class="modal" style="max-width:760px"><div class="toolbar"><h2 style="flex:1">Prazos de alerta de renovação</h2><button id="cfgFechar" class="outline">Fechar</button></div><div id="cfgCorpo"></div><div class="toolbar"><button id="cfgSalvar" class="ok">Salvar prazos</button><button id="cfgRestaurar" class="outline">Restaurar padrão</button></div></div></div>
 <script>const firebaseConfig = {
       apiKey: "AIzaSyCVPGxiN1yTn_059rXjZoBa39uqZtbhANw",
@@ -446,7 +553,7 @@ function situacaoPelasDatas(i){
 function abrir(i=null){$('modalbg').classList.remove('hidden');$('excluirInstr').classList.toggle('hidden',!i);ids.forEach(x=>$(x).value=i?.[x]??'');$('id').value=i?.id||'';$('tituloModal').textContent=i?'Editar instrumento':'Novo instrumento';$('alteracoesBox').classList.toggle('hidden',!i);renderAlt(i)}function fechar(){$('modalbg').classList.add('hidden')}function payload(){let p={};ids.forEach(x=>p[x]=$(x).value);['valorMensal','valorTotal','valorGlobal'].forEach(x=>p[x]=moeda(p[x]));['ano','vigenciaMeses','vigenciaDias','vigenciaGlobalMeses','antecedenciaRenovacao'].forEach(x=>p[x]=Number(p[x])||0);if(p.emailGestor)p.emailGestor=p.emailGestor.trim().toLowerCase();p.dataFimVigencia=p.dataFimVigencia||p.dataFinal;return p}
 const ROT_CAMPO={numero:'Número',contrato:'Contrato / instrumento',ano:'Ano',classificacao:'Classificação',processo:'Processo',linkProcesso:'Link do processo',tipo:'Tipo',contratado:'Contratado / partícipe',cnpj:'CNPJ',objeto:'Objeto',valorMensal:'Valor mensal',valorTotal:'Valor total',vigenciaMeses:'Vigência (meses)',vigenciaDias:'Vigência (dias)',dataInicial:'Data inicial',dataFinal:'Data final original',dataFimVigencia:'Data fim vigência',valorGlobal:'Valor global',vigenciaGlobalMeses:'Vigência global (meses)',sislog:'SISLOG',statusAdministrativo:'Status administrativo',gestorResponsavel:'Gestor / responsável',unidadeResponsavel:'Unidade responsável',observacao:'Observação'};
 const agoraIso=()=>new Date().toISOString(),quem=()=>auth.currentUser?.email||'';
-async function salvar(){let p=payload();{let v=window.validarInstrumento?.(p);if(v){if(v.erros.length)return alert(v.erros.join('\n'));if(v.avisos.length&&!confirm('Atenção:\n• '+v.avisos.join('\n• ')+'\n\nSem esses dados os avisos de renovação podem falhar. Salvar assim mesmo?'))return}}if(p.linkProcesso&&!linkSeguro(p.linkProcesso))return alert('Informe um link válido iniciado por http:// ou https://.');if(!p.contrato&&!p.processo)return alert('Informe o contrato/instrumento ou o processo.');if(p.dataInicial&&p.dataFimVigencia&&p.dataFimVigencia<p.dataInicial)return alert('A data final não pode ser anterior à data inicial.');
+async function salvar(){let p=payload();{let v=window.validarInstrumento?.(p);if(v){if(v.erros.length)return alert(v.erros.join('\n'));if(v.confirmar&&!confirm(v.confirmar))return;if(v.avisos.length&&!confirm('Atenção:\n• '+v.avisos.join('\n• ')+'\n\nSem esses dados os avisos de renovação podem falhar. Salvar assim mesmo?'))return}}if(p.linkProcesso&&!linkSeguro(p.linkProcesso))return alert('Informe um link válido iniciado por http:// ou https://.');if(!p.contrato&&!p.processo)return alert('Informe o contrato/instrumento ou o processo.');if(p.dataInicial&&p.dataFimVigencia&&p.dataFimVigencia<p.dataInicial)return alert('A data final não pode ser anterior à data inicial.');
  let id=$('id').value,ref=id?db.collection(COL).doc(id):db.collection(COL).doc(),ant=id?itens.find(x=>x.id===id):null;
  let base={...p,alteradoEm:firebase.firestore.FieldValue.serverTimestamp(),alteradoPor:quem()};if((ant?.etapaRenovacao||'')!==(p.etapaRenovacao||''))base.dataEtapaRenovacao=agoraIso();
  if(!id){base.criadoEm=firebase.firestore.FieldValue.serverTimestamp();base.criadoPor=quem();base.origem='Cadastro manual';base.alteracoes=[];base.prazos=[];base.historico=[{tipo:'cadastro manual',data:agoraIso(),usuario:quem()}];base.instrumentoFingerprint=[normalizarProcesso?.(base.processo)||'',normalizarNumeroInstrumento?.(base.contrato||base.numero)||'',normalizarCnpj?.(base.cnpj)||'',String(base.sislog||'').toUpperCase(),String(base.ano||'')].join('|')}
@@ -473,7 +580,7 @@ async function addAlt(){let id=$('id').value;if(!id)return;let i=itens.find(x=>x
  if(!novo.numero&&!novo.dataFim&&!novo.valorTotal&&!novo.dataAssinatura)return alert('Informe ao menos o número, uma data ou o valor da alteração.');
  let upd={alteracoes:[...(i.alteracoes||[]),novo],alteradoEm:firebase.firestore.FieldValue.serverTimestamp(),alteradoPor:quem()},mud=[];
  // a vigência só é estendida, nunca encurtada; o valor global recebe o valor da alteração
- if(novo.dataFim&&novo.dataFim>(dataFinalEfetiva(i)||'')){upd.dataFimVigencia=novo.dataFim;if(i.etapaRenovacao&&i.etapaRenovacao!=='Não será renovado'){upd.etapaRenovacao='';upd.dataEtapaRenovacao=agoraIso();mud.push({campo:'etapaRenovacao',anterior:i.etapaRenovacao,novo:'Não iniciada (novo ciclo)'})}mud.push({campo:'dataFimVigencia',anterior:i.dataFimVigencia||'',novo:novo.dataFim})}
+ if(novo.dataFim&&novo.dataFim>(dataFinalEfetiva(i)||'')){upd.dataFimVigencia=novo.dataFim;if(i.etapaRenovacao&&!['Não será renovado','Concluída','Entrega única'].includes(i.etapaRenovacao)){upd.etapaRenovacao='';upd.dataEtapaRenovacao=agoraIso();mud.push({campo:'etapaRenovacao',anterior:i.etapaRenovacao,novo:'Não iniciada (novo ciclo)'})}mud.push({campo:'dataFimVigencia',anterior:i.dataFimVigencia||'',novo:novo.dataFim})}
  if(novo.valorTotal){let delta=novo.finalidade==='Supressão'?-Math.abs(novo.valorTotal):novo.valorTotal;upd.valorGlobal=(i.valorGlobal||i.valorTotal||0)+delta;mud.push({campo:'valorGlobal',anterior:i.valorGlobal||0,novo:upd.valorGlobal})}
  upd.historico=[...(i.historico||[]),{tipo:'inclusão de '+novo.tipo.toLowerCase(),data:agoraIso(),usuario:quem(),detalhes:`${novo.tipo} ${novo.numero}`.trim(),alteracoes:mud}];
  try{await db.collection(COL).doc(id).update(upd)}catch(e){return alert('Não foi possível incluir: '+e.message)}
@@ -866,13 +973,15 @@ window.tipoPorTexto=t=>{let n=norm(t);if(!n)return'';if(n.includes('leilo'))retu
 window.mapStatus=t=>({vigente:'Ativo',ativo:'Ativo',encerrado:'Encerrado',inativo:'Encerrado',substituido:'Encerrado',rescindido:'Rescindido',suspenso:'Suspenso','em renovacao':'Em renovação'})[norm(t)]||'';
 
 /* ---------- etapas da renovação ---------- */
-const ETAPAS=['','Consulta ao gestor/área','Aguardando área demandante','Anuência do contratado','Instrução na GECG','Análise jurídica/assessoria','Aguardando assinatura','Publicação','Concluída'];
+const ETAPAS=['','Consulta ao gestor/área','Aguardando área demandante','Anuência do contratado','Instrução na GECG','Análise jurídica/assessoria','Aguardando assinatura','Publicação','Concluída','Entrega única'];
+const FINAIS=['Concluída','Entrega única'];window.ETAPAS_FINAIS=FINAIS;
 const NAO_RENOVA='Não será renovado';
 const ETAPA_ROT=e=>e||'Não iniciada';
 window.ETAPAS_RENOVACAO=ETAPAS;
 function etapaDe(i){if(i.etapaRenovacao)return i.etapaRenovacao;return i.statusAdministrativo==='Em renovação'?'Instrução na GECG':''}
-const idxEtapa=e=>e===NAO_RENOVA?-1:Math.max(0,ETAPAS.indexOf(e));
+const idxEtapa=e=>e===NAO_RENOVA?-1:Math.min(8,Math.max(0,ETAPAS.indexOf(e)));
 window.inferirEtapa=t=>{let n=norm(t);if(!n)return'';
+ if(/entrega unica/.test(n))return'Entrega única';
  if(/nao ser[aá] renov|nova (contrata|licita)/.test(n))return NAO_RENOVA;
  if(/assinatura/.test(n))return'Aguardando assinatura';
  if(/public/.test(n))return'Publicação';
@@ -882,6 +991,10 @@ window.inferirEtapa=t=>{let n=norm(t);if(!n)return'';
  if(/nao enviado|aguardando (a )?area|demandante|juntar|instru/.test(n))return'Aguardando área demandante';
  return''};
 
+/* ---------- etapa final (concluída / entrega única) leva o instrumento para Inativos ---------- */
+FAIXAS.concluido={nome:'Concluídos ou entrega única',sub:'pela etapa',cor:'var(--cinza)',bg:'var(--cinza-bg)',vazio:'Nenhum instrumento concluído.'};
+const motivoInativoBase=motivoInativo;
+motivoInativo=function(i){if(FINAIS.includes(i.etapaRenovacao))return'concluido';return motivoInativoBase(i)};
 /* ---------- configuração de alertas ---------- */
 const CFG_PADRAO={antecedencia:{'Locação':180,'Prestação de Serviços':150,'Fornecimento de serviço essencial':90,'Aquisição':90,'Concurso':90,'Convênio':120,'Termo de Cooperação':120,'Comodato':120,'padrao':120},parado:15,aviso:30};
 let CFG=JSON.parse(JSON.stringify(CFG_PADRAO)),cfgOrigem='padrão';
@@ -965,9 +1078,11 @@ window.validarInstrumento=function(p){
  if(p.emailGestor&&!emailOk(p.emailGestor))erros.push('O e-mail do gestor não é válido.');
  if(p.limiteVigencia&&p.dataInicial&&p.limiteVigencia<p.dataInicial)erros.push('O limite de vigência é anterior à data inicial.');
  let graves=pendencias({...p,statusAdministrativo:p.statusAdministrativo||'Ativo'}).filter(x=>x.grave||(x.campo==='cnpj'&&/verificador/.test(x.msg)));
- if(['Encerrado','Rescindido'].includes(p.statusAdministrativo))graves=[];
+ if(['Encerrado','Rescindido'].includes(p.statusAdministrativo)||FINAIS.includes(p.etapaRenovacao))graves=[];
+ const orig=itens.find(x=>x.id===$('id').value);let confirmar='';
+ if(FINAIS.includes(p.etapaRenovacao)&&(orig?.etapaRenovacao||'')!==p.etapaRenovacao)confirmar=`Ao salvar com a etapa "${p.etapaRenovacao}", este instrumento vai para Inativos e sai do controle de renovações. Confirmar?`;
  graves.forEach(x=>avisos.push(x.msg));
- return{erros,avisos}};
+ return{erros,avisos,confirmar}};
 
 /* ---------- avisar gestor por e-mail e registrar cobrança ---------- */
 function textoEmailGestor(i,r,prazoResp){
@@ -999,9 +1114,10 @@ window.avisarGestor=avisarGestor;
 
 async function mudarEtapa(id,etapa){
  const i=itens.find(x=>x.id===id);if(!i||etapa===(i.etapaRenovacao||''))return;
+ if(FINAIS.includes(etapa)&&!confirm(`Marcar ${nomeInstr(i)} como "${etapa}"?\n\n${etapa==='Entrega única'?'O objeto já foi entregue':'O processo foi concluído e o contrato não será renovado'}. O instrumento sai do controle de renovações e vai para Inativos. Para trazer de volta, basta reabrir.`))return window.render();
  const agora=new Date().toISOString(),email=auth.currentUser?.email||'';
  try{await db.collection(COL).doc(id).update({etapaRenovacao:etapa,dataEtapaRenovacao:agora,alteradoEm:firebase.firestore.FieldValue.serverTimestamp(),alteradoPor:email,
-  historico:[...(i.historico||[]),{tipo:'mudança de etapa da renovação',data:agora,usuario:email,alteracoes:[{campo:'etapaRenovacao',anterior:ETAPA_ROT(i.etapaRenovacao),novo:ETAPA_ROT(etapa)}]}]});toast(`Etapa de ${nomeInstr(i)}: ${ETAPA_ROT(etapa)}.`)}
+  historico:[...(i.historico||[]),{tipo:'mudança de etapa da renovação',data:agora,usuario:email,alteracoes:[{campo:'etapaRenovacao',anterior:ETAPA_ROT(i.etapaRenovacao),novo:ETAPA_ROT(etapa)}]}]});toast(FINAIS.includes(etapa)?`${nomeInstr(i)} foi para Inativos (${etapa}).`:etapa===''&&FINAIS.includes(i.etapaRenovacao)?`${nomeInstr(i)} voltou para Instrumentos.`:`Etapa de ${nomeInstr(i)}: ${ETAPA_ROT(etapa)}.`)}
  catch(e){alert('Não foi possível mudar a etapa: '+e.message)}}
 
 function toast(msg){let t=$('toast');if(!t){t=document.createElement('div');t.id='toast';t.setAttribute('role','status');document.body.appendChild(t)}t.textContent=msg;t.classList.add('on');clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove('on'),3200)}
@@ -1015,7 +1131,7 @@ function regua(r){
  return`<div class="regua ${atras?'atras':''}" style="--cor:${c}" role="img" aria-label="Prazo da janela consumido ${r.tempoPct}%, andamento da renovação ${r.etapaPct}%"><span class="rg-lin"><i style="width:${r.tempoPct}%"></i></span><span class="rg-lin rg-etapa"><i style="width:${r.etapaPct}%"></i></span><small>Prazo usado ${r.tempoPct}%, andamento ${r.etapaPct}%</small></div>`}
 function pillNivel(r){if(!r)return'';const n=NIVEIS[r.nivel];return`<span class="nivel" style="--cor:${n.cor};--cor-bg:${n.bg}">${esc(n.nome)}</span>`}
 function celRenovacao(i){
- const r=risco(i);if(!r)return`<span class="muted">${esc(i.statusAdministrativo||'Inativo')}</span>`;
+ const r=risco(i);if(!r){const m=motivoInativo(i);return m==='concluido'?`<span class="muted">${esc(i.etapaRenovacao)}. Não entra mais nos alertas.</span><button class="linkbtn reabrir" data-reabrir="${i.id}">Reabrir</button>`:`<span class="muted">${esc(m==='expirado'?`Vencido há mais de ${DIAS_INATIVO} dias`:i.statusAdministrativo||'Inativo')}</span>`}
  const et=r.etapa===NAO_RENOVA?NAO_RENOVA:ETAPA_ROT(r.etapa);
  return`<div class="cel-renov" style="--cor:${NIVEIS[r.nivel].cor}">${pillNivel(r)}<b class="rv-tit">${esc(r.titulo)}</b><span class="rv-etapa">Etapa: ${esc(et)}${r.idx>0&&r.parado!=null?(r.parado<1?', desde hoje':`, há ${plural(r.parado,'dia','dias')}`):''}</span>${r.iniciarAte&&r.nivel!=='naorenova'?`<span class="rv-ini">Iniciar até ${fmt(r.iniciarAte)}</span>`:''}${regua(r)}</div>`}
 function celGestao(i){
@@ -1067,7 +1183,7 @@ function renderCentral(ativosList){
  const incompletos=ativosList.filter(i=>pendencias(i).some(p=>p.grave)).length,total=lanes.reduce((t,k)=>t+grp[k].length,0);
  const notif='Notification' in window&&Notification.permission==='default';
  box.innerHTML=`<div class="ct-cab"><div><h2>${total?`${plural(total,'renovação precisa','renovações precisam')} de ação`:'Nenhuma renovação precisa de ação agora'}</h2><p>O alerta começa antes do vencimento, conforme o tempo que cada natureza leva para renovar (locação ${CFG.antecedencia['Locação']} dias, serviços ${CFG.antecedencia['Prestação de Serviços']} dias…). <button class="linkbtn" data-cfg>Ajustar prazos</button></p></div>
- <div class="ct-botoes"><button class="sec" data-recolher aria-expanded="${!recolhida}">${recolhida?'Mostrar':'Recolher'}</button><button class="sec" data-resumo-email>Enviar resumo por e-mail</button><button class="sec" data-relatorio>Relatório de renovações</button>${notif?'<button class="sec" data-notif>Ativar lembretes no navegador</button>':''}</div></div>
+ <div class="ct-botoes"><button class="sec" data-recolher aria-expanded="${!recolhida}">${recolhida?'Mostrar':'Recolher'}</button><button class="sec" data-resumo-email>Enviar resumo por e-mail</button><button class="sec" data-rel-semanal>Relatório semanal</button><button class="sec" data-relatorio>Relatório de renovações</button>${notif?'<button class="sec" data-notif>Ativar lembretes no navegador</button>':''}</div></div>
  <div class="ct-lanes">${lanes.map(k=>{const n=NIVEIS[k],arr=grp[k],ex=typeof n.expl==='function'?n.expl():n.expl;
   return`<section class="ct-lane ${arr.length?'':'vazia'}" style="--cor:${n.cor};--cor-bg:${n.bg}"><div class="ln-cab"><b>${arr.length}</b><div><h3>${n.nome}</h3><p>${esc(ex)}</p></div></div>
   ${arr.length?`<ul>${arr.slice(0,4).map(x=>itemCentral(x.i,x.r)).join('')}</ul>${arr.length>4?`<button class="linkbtn ct-mais" data-ver-risco="${k}">Ver os ${arr.length} na lista</button>`:`<button class="linkbtn ct-mais" data-ver-risco="${k}">Filtrar na lista</button>`}`:`<p class="ct-vazio">${{critico:'Nada crítico.',atrasado:'Nenhuma renovação atrasada.',parado:'Nenhuma renovação parada.',proximo:'Nada para começar nos próximos dias.'}[k]}</p>`}</section>`}).join('')}</div>
@@ -1091,9 +1207,82 @@ function resumoEmail(){
 function relatorio(){
  const lin=itens.filter(ativo).map(i=>{const r=risco(i)||{},p=pendencias(i);return{
   'Situação':r.nivel?NIVEIS[r.nivel].nome:'','Alerta':r.titulo||'','Detalhe':r.detalhe||'','Instrumento':nomeInstr(i),'Tipo':tipoDe(i),'Natureza':naturezaDe(i),'Unidade':i.classificacao||'','Contratado':i.contratado||'','CPF/CNPJ':i.cnpj||'','Objeto':i.objeto||'','Processo SEI':i.processo||'','Gestor titular':i.gestorResponsavel||'','Portaria':i.portariaGestor||'','E-mail gestor':i.emailGestor||'','Suplente':i.gestorSuplente||'','Fiscais':listaFiscais(i).join('; '),
-  'Fim da vigência':fmt(dataFinalEfetiva(i)),'Dias para vencer':r.d??'','Antecedência (dias)':r.ant??'','Iniciar renovação até':r.iniciarAte?fmt(r.iniciarAte):'','Etapa':r.etapa===NAO_RENOVA?NAO_RENOVA:ETAPA_ROT(r.etapa),'Etapa desde':i.dataEtapaRenovacao?quando(i.dataEtapaRenovacao):'','Andamento':i.andamentoRenovacao||'','Próxima ação':i.proximaAcao||'','Pendências de cadastro':p.map(x=>x.msg).join('; '),_o:r.nivel?NIVEIS[r.nivel].ordem:9,_d:r.d??9e9}}).sort((a,b)=>a._o-b._o||a._d-b._d).map(({_o,_d,...x})=>x);
+  'Fim da vigência':fmt(dataFinalEfetiva(i)),'Dias para vencer':r.d??'','Antecedência (dias)':r.ant??'','Iniciar renovação até':r.iniciarAte?fmt(r.iniciarAte):'','Etapa':r.etapa===NAO_RENOVA?NAO_RENOVA:ETAPA_ROT(r.etapa),'Etapa desde':i.dataEtapaRenovacao?quando(i.dataEtapaRenovacao):'','Andamento':i.andamentoRenovacao||'','Próxima ação':i.proximaAcao||'','Termos aditivos':analisarAlts(i).ta.length,'Apostilamentos':analisarAlts(i).ap.length,'Aditivo em vigor':window.resumoAditivos(i).emVigor,'Pendências de cadastro':p.map(x=>x.msg).join('; '),_o:r.nivel?NIVEIS[r.nivel].ordem:9,_d:r.d??9e9}}).sort((a,b)=>a._o-b._o||a._d-b._d).map(({_o,_d,...x})=>x);
  const ws=XLSX.utils.json_to_sheet(lin);ws['!cols']=Object.keys(lin[0]||{}).map(k=>({wch:['Objeto','Detalhe','Contratado','Pendências de cadastro'].includes(k)?45:Math.max(12,k.length+2)}));ws['!autofilter']={ref:ws['!ref']};
  const wb=XLSX.utils.book_new();XLSX.utils.book_append_sheet(wb,ws,'Renovações');XLSX.writeFile(wb,`renovacoes_${hojeIso()}.xlsx`)}
+
+/* ---------- aditivos e apostilamentos: análise e painel ---------- */
+const ordAlt=x=>x.dataInicio||x.dataFim||x.dataAssinatura||'9999';
+function mesesEntre(a,b){if(!a||!b)return 0;const x=new Date(a+'T00:00:00'),y=new Date(b+'T00:00:00');return Math.max(0,(y.getFullYear()-x.getFullYear())*12+(y.getMonth()-x.getMonth())+(y.getDate()+1>=x.getDate()?0:-1))}
+function duracao(m){const a=Math.floor(m/12),r=m%12;return[a&&plural(a,'ano','anos'),r&&plural(r,'mês','meses')].filter(Boolean).join(' e ')||'menos de 1 mês'}
+const indet=d=>!!d&&d.slice(0,4)>=String(new Date().getFullYear()+12);
+function situacaoAlt(x){const h=hojeIso();
+ if(indet(x.dataFim))return{s:'indet',txt:`Prazo indeterminado (${fmt(x.dataFim)})`,cls:'sa-reg'};
+ if(!x.dataFim&&!x.dataInicio)return{s:'registro',txt:'Sem prazo',cls:'sa-reg'};
+ if(x.dataInicio&&h<x.dataInicio)return{s:'futuro',txt:`Começa em ${plural(dias(x.dataInicio),'dia','dias')}`,cls:'sa-fut'};
+ if(x.dataFim&&h>x.dataFim)return{s:'encerrado',txt:`Encerrado em ${fmt(x.dataFim)}`,cls:'sa-enc'};
+ if(x.dataFim){const d=dias(x.dataFim);return{s:'vigor',txt:d===0?'Em vigor, vence hoje':`Em vigor, vence em ${plural(d,'dia','dias')}`,cls:d<=30?'sa-v30':d<=90?'sa-v90':'sa-vig',d}}
+ return{s:'vigor',txt:'Em vigor',cls:'sa-vig'}}
+function analisarAlts(i){
+ const lista=(i.alteracoes||[]).map((x,n)=>({...x,_n:n})).sort((a,b)=>ordAlt(a).localeCompare(ordAlt(b)));
+ const ta=lista.filter(x=>x.tipo!=='Apostilamento'),ap=lista.filter(x=>x.tipo==='Apostilamento');
+ const prorrog=lista.filter(x=>x.dataFim&&(x.finalidade==='Prorrogação'||!x.finalidade||x.tipo!=='Apostilamento'));
+ const h=hojeIso(),fim=dataFinalEfetiva(i);
+ const emVigor=[...lista].reverse().find(x=>x.dataFim&&!indet(x.dataFim)&&(!x.dataInicio||x.dataInicio<=h)&&h<=x.dataFim);
+ const noOriginal=!emVigor&&i.dataInicial&&i.dataFinal&&i.dataInicial<=h&&h<=i.dataFinal;
+ const maiorFimAlt=lista.map(x=>x.dataFim).filter(Boolean).sort().pop()||'';
+ const acresc=lista.filter(x=>x.finalidade==='Acréscimo').reduce((t,x)=>t+Math.abs(x.valorTotal||0),0)-lista.filter(x=>x.finalidade==='Supressão').reduce((t,x)=>t+Math.abs(x.valorTotal||0),0);
+ const base=Number(i.valorTotal)||0,pctAcr=base&&acresc?acresc/base*100:0;
+ const avisos=[];
+ if(maiorFimAlt&&fim&&maiorFimAlt!==fim&&maiorFimAlt.slice(0,4)<String(new Date().getFullYear()+12))avisos.push(`O fim da vigência cadastrado (${fmt(fim)}) é diferente do fim do último aditivo (${fmt(maiorFimAlt)}). Confira qual está correto.`);
+ const semData=lista.filter(x=>x.tipo!=='Apostilamento'&&x.finalidade==='Prorrogação'&&!x.dataFim).length;
+ if(semData)avisos.push(`${plural(semData,'prorrogação está','prorrogações estão')} sem data fim.`);
+ if(pctAcr>25)avisos.push(`Os acréscimos somam ${pctAcr.toFixed(1).replace('.',',')}% do valor inicial, acima do limite usual de 25% (art. 125 da Lei 14.133; 50% para reforma).`);
+ return{lista,ta,ap,prorrog,emVigor,noOriginal,maiorFimAlt,fim,pctAcr,acresc,avisos,meses:mesesEntre(i.dataInicial,fim)}}
+function resumoAltCurto(i){
+ const a=analisarAlts(i);if(!a.lista.length)return'<small class="alt-mini sem">Sem aditivos</small>';
+ const partes=[a.ta.length&&plural(a.ta.length,'aditivo','aditivos'),a.ap.length&&plural(a.ap.length,'apostila','apostilas')].filter(Boolean).join(', ');
+ return`<small class="alt-mini" title="${esc(a.lista.map(x=>`${x.tipo} ${x.numero||''}${x.dataFim?' até '+fmt(x.dataFim):''}`).join('\n'))}">${partes}${a.emVigor?`; em vigor: ${esc(a.emVigor.numero||a.emVigor.tipo)}`:''}</small>`}
+function linhaTempo(i,a){
+ const ini=i.dataInicial;if(!ini||!a.fim)return'';
+ const lim=i.limiteVigencia||'',h=hojeIso(),fimEixo=[a.fim,lim,a.maiorFimAlt,h].filter(x=>x&&x.slice(0,4)<String(new Date().getFullYear()+12)).sort().pop();
+ const t=d=>new Date(d+'T00:00:00').getTime(),T0=t(ini),T1=t(fimEixo),pos=d=>Math.max(0,Math.min(100,(t(d)-T0)/(T1-T0||1)*100));
+ const segs=[];if(i.dataFinal)segs.push({ini,fim:i.dataFinal,rot:'Original',cls:'seg-orig'});
+ a.lista.filter(x=>x.dataFim&&!indet(x.dataFim)&&x.tipo!=='Apostilamento').forEach(x=>{const s=x.dataInicio||segs[segs.length-1]?.fim||ini;segs.push({ini:s,fim:x.dataFim,rot:x.numero||'Aditivo',cls:x===a.emVigor?'seg-vigor':'seg-ad'})});
+ if(!segs.length)return'';
+ const anos=[];for(let y=+ini.slice(0,4)+1;y<=+fimEixo.slice(0,4);y++)anos.push(y);
+ return`<div class="lt" role="img" aria-label="Linha do tempo da vigência de ${fmt(ini)} a ${fmt(a.fim)}">
+ <div class="lt-trilho">${segs.map(s=>{const l=pos(s.ini),w=Math.max(.8,pos(s.fim)-l);return`<span class="lt-seg ${s.cls}" style="left:${l}%;width:${w}%" title="${esc(s.rot)}: ${fmt(s.ini)} a ${fmt(s.fim)}">${w>7?esc(s.rot):''}</span>`}).join('')}
+ <i class="lt-hoje" style="left:${pos(h)}%"><b>hoje</b></i>${lim?`<i class="lt-lim" style="left:${pos(lim)}%"><b>limite legal</b></i>`:''}</div>
+ <div class="lt-anos">${anos.filter((y,k)=>anos.length<=12||k%2===0).map(y=>`<span style="left:${pos(y+'-01-01')}%">${y}</span>`).join('')}</div></div>`}
+function painelAlt(i){
+ const a=analisarAlts(i),fim=a.fim,d=fim?dias(fim):null,lim=i.limiteVigencia;
+ const vig=a.emVigor?esc(a.emVigor.numero||a.emVigor.tipo):a.noOriginal?'Vigência original':a.lista.length?'Nenhum aditivo em vigor hoje':'Vigência original';
+ const mesesLim=lim&&i.dataInicial?mesesEntre(i.dataInicial,lim):0,usoLim=mesesLim?Math.min(100,Math.round(a.meses/mesesLim*100)):0;
+ const corD=d===null?'':d<0?'var(--venc)':d<=30?'var(--f30)':d<=90?'var(--f60)':'var(--vig)';
+ const k=(rot,val,sub,cor)=>`<div class="ak"${cor?` style="--cor:${cor}"`:''}><span>${rot}</span><b>${val}</b>${sub?`<small>${sub}</small>`:''}</div>`;
+ return`<div class="alt-kpis">
+ ${k('Termos aditivos',a.ta.length,a.prorrog.length?plural(a.prorrog.length,'prorrogação','prorrogações'):'nenhuma prorrogação')}
+ ${k('Apostilamentos',a.ap.length,'')}
+ ${k('Em vigor agora',vig,a.emVigor?`${a.emVigor.tipo}${a.emVigor.finalidade?', '+a.emVigor.finalidade.toLowerCase():''}`:'')}
+ ${k('Vigência atual até',fim?fmt(fim):'–',d===null?'sem data':d<0?`venceu há ${plural(-d,'dia','dias')}`:d===0?'vence hoje':`vence em ${plural(d,'dia','dias')}`,corD)}
+ ${k('Tempo total de vigência',a.meses?duracao(a.meses):'–',i.dataInicial?'desde '+fmt(i.dataInicial):'')}
+ ${k('Limite legal',lim?fmt(lim):'Não informado',lim?`${usoLim}% do prazo máximo usado`:'informe no cadastro',usoLim>=90?'var(--venc)':usoLim>=75?'var(--f60)':'')}
+ </div>
+ ${a.pctAcr?`<p class="alt-acr">Acréscimos líquidos: ${brl(a.acresc)} (${a.pctAcr.toFixed(1).replace('.',',')}% do valor inicial).</p>`:''}
+ ${a.avisos.map(x=>`<p class="alt-aviso">${esc(x)}</p>`).join('')}
+ ${linhaTempo(i,a)}`}
+renderAlt=function(i){
+ const box=$('listaAlt'),pn=$('altPainel');
+ if(!i){box.innerHTML='';if(pn)pn.innerHTML='';renderRegistro(null);return}
+ const a=analisarAlts(i);
+ if(pn)pn.innerHTML=painelAlt(i);
+ $('altContagem')&&($('altContagem').textContent=a.lista.length?`(${a.lista.length})`:'');
+ box.innerHTML=a.lista.length?`<div class="table alt-tab cards-mobile"><table><thead><tr><th>Alteração</th><th>Finalidade</th><th>Assinatura</th><th>Período</th><th>Situação</th><th>Valor</th><th></th></tr></thead><tbody>${a.lista.map(x=>{const st=situacaoAlt(x),ex=Object.entries(x.camposExtras||{});
+  return`<tr class="${x===a.emVigor?'alt-atual':''}"><td><b>${esc(x.numero||'(sem número)')}</b><small>${esc(x.tipo)}</small></td><td>${esc(x.finalidade||'-')}${x.percentual?`<small>${esc(String(x.percentual).replace('.',','))}%</small>`:''}</td><td>${fmt(x.dataAssinatura)}</td><td class="nowrap">${x.dataInicio||x.dataFim?`${fmt(x.dataInicio)} a ${fmt(x.dataFim)}`:'-'}${x.vigenciaMeses?`<small>${plural(x.vigenciaMeses,'mês','meses')}</small>`:''}</td><td><span class="sa ${st.cls}">${esc(st.txt)}</span></td><td class="nowrap">${x.valorTotal?brl(x.valorTotal):'-'}${x.valorMensal?`<small>${brl(x.valorMensal)}/mês</small>`:''}</td><td><button class="mini outline btn-excluir" onclick="remAlt(${x._n})">Remover</button></td></tr>${x.observacao||ex.length?`<tr class="alt-obs"><td colspan="7">${esc(x.observacao||'')}${ex.length?`<small>${ex.map(([k,v])=>esc(k)+': '+esc(v)).join('; ')}</small>`:''}</td></tr>`:''}`}).join('')}</tbody></table></div>`
+  :'<div class="empty-state">Nenhum aditivo ou apostilamento registrado. Use "Registrar novo" acima quando houver.</div>';
+ rotularTabelas();renderRegistro(i)};
+window.resumoAditivos=i=>{const a=analisarAlts(i);return{ta:a.ta.length,ap:a.ap.length,emVigor:a.emVigor?`${a.emVigor.tipo} ${a.emVigor.numero||''}`.trim():''}};
 
 /* ---------- tabela ---------- */
 const CAB_COMPACTA=['Instrumento','Contratado e objeto','Processo SEI','Gestão','Vigência','Renovação','Cadastro',''];
@@ -1103,7 +1292,7 @@ function linhaCompacta(i){
  return`<tr data-id="${i.id}" class="linha-${f}"><td><b class="num-instr">${esc(nomeInstr(i))}</b><small>${esc(rotTipo(i))}</small>${i.classificacao?`<span class="chip">${esc(i.classificacao)}</span>`:''}</td>
  <td class="col-contr"><b>${esc(i.contratado||'')}</b><span class="obj">${esc(i.objeto||'')}</span></td>
  <td class="nowrap">${celProcesso(i)}</td><td>${celGestao(i)}</td>
- <td>${celulaPrazo(i,f)}${fim?`<small class="ate">até ${fmt(fim)}</small>`:''}</td>
+ <td>${f==='concluido'?`<div class="prazo" style="--cor:var(--cinza)"><b>${esc(i.etapaRenovacao)}</b>${i.dataEtapaRenovacao?`<small>em ${esc(quando(i.dataEtapaRenovacao).slice(0,10))}</small>`:''}</div>`:celulaPrazo(i,f)}${fim?`<small class="ate">vigência até ${fmt(fim)}</small>`:''}${resumoAltCurto(i)}</td>
  <td>${celRenovacao(i)}</td><td>${celCadastro(i)}</td>
  <td><div class="acoes-lin"><button class="sec abrir" data-abrir="${i.id}">Abrir</button>${ativo(i)?`<button class="mini sec" data-avisar="${i.id}">Avisar gestor</button>`:''}</div></td></tr>`}
 function linhaCompleta(i){
@@ -1121,7 +1310,7 @@ function renderNovo(){
   &&(!cl||norm(i.classificacao).includes(cl)||norm(i.unidadeResponsavel).includes(cl))&&(!tp||tipoDe(i)===tp)
   &&(!fg||norm([i.gestorResponsavel,i.gestorSuplente,i.fiscais].join(' ')).includes(fg))
   &&(!filtroRisco||risco(i)?.nivel===filtroRisco)&&pendOk(i);
- let filtrados=base.filter(casa),faixas=abaAtual==='inativos'?['encerrado','expirado']:['vencido','d30','d60','d90','vigente','revisar'],cont={};
+ let filtrados=base.filter(casa),faixas=abaAtual==='inativos'?['concluido','encerrado','expirado']:['vencido','d30','d60','d90','vigente','revisar'],cont={};
  faixas.forEach(f=>cont[f]=filtrados.filter(i=>faixaDe(i)===f).length);
  if(faixaAtual&&!faixas.includes(faixaAtual))faixaAtual='';
  $('faixas').innerHTML=faixas.map(f=>{let c=FAIXAS[f];return`<button class="faixa ${cont[f]?'':'zero'}" aria-pressed="${faixaAtual===f}" data-faixa="${f}" style="--cor:${c.cor};--cor-bg:${c.bg}"><b>${cont[f]}</b><span>${c.nome}</span>${c.sub?`<small>${f==='vencido'?'últimos 30 dias':c.sub}</small>`:''}</button>`}).join('');
@@ -1145,6 +1334,7 @@ function limparFiltros(){faixaAtual='';filtroRisco='';filtroPend='';['busca','fC
 $('tbody').onclick=e=>{
  const cp=e.target.closest('[data-copiar]');if(cp){e.stopPropagation();return copiar(cp.dataset.copiar)}
  const av=e.target.closest('[data-avisar]');if(av)return avisarGestor(av.dataset.avisar);
+ const ra=e.target.closest('[data-reabrir]');if(ra){const i=itens.find(x=>x.id===ra.dataset.reabrir);if(i&&confirm(`Reabrir ${nomeInstr(i)}? Ele volta para Instrumentos com a etapa "Não iniciada".`))mudarEtapa(i.id,'');return}
  if(e.target.closest('a,[data-limpar-tudo]')){if(e.target.closest('[data-limpar-tudo]'))limparFiltros();return}
  const b=e.target.closest('[data-abrir]'),tr=e.target.closest('tr[data-id]'),id=b?.dataset.abrir||tr?.dataset.id;if(id)edit(id)};
 $('resumo').onclick=e=>{
@@ -1159,6 +1349,7 @@ $('avisoVencimentos').onclick=e=>{
  if(e.target.closest('[data-cfg]'))return abrirCfg();
  if(e.target.closest('[data-resumo-email]'))return resumoEmail();
  if(e.target.closest('[data-relatorio]'))return relatorio();
+ if(e.target.closest('[data-rel-semanal]'))return window.abrirRelatorioSemanal();
  if(e.target.closest('[data-notif]'))return Notification.requestPermission().then(()=>{localStorage.removeItem('notifDia');window.render()});
  const it=e.target.closest('[data-abrir-inst]');if(it)edit(it.dataset.abrirInst)};
 $('avisoVencimentos').addEventListener('change',e=>{const s=e.target.closest('[data-etapa-id]');if(s)mudarEtapa(s.dataset.etapaId,s.value)});
@@ -1179,6 +1370,7 @@ function atualizarFicha(){
  const obrig=['contrato','processo','contratado','cnpj','objeto','classificacao','dataInicial','dataFimVigencia','gestorResponsavel','portariaGestor','emailGestor'];
  const ok=obrig.filter(c=>!pend.some(x=>x.campo===c)).length,pct=Math.round(ok/obrig.length*100);
  box.innerHTML=`${r&&!['Encerrado','Rescindido'].includes(p.statusAdministrativo)?`<div class="fr-risco" style="--cor:${NIVEIS[r.nivel].cor};--cor-bg:${NIVEIS[r.nivel].bg}">${pillNivel(r)}<div><b>${esc(r.titulo)}</b><span>${esc(r.detalhe||'')}</span></div>${regua(r)}</div>`:''}
+ ${id?(()=>{const a=analisarAlts(orig);return`<div class="fr-alt"><div><b>${a.lista.length?`${plural(a.ta.length,'termo aditivo','termos aditivos')} e ${plural(a.ap.length,'apostilamento','apostilamentos')}`:'Nenhum aditivo registrado'}</b><span>${a.emVigor?`Em vigor: ${esc(a.emVigor.tipo)} ${esc(a.emVigor.numero||'')} até ${fmt(a.emVigor.dataFim)}`:a.lista.length?'Nenhum aditivo em vigor hoje':'Vigência original'}${a.avisos.length?`; ${plural(a.avisos.length,'ponto','pontos')} a conferir`:''}</span></div><button class="mini sec" data-ir-aditivos>Ver aditivos</button></div>`})():''}
  <div class="fr-cad"><div class="fr-barra"><span style="width:${pct}%"></span></div><b>Cadastro ${pct}% completo</b>${pend.length?`<ul>${pend.map(x=>`<li class="${x.grave?'grave':''}"><button class="linkbtn" data-foco="${x.campo}">${esc(x.msg)}</button></li>`).join('')}</ul>`:'<span class="cad-ok">Nenhuma pendência.</span>'}</div>`;
  marcarCampos(p);
  // renovação: data de início e ajuda de antecedência
@@ -1205,6 +1397,7 @@ modal.addEventListener('change',e=>{
  atualizarFicha()});
 modal.addEventListener('click',e=>{
  const f=e.target.closest('[data-foco]');if(f){const el=$(f.dataset.foco);if(el){el.scrollIntoView({behavior:'smooth',block:'center'});setTimeout(()=>el.focus(),250)}return}
+ if(e.target.closest('[data-ir-aditivos]')){$('alteracoesBox').scrollIntoView({behavior:'smooth',block:'start'});return}
  const l=e.target.closest('[data-limite]');if(l){$('limiteVigencia').value=l.dataset.limite;atualizarFicha()}});
 const abrirAnterior=window.abrir;
 window.abrir=abrir=function(i=null){
@@ -1300,6 +1493,118 @@ window.aplicarExtrasImport=function(linhas,ex){
    if(!p._etapaInferida)p._etapaInferida=window.inferirEtapa(meus[0].situacao+' '+meus[0].providencia)}
   if(!p._etapaInferida&&p.andamentoRenovacao)p._etapaInferida=window.inferirEtapa(p.andamentoRenovacao)})};
 window.prazosNovos=function(p,ex){const chave=z=>norm(z.tipoPrazo)+'|'+z.dataPrazo+'|'+norm(z.descricao);const tem=new Set((ex.prazos||[]).map(chave));return(p._prazosImport||[]).filter(z=>!tem.has(chave(z)))};
+
+/* ---------- relatório semanal com filtros ---------- */
+const RS_NIVEIS=['critico','atrasado','parado','proximo','andamento','ok','revisar','naorenova'];
+const RS_SECOES={resumo:'Resumo',mov:'Movimentações no período',venc:'Vencimentos',iniciar:'Renovações a iniciar',prazos:'Prazos internos',unidade:'Por unidade',pend:'Pendências de cadastro'};
+const RS_PADRAO={periodo:'atual',ini:'',fim:'',horizonte:30,unidade:'',tipo:'',natureza:'',gestor:'',niveis:RS_NIVEIS,secoes:Object.keys(RS_SECOES)};
+let RS={...RS_PADRAO};try{RS={...RS_PADRAO,...JSON.parse(localStorage.getItem('relSemanalFiltros')||'{}')}}catch{}
+const toD=v=>{if(!v)return null;const d=v.toDate?v.toDate():new Date(v);return isNaN(d)?null:d};
+const isoDe=d=>`${d.getFullYear()}-${p2(d.getMonth()+1)}-${p2(d.getDate())}`;
+function periodoRS(){
+ const h=new Date(),seg=new Date(h.getFullYear(),h.getMonth(),h.getDate()-((h.getDay()+6)%7));
+ const sem=off=>{const a=new Date(seg);a.setDate(a.getDate()+off*7);const b=new Date(a);b.setDate(b.getDate()+6);return[isoDe(a),isoDe(b)]};
+ let r=RS.periodo==='anterior'?sem(-1):RS.periodo==='proxima'?sem(1):RS.periodo==='ult7'?[somaDias(hojeIso(),-6),hojeIso()]:RS.periodo==='personalizado'&&RS.ini&&RS.fim?[RS.ini,RS.fim]:sem(0);
+ if(r[1]<r[0])r=[r[1],r[0]];
+ return{ini:r[0],fim:r[1],limite:somaDias(r[1],Number(RS.horizonte)||30)}}
+function baseRS(){
+ const u=norm(RS.unidade),n=norm(RS.natureza),g=norm(RS.gestor);
+ return itens.filter(i=>(!u||norm(i.classificacao)===u||norm(i.unidadeResponsavel)===u)&&(!RS.tipo||tipoDe(i)===RS.tipo)&&(!n||norm(naturezaDe(i))===n)&&(!g||norm([i.gestorResponsavel,i.gestorSuplente].join(' ')).includes(g)))}
+function descreverHist(h){
+ const alts=(h.alteracoes||[]).slice(0,4).map(c=>`${ROT_CAMPO[c.campo]||c.campo}: ${valorHist(c.campo,c.anterior)} → ${valorHist(c.campo,c.novo)}`);
+ const mais=(h.alteracoes||[]).length>4?` (+${h.alteracoes.length-4})`:'';
+ return[h.detalhes,alts.join('; ')+mais,(h.aditivosIncluidos||[]).length?'Aditivos incluídos: '+h.aditivosIncluidos.join(', '):''].filter(Boolean).join(' | ')}
+function dadosRS(){
+ cacheRisco=new Map();
+ const P=periodoRS(),base=baseRS(),niv=new Set(RS.niveis);
+ const ativos=base.filter(ativo).filter(i=>{const r=risco(i);return !r||niv.has(r.nivel)});
+ const dIni=new Date(P.ini+'T00:00:00'),dFim=new Date(P.fim+'T23:59:59');
+ const noPer=d=>d&&d>=dIni&&d<=dFim;
+ const mov=[];
+ base.forEach(i=>{(i.historico||[]).forEach(h=>{const d=toD(h.data);if(noPer(d))mov.push({d,i,tipo:h.tipo||'alteração',det:descreverHist(h),usuario:h.usuario||''})});
+  (i.prazos||[]).forEach(p=>{const d=toD(p.dataConclusao);if(noPer(d))mov.push({d,i,tipo:'prazo concluído',det:`${p.tipoPrazo}${p.descricao?' – '+p.descricao:''}`,usuario:p.concluidoPor||''})})});
+ mov.sort((a,b)=>b.d-a.d);
+ const concl=base.filter(i=>FINAIS.includes(i.etapaRenovacao)&&noPer(toD(i.dataEtapaRenovacao)));
+ const venc=ativos.filter(i=>{const f=dataFinalEfetiva(i);return f&&f<=P.limite&&(f>=P.ini||dias(f)<0)}).sort((a,b)=>dataFinalEfetiva(a).localeCompare(dataFinalEfetiva(b)));
+ const iniciar=ativos.filter(i=>{const r=risco(i);return r&&r.iniciarAte&&r.idx===0&&r.etapa!==NAO_RENOVA&&r.iniciarAte<=P.limite}).sort((a,b)=>risco(a).iniciarAte.localeCompare(risco(b).iniciarAte));
+ const prazos=[];ativos.forEach(i=>(i.prazos||[]).forEach(p=>{if(!p.dataPrazo||['Concluído','Cancelado'].includes(p.status))return;if(p.dataPrazo<=P.limite)prazos.push({i,p,d:dias(p.dataPrazo)})}));
+ prazos.sort((a,b)=>a.p.dataPrazo.localeCompare(b.p.dataPrazo));
+ const grupos={};ativos.forEach(i=>{const k=i.classificacao||'(sem unidade)';(grupos[k]=grupos[k]||[]).push(i)});
+ const porUnidade=Object.entries(grupos).map(([u,arr])=>({u,n:arr.length,crit:arr.filter(i=>risco(i)?.nivel==='critico').length,atr:arr.filter(i=>risco(i)?.nivel==='atrasado').length,venc:arr.filter(i=>venc.includes(i)).length,semG:arr.filter(i=>!String(i.gestorResponsavel||'').trim()).length,valor:arr.reduce((t,i)=>t+(Number(i.valorGlobal)||0),0)})).sort((a,b)=>b.crit-a.crit||b.atr-a.atr||b.n-a.n);
+ const pend=ativos.map(i=>({i,p:pendencias(i)})).filter(x=>x.p.some(y=>y.grave));
+ const cont=k=>ativos.filter(i=>risco(i)?.nivel===k).length;
+ return{P,base,ativos,mov,concl,venc,iniciar,prazos,porUnidade,pend,k:{ativos:ativos.length,crit:cont('critico'),atr:cont('atrasado'),par:cont('parado'),venc:venc.length,vencidos:venc.filter(i=>dias(dataFinalEfetiva(i))<0).length,ini:iniciar.length,prazos:prazos.length,prazosVenc:prazos.filter(x=>x.d<0).length,mov:mov.length,concl:concl.length}}}
+function descFiltros(){const f=[RS.unidade&&'Unidade '+RS.unidade,RS.tipo&&'Tipo '+RS.tipo,RS.natureza&&'Natureza '+RS.natureza,RS.gestor&&'Gestor '+RS.gestor,RS.niveis.length<RS_NIVEIS.length&&'Situação: '+RS.niveis.map(k=>NIVEIS[k].nome).join(', ')].filter(Boolean);return f.length?f.join('; '):'Nenhum (todos os instrumentos)'}
+function tabelaRS(cab,linhas,vazio){return linhas.length?`<div class="rs-tab"><table><thead><tr>${cab.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${linhas.join('')}</tbody></table></div>`:`<p class="rs-vazio">${vazio}</p>`}
+const cInst=i=>`<td><button class="linkbtn" data-rs-abrir="${i.id}">${esc(nomeInstr(i))}</button><small>${esc(rotTipo(i))}</small></td>`;
+const cDias=d=>`<td class="num ${d<0?'rs-neg':d<=30?'rs-alerta':''}">${d<0?`${-d} dias atrás`:d===0?'hoje':`em ${d} dias`}</td>`;
+function renderRS(){
+ const D=dadosRS(),P=D.P,s=new Set(RS.secoes),out=[];
+ out.push(`<div class="rs-cab"><h3>Relatório semanal de instrumentos</h3><p><b>Período: ${fmt(P.ini)} a ${fmt(P.fim)}</b>. Vencimentos, renovações e prazos considerados até ${fmt(P.limite)} (${RS.horizonte} dias após o período), além dos já vencidos.</p><p>Filtros: ${esc(descFiltros())}. Gerado em ${new Date().toLocaleString('pt-BR')} por ${esc(auth.currentUser?.email||'')}.</p></div>`);
+ if(s.has('resumo'))out.push(`<section><h4>${RS_SECOES.resumo}</h4><div class="rs-kpis">${[
+  ['Instrumentos ativos',D.k.ativos,''],['Críticos',D.k.crit,'var(--venc)'],['Renovações atrasadas',D.k.atr,'var(--f30)'],['Parados',D.k.par,'var(--f60)'],
+  ['Vencem até '+fmt(P.limite),D.k.venc,'',D.k.vencidos?`${D.k.vencidos} já vencido(s)`:''],['Renovações a iniciar',D.k.ini,''],['Prazos internos',D.k.prazos,'',D.k.prazosVenc?`${D.k.prazosVenc} vencido(s)`:''],['Movimentações no período',D.k.mov,'',D.k.concl?`${D.k.concl} concluído(s) ou entrega única`:'']
+ ].map(([r,v,c,sub])=>`<div class="rs-k"${c&&v?` style="--cor:${c}"`:''}><span>${r}</span><b>${v}</b>${sub?`<small>${sub}</small>`:''}</div>`).join('')}</div></section>`);
+ if(s.has('mov'))out.push(`<section><h4>${RS_SECOES.mov} <span>${D.mov.length}</span></h4>${tabelaRS(['Data','Instrumento','O que aconteceu','Detalhes','Usuário'],D.mov.slice(0,300).map(m=>`<tr><td class="nowrap">${m.d.toLocaleDateString('pt-BR')} ${m.d.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'})}</td>${cInst(m.i)}<td>${esc(m.tipo[0].toUpperCase()+m.tipo.slice(1))}</td><td class="rs-det">${esc(m.det)}</td><td>${esc(m.usuario)}</td></tr>`),'Nenhuma movimentação registrada no período.')}${D.mov.length>300?'<p class="rs-vazio">Mostrando as 300 mais recentes; o Excel traz todas.</p>':''}</section>`);
+ if(s.has('venc'))out.push(`<section><h4>${RS_SECOES.venc} <span>${D.venc.length}</span></h4>${tabelaRS(['Instrumento','Contratado','Unidade','Gestor','Fim da vigência','Prazo','Aditivo em vigor','Etapa','Situação'],D.venc.map(i=>{const r=risco(i),f=dataFinalEfetiva(i);return`<tr>${cInst(i)}<td>${esc(i.contratado||'')}</td><td>${esc(i.classificacao||'')}</td><td>${i.gestorResponsavel?esc(i.gestorResponsavel):'<span class="falta">Sem gestor</span>'}</td><td class="nowrap">${fmt(f)}</td>${cDias(dias(f))}<td>${esc(window.resumoAditivos(i).emVigor||'Vigência original')}</td><td>${esc(r?(r.etapa===NAO_RENOVA?NAO_RENOVA:ETAPA_ROT(r.etapa)):'')}</td><td>${pillNivel(r)}</td></tr>`}),'Nenhum vencimento no período e horizonte escolhidos.')}</section>`);
+ if(s.has('iniciar'))out.push(`<section><h4>${RS_SECOES.iniciar} <span>${D.iniciar.length}</span></h4><p class="rs-nota">Renovações ainda não iniciadas cuja data de início cai até ${fmt(P.limite)} ou já passou.</p>${tabelaRS(['Instrumento','Contratado','Unidade','Gestor','Iniciar até','Início','Fim da vigência','Antecedência'],D.iniciar.map(i=>{const r=risco(i);return`<tr>${cInst(i)}<td>${esc(i.contratado||'')}</td><td>${esc(i.classificacao||'')}</td><td>${i.gestorResponsavel?esc(i.gestorResponsavel):'<span class="falta">Sem gestor</span>'}</td><td class="nowrap">${fmt(r.iniciarAte)}</td>${cDias(r.dIni)}<td class="nowrap">${fmt(r.fim)}</td><td>${r.ant} dias</td></tr>`}),'Nenhuma renovação precisa começar nesse intervalo.')}</section>`);
+ if(s.has('prazos'))out.push(`<section><h4>${RS_SECOES.prazos} <span>${D.prazos.length}</span></h4>${tabelaRS(['Data limite','Prazo','Tipo','Descrição','Instrumento','Responsável','Prioridade'],D.prazos.map(({i,p,d})=>`<tr><td class="nowrap">${fmt(p.dataPrazo)}</td>${cDias(d)}<td>${esc(p.tipoPrazo)}</td><td class="rs-det">${esc(p.descricao||'')}${p.observacao?`<small>${esc(p.observacao)}</small>`:''}</td>${cInst(i)}<td>${esc(p.responsavel||'-')}</td><td>${esc(p.prioridade||'')}</td></tr>`),'Nenhum prazo interno pendente até o fim do horizonte.')}</section>`);
+ if(s.has('unidade'))out.push(`<section><h4>${RS_SECOES.unidade}</h4>${tabelaRS(['Unidade','Ativos','Críticos','Atrasados','Vencem no horizonte','Sem gestor','Valor global'],D.porUnidade.map(x=>`<tr><td><button class="linkbtn" data-rs-unidade="${esc(x.u)}">${esc(x.u)}</button></td><td class="num">${x.n}</td><td class="num ${x.crit?'rs-neg':''}">${x.crit}</td><td class="num ${x.atr?'rs-alerta':''}">${x.atr}</td><td class="num">${x.venc}</td><td class="num ${x.semG?'rs-alerta':''}">${x.semG}</td><td class="num nowrap">${brl(x.valor)}</td></tr>`),'Nenhum instrumento ativo no filtro.')}</section>`);
+ if(s.has('pend'))out.push(`<section><h4>${RS_SECOES.pend} <span>${D.pend.length}</span></h4>${tabelaRS(['Instrumento','Unidade','Contratado','Pendências'],D.pend.map(({i,p})=>`<tr>${cInst(i)}<td>${esc(i.classificacao||'')}</td><td>${esc(i.contratado||'')}</td><td class="rs-det">${esc(p.map(x=>x.msg).join('; '))}</td></tr>`),'Nenhum instrumento com pendência grave.')}</section>`);
+ $('rsConteudo').innerHTML=out.join('');
+ $('rsPeriodoTxt').textContent=`${fmt(P.ini)} a ${fmt(P.fim)}`;
+ return D}
+function montarFiltrosRS(){
+ const f=$('rsFiltros');if(f.dataset.ok)return;f.dataset.ok='1';
+ $('rsTipo').innerHTML='<option value="">Todos os tipos</option>'+TIPOS_INSTR.map(t=>`<option>${esc(t)}</option>`).join('');
+ $('rsNiveis').innerHTML=RS_NIVEIS.map(k=>`<label class="rs-chip" style="--cor:${NIVEIS[k].cor};--cor-bg:${NIVEIS[k].bg}"><input type="checkbox" value="${k}">${NIVEIS[k].nome}</label>`).join('');
+ $('rsSecoes').innerHTML=Object.entries(RS_SECOES).map(([k,n])=>`<label class="rs-chip"><input type="checkbox" value="${k}">${n}</label>`).join('');
+ f.addEventListener('input',lerFiltrosRS);f.addEventListener('change',lerFiltrosRS);
+ $('rsLimpar').onclick=()=>{RS={...RS_PADRAO};preencherFiltrosRS();salvarRS();renderRS()}}
+function preencherFiltrosRS(){
+ $('rsPeriodo').value=RS.periodo;const P=periodoRS();$('rsIni').value=P.ini;$('rsFim').value=P.fim;$('rsHorizonte').value=String(RS.horizonte);
+ $('rsUnidade').value=RS.unidade;$('rsTipo').value=RS.tipo;$('rsNatureza').value=RS.natureza;$('rsGestor').value=RS.gestor;
+ $('rsNiveis').querySelectorAll('input').forEach(c=>c.checked=RS.niveis.includes(c.value));$('rsSecoes').querySelectorAll('input').forEach(c=>c.checked=RS.secoes.includes(c.value))}
+const salvarRS=()=>localStorage.setItem('relSemanalFiltros',JSON.stringify(RS));
+function lerFiltrosRS(e){
+ const t=e?.target?.id;
+ if(t==='rsIni'||t==='rsFim'){RS.periodo='personalizado';$('rsPeriodo').value='personalizado'}else RS.periodo=$('rsPeriodo').value;
+ RS.ini=$('rsIni').value;RS.fim=$('rsFim').value;
+ if(t==='rsPeriodo'&&RS.periodo!=='personalizado'){const P=periodoRS();$('rsIni').value=P.ini;$('rsFim').value=P.fim}
+ RS.horizonte=Number($('rsHorizonte').value)||30;RS.unidade=$('rsUnidade').value.trim();RS.tipo=$('rsTipo').value;RS.natureza=$('rsNatureza').value.trim();RS.gestor=$('rsGestor').value.trim();
+ RS.niveis=[...$('rsNiveis').querySelectorAll('input:checked')].map(c=>c.value);RS.secoes=[...$('rsSecoes').querySelectorAll('input:checked')].map(c=>c.value);
+ salvarRS();clearTimeout(lerFiltrosRS._t);lerFiltrosRS._t=setTimeout(renderRS,150)}
+function abrirRS(){preencherDatalists();montarFiltrosRS();preencherFiltrosRS();document.querySelectorAll('.modulo-painel').forEach(x=>x.classList.add('hidden'));$('painelRelSemanal').classList.remove('hidden');renderRS();$('painelRelSemanal').scrollTop=0}
+function excelRS(){
+ const D=dadosRS(),P=D.P,wb=XLSX.utils.book_new();
+ const add=(nome,linhas,cab)=>{const ws=linhas.length?XLSX.utils.json_to_sheet(linhas):XLSX.utils.json_to_sheet([],{header:cab});if(linhas.length){ws['!cols']=Object.keys(linhas[0]).map(k=>({wch:Math.min(60,Math.max(12,k.length+2,...linhas.slice(0,50).map(l=>String(l[k]??'').length)))}));ws['!autofilter']={ref:ws['!ref']}}XLSX.utils.book_append_sheet(wb,ws,nome)};
+ const r=i=>risco(i)||{};
+ add('Resumo',[{'Item':'Período','Valor':`${fmt(P.ini)} a ${fmt(P.fim)}`},{'Item':'Horizonte até','Valor':fmt(P.limite)},{'Item':'Filtros','Valor':descFiltros()},{'Item':'Gerado em','Valor':new Date().toLocaleString('pt-BR')},
+  {'Item':'Instrumentos ativos','Valor':D.k.ativos},{'Item':'Críticos','Valor':D.k.crit},{'Item':'Renovações atrasadas','Valor':D.k.atr},{'Item':'Parados','Valor':D.k.par},{'Item':'Vencimentos no horizonte','Valor':D.k.venc},{'Item':'Já vencidos','Valor':D.k.vencidos},{'Item':'Renovações a iniciar','Valor':D.k.ini},{'Item':'Prazos internos pendentes','Valor':D.k.prazos},{'Item':'Movimentações no período','Valor':D.k.mov},{'Item':'Concluídos ou entrega única no período','Valor':D.k.concl}],['Item','Valor']);
+ const s=new Set(RS.secoes);
+ if(s.has('mov'))add('Movimentações',D.mov.map(m=>({'Data':m.d.toLocaleString('pt-BR'),'Instrumento':nomeInstr(m.i),'Tipo':tipoDe(m.i),'Unidade':m.i.classificacao||'','Contratado':m.i.contratado||'','O que aconteceu':m.tipo,'Detalhes':m.det,'Usuário':m.usuario})),['Data','Instrumento','O que aconteceu']);
+ if(s.has('venc'))add('Vencimentos',D.venc.map(i=>({'Instrumento':nomeInstr(i),'Tipo':tipoDe(i),'Natureza':naturezaDe(i),'Unidade':i.classificacao||'','Contratado':i.contratado||'','Processo SEI':i.processo||'','Gestor':i.gestorResponsavel||'','E-mail gestor':i.emailGestor||'','Fim da vigência':fmt(dataFinalEfetiva(i)),'Dias':dias(dataFinalEfetiva(i)),'Aditivo em vigor':window.resumoAditivos(i).emVigor||'Vigência original','Etapa':r(i).etapa===NAO_RENOVA?NAO_RENOVA:ETAPA_ROT(r(i).etapa),'Situação':r(i).nivel?NIVEIS[r(i).nivel].nome:'','Alerta':r(i).titulo||''})),['Instrumento']);
+ if(s.has('iniciar'))add('Renovações a iniciar',D.iniciar.map(i=>({'Instrumento':nomeInstr(i),'Tipo':tipoDe(i),'Unidade':i.classificacao||'','Contratado':i.contratado||'','Gestor':i.gestorResponsavel||'','E-mail gestor':i.emailGestor||'','Iniciar até':fmt(r(i).iniciarAte),'Dias até o início':r(i).dIni,'Fim da vigência':fmt(r(i).fim),'Antecedência (dias)':r(i).ant})),['Instrumento']);
+ if(s.has('prazos'))add('Prazos internos',D.prazos.map(({i,p,d})=>({'Data limite':fmt(p.dataPrazo),'Dias':d,'Tipo':p.tipoPrazo,'Descrição':p.descricao||'','Observação':p.observacao||'','Instrumento':nomeInstr(i),'Unidade':i.classificacao||'','Responsável':p.responsavel||'','Prioridade':p.prioridade||'','Status':p.status||''})),['Data limite']);
+ if(s.has('unidade'))add('Por unidade',D.porUnidade.map(x=>({'Unidade':x.u,'Ativos':x.n,'Críticos':x.crit,'Atrasados':x.atr,'Vencem no horizonte':x.venc,'Sem gestor':x.semG,'Valor global':x.valor})),['Unidade']);
+ if(s.has('pend'))add('Pendências',D.pend.map(({i,p})=>({'Instrumento':nomeInstr(i),'Unidade':i.classificacao||'','Contratado':i.contratado||'','Pendências':p.map(x=>x.msg).join('; ')})),['Instrumento']);
+ XLSX.writeFile(wb,`relatorio_semanal_${P.ini}_a_${P.fim}.xlsx`)}
+function emailRS(){
+ const D=dadosRS(),P=D.P,lin=[];
+ lin.push(`Relatório semanal de instrumentos – ${fmt(P.ini)} a ${fmt(P.fim)}`,`Filtros: ${descFiltros()}`,'',
+  `Ativos: ${D.k.ativos} | Críticos: ${D.k.crit} | Atrasados: ${D.k.atr} | Parados: ${D.k.par}`,`Vencem até ${fmt(P.limite)}: ${D.k.venc} (${D.k.vencidos} já vencidos) | Renovações a iniciar: ${D.k.ini} | Prazos internos: ${D.k.prazos}`,`Movimentações no período: ${D.k.mov} | Concluídos/entrega única: ${D.k.concl}`,'');
+ if(D.venc.length){lin.push('VENCIMENTOS');D.venc.slice(0,15).forEach(i=>lin.push(`- ${nomeInstr(i)} | ${i.contratado||''} | fim ${fmt(dataFinalEfetiva(i))} | ${i.gestorResponsavel||'SEM GESTOR'}`));if(D.venc.length>15)lin.push(`  … e mais ${D.venc.length-15}`);lin.push('')}
+ if(D.iniciar.length){lin.push('RENOVAÇÕES A INICIAR');D.iniciar.slice(0,10).forEach(i=>lin.push(`- ${nomeInstr(i)} | iniciar até ${fmt(risco(i).iniciarAte)} | ${i.gestorResponsavel||'SEM GESTOR'}`));if(D.iniciar.length>10)lin.push(`  … e mais ${D.iniciar.length-10}`);lin.push('')}
+ if(D.prazos.length){lin.push('PRAZOS INTERNOS');D.prazos.slice(0,10).forEach(({i,p})=>lin.push(`- ${fmt(p.dataPrazo)} | ${p.tipoPrazo} | ${nomeInstr(i)} | ${p.responsavel||'-'}`));lin.push('')}
+ let corpo=lin.join('\n');if(corpo.length>1800)corpo=corpo.slice(0,1750)+'\n…\n(Lista completa no Excel do relatório semanal.)';
+ window.location.href=`mailto:?subject=${encodeURIComponent(`Relatório semanal – ${fmt(P.ini)} a ${fmt(P.fim)}`)}&body=${encodeURIComponent(corpo)}`}
+$('rsExcel').onclick=excelRS;$('rsEmail').onclick=emailRS;
+$('rsImprimir').onclick=()=>{document.body.classList.add('imprimindo-rs');setTimeout(()=>window.print(),50)};
+window.addEventListener('afterprint',()=>document.body.classList.remove('imprimindo-rs'));
+$('rsConteudo').onclick=e=>{const a=e.target.closest('[data-rs-abrir]');if(a){$('painelRelSemanal').classList.add('hidden');return edit(a.dataset.rsAbrir)}
+ const u=e.target.closest('[data-rs-unidade]');if(u){RS.unidade=u.dataset.rsUnidade;$('rsUnidade').value=RS.unidade;salvarRS();renderRS();$('painelRelSemanal').scrollTop=0}};
+$('btnRelSemanal').onclick=abrirRS;
+window.abrirRelatorioSemanal=abrirRS;
 
 /* ---------- inicialização ---------- */
 auth.onAuthStateChanged(u=>{if(u)carregarCfg()});
