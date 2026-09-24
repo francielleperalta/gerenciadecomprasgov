@@ -196,7 +196,7 @@ button.mini{width:auto;margin:0;min-height:30px;padding:4px 10px;font-size:12.5p
 .ct-cab p{margin:4px 0 0;color:var(--muted);font-size:13.5px;max-width:78ch;line-height:1.5}
 .ct-botoes{display:flex;gap:8px;flex-wrap:wrap}
 .ct-botoes button{width:auto;margin:0;min-height:38px;padding:8px 13px;font-size:13px}
-.ct-lanes{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.ct-lanes{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
 .ct-lane{border:1px solid var(--line);border-top:4px solid var(--cor);border-radius:10px;background:#FBFCFC;display:flex;flex-direction:column;min-width:0}
 .ct-lane>.ln-cab{display:flex;gap:11px;align-items:flex-start;padding:12px 13px 10px;border-bottom:1px solid var(--line);background:#fff;border-radius:6px 6px 0 0}
 .ct-lane>.ln-cab b{font-size:30px;line-height:1;font-weight:750;color:var(--cor);font-variant-numeric:tabular-nums;min-width:26px}
@@ -210,6 +210,7 @@ button.mini{width:auto;margin:0;min-height:30px;padding:4px 10px;font-size:12.5p
 .ct-l1 b{font-size:14px;font-variant-numeric:tabular-nums}
 .ct-l1 span{color:var(--muted);font-size:12px}
 .ct-l1 em{margin-left:auto;font-style:normal;font-weight:700;color:var(--cor);font-variant-numeric:tabular-nums;font-size:12.5px}
+.ct-fim{font-size:12px;color:var(--muted)}
 .ct-contr{color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ct-msg{color:var(--muted);margin-top:3px}
 .ct-msg b{color:var(--ink);font-weight:650}
@@ -356,7 +357,7 @@ textarea.curto{min-height:64px}
 .rs-conteudo h4{margin:0 0 8px;font-size:16px;display:flex;align-items:baseline;gap:8px}
 .rs-conteudo h4 span{font-size:13px;color:var(--muted);font-weight:600}
 .rs-nota{margin:-4px 0 8px;font-size:13px;color:var(--muted)}
-.rs-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.rs-kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
 .rs-k{background:#fff;padding:11px 13px;border-left:4px solid var(--cor,transparent)}
 .rs-k span{display:block;font-size:12.5px;color:var(--muted);font-weight:600}
 .rs-k b{font-size:24px;font-variant-numeric:tabular-nums;color:var(--cor,var(--ink))}
@@ -385,7 +386,8 @@ textarea.curto{min-height:64px}
  @page{size:A4 landscape;margin:12mm}
 }
 @media(max-width:1250px){.alt-kpis{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media(max-width:1250px){.ct-lanes{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:1500px){.ct-lanes{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:1000px){.ct-lanes{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:760px){
  .central{padding:14px 12px;margin:0 -4px 14px}
  .ct-lanes{grid-template-columns:1fr}
@@ -1005,7 +1007,7 @@ function antecedencia(i){let v=Number(i.antecedenciaRenovacao);return v>0?v:ante
 
 /* ---------- motor de risco da renovação ---------- */
 const NIVEIS={
- critico:{ordem:0,nome:'Crítico',cor:'var(--venc)',bg:'var(--venc-bg)',expl:'Vencido, ou vence em até 30 dias sem estar na assinatura'},
+ critico:{ordem:0,nome:'Crítico',cor:'var(--venc)',bg:'var(--venc-bg)',expl:'Vencido, ou vence em até 30 dias sem aditivo registrado'},
  atrasado:{ordem:1,nome:'Renovação atrasada',cor:'var(--f30)',bg:'var(--f30-bg)',expl:'Já deveria ter começado e ainda não começou'},
  parado:{ordem:2,nome:'Parado',cor:'var(--f60)',bg:'var(--f60-bg)',expl:''},
  proximo:{ordem:3,nome:'Começar em breve',cor:'var(--f90)',bg:'var(--f90-bg)',expl:''},
@@ -1015,6 +1017,7 @@ const NIVEIS={
  naorenova:{ordem:7,nome:'Não será renovado',cor:'var(--cinza)',bg:'var(--cinza-bg)',expl:''}
 };
 NIVEIS.parado.expl=()=>`Renovação sem mudança de etapa há mais de ${CFG.parado} dias`;
+NIVEIS.andamento.nome='Em andamento';NIVEIS.andamento.expl='Renovação em curso. O prazo continua correndo até o aditivo ser registrado';
 NIVEIS.proximo.expl=()=>`A renovação deve começar nos próximos ${CFG.aviso} dias`;
 let cacheRisco=new Map();
 function risco(i){if(cacheRisco.has(i))return cacheRisco.get(i);let r=calcRisco(i);cacheRisco.set(i,r);return r}
@@ -1036,11 +1039,11 @@ function calcRisco(i){
   if(d<=ant)return{...r,nivel:d<=30?'critico':'parado',titulo:'Vigência não foi atualizada',detalhe:`Renovação marcada como concluída, mas o fim continua em ${fmt(fim)} (${quando}). Registre o aditivo com a nova data.`};
   return{...r,nivel:'ok',titulo:'Renovação concluída',detalhe:`Próximo ciclo a partir de ${fmt(iniciarAte)}.`}}
  if(d<0)return{...r,nivel:'critico',titulo:`Vencido há ${plural(-d,'dia','dias')}`,detalhe:idx>0?`A renovação parou em "${etapa}".`:'A renovação não foi iniciada.'};
- if(d<=30&&idx<6)return{...r,nivel:'critico',titulo:d===0?'Vence hoje':`Vence em ${plural(d,'dia','dias')}`,detalhe:idx>0?`Ainda está em "${etapa}".`:'A renovação não foi iniciada.'};
+ if(d<=30)return{...r,nivel:'critico',titulo:d===0?'Vence hoje':`Vence em ${plural(d,'dia','dias')}`,detalhe:idx===0?'A renovação não foi iniciada.':idx>=7?`Está em "${etapa}". Se o aditivo já foi assinado, registre-o com a nova data fim; até lá o prazo continua correndo.`:`Ainda está em "${etapa}"${parado!=null?(parado<1?', desde hoje':` há ${plural(parado,'dia','dias')}`):''}. O prazo continua correndo até o aditivo ser registrado.`};
  if(dIni<0&&idx===0)return{...r,nivel:d<=ant/2?'critico':'atrasado',titulo:`Deveria ter começado há ${plural(-dIni,'dia','dias')}`,detalhe:`Início previsto em ${fmt(iniciarAte)}; ${quando}.`};
  if(parado!==null&&parado>CFG.parado&&dIni<=CFG.aviso)return{...r,nivel:'parado',titulo:`Parado há ${plural(parado,'dia','dias')}`,detalhe:`Em "${etapa}"; ${quando}.`};
  if(limiteEstoura&&dIni<=CFG.aviso)return{...r,nivel:'parado',titulo:'Limite legal de vigência',detalhe:`Uma nova prorrogação de 12 meses passaria de ${fmt(i.limiteVigencia)}. Planeje nova contratação.`};
- if(idx>0)return{...r,nivel:'andamento',titulo:`Em andamento: ${etapa}`,detalhe:quando[0].toUpperCase()+quando.slice(1)+'.'};
+ if(idx>0)return{...r,nivel:'andamento',titulo:d===0?'Vence hoje':`Vence em ${plural(d,'dia','dias')}`,detalhe:`Em andamento: ${etapa}${parado!=null?(parado<1?', desde hoje':`, há ${plural(parado,'dia','dias')}`):''}. O prazo corre até o aditivo ser registrado.`};
  if(dIni<=CFG.aviso)return{...r,nivel:'proximo',titulo:dIni===0?'Começar hoje':`Começar em ${plural(dIni,'dia','dias')}`,detalhe:`Iniciar a renovação até ${fmt(iniciarAte)}; ${quando}.`};
  return{...r,nivel:'ok',titulo:`Iniciar em ${fmt(iniciarAte)}`,detalhe:`Faltam ${plural(dIni,'dia','dias')} para abrir a janela de renovação.`};
 }
@@ -1169,7 +1172,7 @@ function preencherDatalists(){
 /* ---------- central de ação ---------- */
 function itemCentral(i,r){
  return`<li class="ct-item" data-abrir-inst="${i.id}" style="--cor:${NIVEIS[r.nivel].cor}">
- <div class="ct-l1"><b>${esc(nomeInstr(i))}</b><span>${esc(rotTipo(i))}</span><em>${fmt(dataFinalEfetiva(i))}</em></div>
+ <div class="ct-l1"><b>${esc(nomeInstr(i))}</b><span>${esc(rotTipo(i))}</span><em>${(()=>{const d=r.d;return d==null?'sem data':d<0?`venceu há ${d*-1}d`:d===0?'vence hoje':`vence em ${d}d`})()}</em></div><div class="ct-fim">Fim da vigência: ${fmt(dataFinalEfetiva(i))}</div>
  <div class="ct-contr">${esc(i.contratado||'Sem contratado')}</div>
  <div class="ct-msg"><b>${esc(r.titulo)}.</b> ${esc(r.detalhe)}</div>
  <div class="ct-l4"><span class="${i.gestorResponsavel?'':'falta'}">${esc(i.gestorResponsavel||'Sem gestor')}</span>${i.classificacao?`<span>${esc(i.classificacao)}</span>`:''}</div>
@@ -1179,14 +1182,14 @@ function renderCentral(ativosList){
  if(abaAtual==='inativos'){box.innerHTML='';box.className='';return}
  box.className='central'+(recolhida?' recolhida':'');
  const rs=ativosList.map(i=>({i,r:risco(i)})).filter(x=>x.r).sort((a,b)=>(a.r.d??9e9)-(b.r.d??9e9));
- const lanes=['critico','atrasado','parado','proximo'],grp={};lanes.forEach(k=>grp[k]=rs.filter(x=>x.r.nivel===k));
+ const lanes=['critico','atrasado','parado','andamento','proximo'],grp={};lanes.forEach(k=>grp[k]=rs.filter(x=>x.r.nivel===k));
  const incompletos=ativosList.filter(i=>pendencias(i).some(p=>p.grave)).length,total=lanes.reduce((t,k)=>t+grp[k].length,0);
  const notif='Notification' in window&&Notification.permission==='default';
- box.innerHTML=`<div class="ct-cab"><div><h2>${total?`${plural(total,'renovação precisa','renovações precisam')} de ação`:'Nenhuma renovação precisa de ação agora'}</h2><p>O alerta começa antes do vencimento, conforme o tempo que cada natureza leva para renovar (locação ${CFG.antecedencia['Locação']} dias, serviços ${CFG.antecedencia['Prestação de Serviços']} dias…). <button class="linkbtn" data-cfg>Ajustar prazos</button></p></div>
+ box.innerHTML=`<div class="ct-cab"><div><h2>${total?`${plural(total,'renovação','renovações')} com prazo correndo`:'Nenhuma renovação com prazo correndo'}${grp.critico.length?`, ${plural(grp.critico.length,'crítica','críticas')}`:''}</h2><p>O alerta começa antes do vencimento, conforme o tempo que cada natureza leva para renovar (locação ${CFG.antecedencia['Locação']} dias, serviços ${CFG.antecedencia['Prestação de Serviços']} dias…). <button class="linkbtn" data-cfg>Ajustar prazos</button></p></div>
  <div class="ct-botoes"><button class="sec" data-recolher aria-expanded="${!recolhida}">${recolhida?'Mostrar':'Recolher'}</button><button class="sec" data-resumo-email>Enviar resumo por e-mail</button><button class="sec" data-rel-semanal>Relatório semanal</button><button class="sec" data-relatorio>Relatório de renovações</button>${notif?'<button class="sec" data-notif>Ativar lembretes no navegador</button>':''}</div></div>
  <div class="ct-lanes">${lanes.map(k=>{const n=NIVEIS[k],arr=grp[k],ex=typeof n.expl==='function'?n.expl():n.expl;
   return`<section class="ct-lane ${arr.length?'':'vazia'}" style="--cor:${n.cor};--cor-bg:${n.bg}"><div class="ln-cab"><b>${arr.length}</b><div><h3>${n.nome}</h3><p>${esc(ex)}</p></div></div>
-  ${arr.length?`<ul>${arr.slice(0,4).map(x=>itemCentral(x.i,x.r)).join('')}</ul>${arr.length>4?`<button class="linkbtn ct-mais" data-ver-risco="${k}">Ver os ${arr.length} na lista</button>`:`<button class="linkbtn ct-mais" data-ver-risco="${k}">Filtrar na lista</button>`}`:`<p class="ct-vazio">${{critico:'Nada crítico.',atrasado:'Nenhuma renovação atrasada.',parado:'Nenhuma renovação parada.',proximo:'Nada para começar nos próximos dias.'}[k]}</p>`}</section>`}).join('')}</div>
+  ${arr.length?`<ul>${arr.slice(0,4).map(x=>itemCentral(x.i,x.r)).join('')}</ul>${arr.length>4?`<button class="linkbtn ct-mais" data-ver-risco="${k}">Ver os ${arr.length} na lista</button>`:`<button class="linkbtn ct-mais" data-ver-risco="${k}">Filtrar na lista</button>`}`:`<p class="ct-vazio">${{critico:'Nada crítico.',atrasado:'Nenhuma renovação atrasada.',parado:'Nenhuma renovação parada.',andamento:'Nenhuma renovação em andamento.',proximo:'Nada para começar nos próximos dias.'}[k]}</p>`}</section>`}).join('')}</div>
  ${incompletos?`<button class="ct-pend" data-ver-pend>${plural(incompletos,'instrumento ativo está','instrumentos ativos estão')} sem gestor, processo ou data fim. Sem esses dados o aviso pode não acontecer. <u>Ver quais</u></button>`:''}`;
  document.title=(grp.critico.length?`(${grp.critico.length}) `:'')+'Controle de Compras';
  notificarDia(grp);
@@ -1201,7 +1204,7 @@ function notificarDia(grp){
 function resumoEmail(){
  const at=itens.filter(ativo).map(i=>({i,r:risco(i)})).filter(x=>x.r);
  const sec=(k,max=12)=>{let a=at.filter(x=>x.r.nivel===k).sort((x,y)=>(x.r.d??9e9)-(y.r.d??9e9));if(!a.length)return'';return`${NIVEIS[k].nome.toUpperCase()} (${a.length})\n`+a.slice(0,max).map(({i,r})=>`- ${nomeInstr(i)} | ${i.contratado||''} | fim ${fmt(dataFinalEfetiva(i))} | ${r.titulo} | gestor: ${i.gestorResponsavel||'SEM GESTOR'}`).join('\n')+(a.length>max?`\n  … e mais ${a.length-max}`:'')+'\n\n'};
- let corpo=`Resumo de renovações em ${fmt(hojeIso())}\n\n`+sec('critico')+sec('atrasado')+sec('parado',8)+sec('proximo',8);
+ let corpo=`Resumo de renovações em ${fmt(hojeIso())}\n\n`+sec('critico')+sec('atrasado')+sec('parado',8)+sec('andamento',10)+sec('proximo',8);
  if(corpo.length>1800)corpo=corpo.slice(0,1750)+'\n…\n(Use o Relatório de renovações para a lista completa.)';
  window.location.href=`mailto:${encodeURIComponent(auth.currentUser?.email||'')}?subject=${encodeURIComponent('Resumo de renovações – '+fmt(hojeIso()))}&body=${encodeURIComponent(corpo)}`}
 function relatorio(){
@@ -1533,7 +1536,7 @@ function dadosRS(){
  const porUnidade=Object.entries(grupos).map(([u,arr])=>({u,n:arr.length,crit:arr.filter(i=>risco(i)?.nivel==='critico').length,atr:arr.filter(i=>risco(i)?.nivel==='atrasado').length,venc:arr.filter(i=>venc.includes(i)).length,semG:arr.filter(i=>!String(i.gestorResponsavel||'').trim()).length,valor:arr.reduce((t,i)=>t+(Number(i.valorGlobal)||0),0)})).sort((a,b)=>b.crit-a.crit||b.atr-a.atr||b.n-a.n);
  const pend=ativos.map(i=>({i,p:pendencias(i)})).filter(x=>x.p.some(y=>y.grave));
  const cont=k=>ativos.filter(i=>risco(i)?.nivel===k).length;
- return{P,base,ativos,mov,concl,venc,iniciar,prazos,porUnidade,pend,k:{ativos:ativos.length,crit:cont('critico'),atr:cont('atrasado'),par:cont('parado'),venc:venc.length,vencidos:venc.filter(i=>dias(dataFinalEfetiva(i))<0).length,ini:iniciar.length,prazos:prazos.length,prazosVenc:prazos.filter(x=>x.d<0).length,mov:mov.length,concl:concl.length}}}
+ return{P,base,ativos,mov,concl,venc,iniciar,prazos,porUnidade,pend,k:{ativos:ativos.length,and:cont('andamento'),crit:cont('critico'),atr:cont('atrasado'),par:cont('parado'),venc:venc.length,vencidos:venc.filter(i=>dias(dataFinalEfetiva(i))<0).length,ini:iniciar.length,prazos:prazos.length,prazosVenc:prazos.filter(x=>x.d<0).length,mov:mov.length,concl:concl.length}}}
 function descFiltros(){const f=[RS.unidade&&'Unidade '+RS.unidade,RS.tipo&&'Tipo '+RS.tipo,RS.natureza&&'Natureza '+RS.natureza,RS.gestor&&'Gestor '+RS.gestor,RS.niveis.length<RS_NIVEIS.length&&'Situação: '+RS.niveis.map(k=>NIVEIS[k].nome).join(', ')].filter(Boolean);return f.length?f.join('; '):'Nenhum (todos os instrumentos)'}
 function tabelaRS(cab,linhas,vazio){return linhas.length?`<div class="rs-tab"><table><thead><tr>${cab.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${linhas.join('')}</tbody></table></div>`:`<p class="rs-vazio">${vazio}</p>`}
 const cInst=i=>`<td><button class="linkbtn" data-rs-abrir="${i.id}">${esc(nomeInstr(i))}</button><small>${esc(rotTipo(i))}</small></td>`;
@@ -1542,7 +1545,7 @@ function renderRS(){
  const D=dadosRS(),P=D.P,s=new Set(RS.secoes),out=[];
  out.push(`<div class="rs-cab"><h3>Relatório semanal de instrumentos</h3><p><b>Período: ${fmt(P.ini)} a ${fmt(P.fim)}</b>. Vencimentos, renovações e prazos considerados até ${fmt(P.limite)} (${RS.horizonte} dias após o período), além dos já vencidos.</p><p>Filtros: ${esc(descFiltros())}. Gerado em ${new Date().toLocaleString('pt-BR')} por ${esc(auth.currentUser?.email||'')}.</p></div>`);
  if(s.has('resumo'))out.push(`<section><h4>${RS_SECOES.resumo}</h4><div class="rs-kpis">${[
-  ['Instrumentos ativos',D.k.ativos,''],['Críticos',D.k.crit,'var(--venc)'],['Renovações atrasadas',D.k.atr,'var(--f30)'],['Parados',D.k.par,'var(--f60)'],
+  ['Instrumentos ativos',D.k.ativos,''],['Críticos',D.k.crit,'var(--venc)'],['Renovações atrasadas',D.k.atr,'var(--f30)'],['Parados',D.k.par,'var(--f60)'],['Em andamento, prazo correndo',D.k.and,'var(--acc)'],
   ['Vencem até '+fmt(P.limite),D.k.venc,'',D.k.vencidos?`${D.k.vencidos} já vencido(s)`:''],['Renovações a iniciar',D.k.ini,''],['Prazos internos',D.k.prazos,'',D.k.prazosVenc?`${D.k.prazosVenc} vencido(s)`:''],['Movimentações no período',D.k.mov,'',D.k.concl?`${D.k.concl} concluído(s) ou entrega única`:'']
  ].map(([r,v,c,sub])=>`<div class="rs-k"${c&&v?` style="--cor:${c}"`:''}><span>${r}</span><b>${v}</b>${sub?`<small>${sub}</small>`:''}</div>`).join('')}</div></section>`);
  if(s.has('mov'))out.push(`<section><h4>${RS_SECOES.mov} <span>${D.mov.length}</span></h4>${tabelaRS(['Data','Instrumento','O que aconteceu','Detalhes','Usuário'],D.mov.slice(0,300).map(m=>`<tr><td class="nowrap">${m.d.toLocaleDateString('pt-BR')} ${m.d.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'})}</td>${cInst(m.i)}<td>${esc(m.tipo[0].toUpperCase()+m.tipo.slice(1))}</td><td class="rs-det">${esc(m.det)}</td><td>${esc(m.usuario)}</td></tr>`),'Nenhuma movimentação registrada no período.')}${D.mov.length>300?'<p class="rs-vazio">Mostrando as 300 mais recentes; o Excel traz todas.</p>':''}</section>`);
@@ -1580,7 +1583,7 @@ function excelRS(){
  const add=(nome,linhas,cab)=>{const ws=linhas.length?XLSX.utils.json_to_sheet(linhas):XLSX.utils.json_to_sheet([],{header:cab});if(linhas.length){ws['!cols']=Object.keys(linhas[0]).map(k=>({wch:Math.min(60,Math.max(12,k.length+2,...linhas.slice(0,50).map(l=>String(l[k]??'').length)))}));ws['!autofilter']={ref:ws['!ref']}}XLSX.utils.book_append_sheet(wb,ws,nome)};
  const r=i=>risco(i)||{};
  add('Resumo',[{'Item':'Período','Valor':`${fmt(P.ini)} a ${fmt(P.fim)}`},{'Item':'Horizonte até','Valor':fmt(P.limite)},{'Item':'Filtros','Valor':descFiltros()},{'Item':'Gerado em','Valor':new Date().toLocaleString('pt-BR')},
-  {'Item':'Instrumentos ativos','Valor':D.k.ativos},{'Item':'Críticos','Valor':D.k.crit},{'Item':'Renovações atrasadas','Valor':D.k.atr},{'Item':'Parados','Valor':D.k.par},{'Item':'Vencimentos no horizonte','Valor':D.k.venc},{'Item':'Já vencidos','Valor':D.k.vencidos},{'Item':'Renovações a iniciar','Valor':D.k.ini},{'Item':'Prazos internos pendentes','Valor':D.k.prazos},{'Item':'Movimentações no período','Valor':D.k.mov},{'Item':'Concluídos ou entrega única no período','Valor':D.k.concl}],['Item','Valor']);
+  {'Item':'Instrumentos ativos','Valor':D.k.ativos},{'Item':'Críticos','Valor':D.k.crit},{'Item':'Renovações atrasadas','Valor':D.k.atr},{'Item':'Parados','Valor':D.k.par},{'Item':'Em andamento (prazo correndo)','Valor':D.k.and},{'Item':'Vencimentos no horizonte','Valor':D.k.venc},{'Item':'Já vencidos','Valor':D.k.vencidos},{'Item':'Renovações a iniciar','Valor':D.k.ini},{'Item':'Prazos internos pendentes','Valor':D.k.prazos},{'Item':'Movimentações no período','Valor':D.k.mov},{'Item':'Concluídos ou entrega única no período','Valor':D.k.concl}],['Item','Valor']);
  const s=new Set(RS.secoes);
  if(s.has('mov'))add('Movimentações',D.mov.map(m=>({'Data':m.d.toLocaleString('pt-BR'),'Instrumento':nomeInstr(m.i),'Tipo':tipoDe(m.i),'Unidade':m.i.classificacao||'','Contratado':m.i.contratado||'','O que aconteceu':m.tipo,'Detalhes':m.det,'Usuário':m.usuario})),['Data','Instrumento','O que aconteceu']);
  if(s.has('venc'))add('Vencimentos',D.venc.map(i=>({'Instrumento':nomeInstr(i),'Tipo':tipoDe(i),'Natureza':naturezaDe(i),'Unidade':i.classificacao||'','Contratado':i.contratado||'','Processo SEI':i.processo||'','Gestor':i.gestorResponsavel||'','E-mail gestor':i.emailGestor||'','Fim da vigência':fmt(dataFinalEfetiva(i)),'Dias':dias(dataFinalEfetiva(i)),'Aditivo em vigor':window.resumoAditivos(i).emVigor||'Vigência original','Etapa':r(i).etapa===NAO_RENOVA?NAO_RENOVA:ETAPA_ROT(r(i).etapa),'Situação':r(i).nivel?NIVEIS[r(i).nivel].nome:'','Alerta':r(i).titulo||''})),['Instrumento']);
@@ -1592,7 +1595,7 @@ function excelRS(){
 function emailRS(){
  const D=dadosRS(),P=D.P,lin=[];
  lin.push(`Relatório semanal de instrumentos – ${fmt(P.ini)} a ${fmt(P.fim)}`,`Filtros: ${descFiltros()}`,'',
-  `Ativos: ${D.k.ativos} | Críticos: ${D.k.crit} | Atrasados: ${D.k.atr} | Parados: ${D.k.par}`,`Vencem até ${fmt(P.limite)}: ${D.k.venc} (${D.k.vencidos} já vencidos) | Renovações a iniciar: ${D.k.ini} | Prazos internos: ${D.k.prazos}`,`Movimentações no período: ${D.k.mov} | Concluídos/entrega única: ${D.k.concl}`,'');
+  `Ativos: ${D.k.ativos} | Críticos: ${D.k.crit} | Atrasados: ${D.k.atr} | Parados: ${D.k.par} | Em andamento: ${D.k.and}`,`Vencem até ${fmt(P.limite)}: ${D.k.venc} (${D.k.vencidos} já vencidos) | Renovações a iniciar: ${D.k.ini} | Prazos internos: ${D.k.prazos}`,`Movimentações no período: ${D.k.mov} | Concluídos/entrega única: ${D.k.concl}`,'');
  if(D.venc.length){lin.push('VENCIMENTOS');D.venc.slice(0,15).forEach(i=>lin.push(`- ${nomeInstr(i)} | ${i.contratado||''} | fim ${fmt(dataFinalEfetiva(i))} | ${i.gestorResponsavel||'SEM GESTOR'}`));if(D.venc.length>15)lin.push(`  … e mais ${D.venc.length-15}`);lin.push('')}
  if(D.iniciar.length){lin.push('RENOVAÇÕES A INICIAR');D.iniciar.slice(0,10).forEach(i=>lin.push(`- ${nomeInstr(i)} | iniciar até ${fmt(risco(i).iniciarAte)} | ${i.gestorResponsavel||'SEM GESTOR'}`));if(D.iniciar.length>10)lin.push(`  … e mais ${D.iniciar.length-10}`);lin.push('')}
  if(D.prazos.length){lin.push('PRAZOS INTERNOS');D.prazos.slice(0,10).forEach(({i,p})=>lin.push(`- ${fmt(p.dataPrazo)} | ${p.tipoPrazo} | ${nomeInstr(i)} | ${p.responsavel||'-'}`));lin.push('')}
